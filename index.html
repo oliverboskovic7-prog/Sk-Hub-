@@ -13,7 +13,7 @@
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#16161a;--card:#202026;--ink:#f1f1f4;--muted:#a2a2ae;--line:#33333c;--pink:#ee4d9b;--pink-soft:#3a1c2d;--green:#63b53f;--shadow:none}}
 :root[data-theme="dark"]{--bg:#16161a;--card:#202026;--ink:#f1f1f4;--muted:#a2a2ae;--line:#33333c;--pink:#ee4d9b;--pink-soft:#3a1c2d;--green:#63b53f;--shadow:none}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 a{color:var(--pink);text-decoration:none}a:hover{text-decoration:underline}
@@ -21,28 +21,32 @@ a{color:var(--pink);text-decoration:none}a:hover{text-decoration:underline}
 .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--card);border-bottom:1px solid var(--line)}
 .bar{display:flex;align-items:center;gap:20px;height:64px}
-.logo{font-weight:700;font-size:22px;color:var(--pink);letter-spacing:-.02em;cursor:pointer}
+.logo{font-weight:700;font-size:22px;color:var(--pink);letter-spacing:-.02em}
 .logo span{color:var(--ink);font-weight:600}
-nav{display:flex;gap:10px;margin-left:auto;overflow-x:auto;white-space:nowrap;padding:4px 0}
-nav button{background:transparent;border:0;color:var(--ink);font-weight:600;font-size:15px;padding:8px 14px;border-radius:999px;cursor:pointer;transition:all .15s}
-nav button:hover{background:var(--line)}
-nav button.active{background:var(--pink);color:#fff}
+nav{display:flex;gap:18px;margin-left:auto;overflow-x:auto;white-space:nowrap}
+nav a{color:var(--ink);font-weight:600;font-size:15px}
 .btn{background:var(--green);color:#fff;font-weight:600;padding:9px 18px;border-radius:999px;font-size:15px;white-space:nowrap}
 .btn:hover{text-decoration:none;filter:brightness(1.08)}
-.hero{padding:40px 0 30px}
+.hero{padding:56px 0 40px}
 h1{font-size:clamp(32px,5vw,50px);line-height:1.1;letter-spacing:-.03em;margin:0 0 12px;max-width:16ch}
-.lead{color:var(--muted);font-size:18px;margin:0 0 24px;max-width:52ch}
+.lead{color:var(--muted);font-size:18px;margin:0 0 28px;max-width:52ch}
 .search{display:block;width:100%;max-width:560px;padding:16px 20px;font:inherit;font-size:17px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
 .search::placeholder{color:var(--muted)}
 h2{font-size:28px;letter-spacing:-.02em;margin:0 0 6px}
-section{padding:30px 0;display:none}
-section.active-tab{display:block}
+section{padding:40px 0}
 .sub{color:var(--muted);margin:0 0 22px;max-width:60ch}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
 .card{background:var(--card);border-radius:14px;padding:20px;box-shadow:var(--shadow);border:1px solid var(--line)}
 .card h3{margin:0 0 6px;font-size:18px}
 .card p{margin:0;color:var(--muted);font-size:15px}
 .tag{display:inline-block;margin-top:12px;font-size:13px;font-weight:600;color:var(--pink);background:var(--pink-soft);padding:3px 10px;border-radius:999px}
+.big{grid-column:span 2}
+@media(max-width:640px){.big{grid-column:auto}nav{display:none}}
+.check{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.check li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow)}
+.check label{display:flex;gap:12px;align-items:center;cursor:pointer}
+.check input{width:20px;height:20px;accent-color:var(--green);flex:none}
+.check input:checked+span{color:var(--muted);text-decoration:line-through}
 details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px;box-shadow:var(--shadow)}
 summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
 summary::-webkit-details-marker{display:none}
@@ -87,14 +91,15 @@ header{box-shadow:0 1px 0 var(--line)}
 .heroband{background:linear-gradient(135deg,#d3277f 0%,#a3195f 100%);color:#fff;position:relative;overflow:hidden}
 .heroband::before{content:"";position:absolute;right:-120px;top:-150px;width:480px;height:480px;border-radius:50%;background:rgba(255,255,255,.1)}
 .heroband::after{content:"";position:absolute;right:140px;bottom:-210px;width:340px;height:340px;border-radius:50%;background:rgba(255,255,255,.07)}
-.hero{position:relative;z-index:1;padding:48px 20px 54px}
-.hero h1{color:#fff;font-size:clamp(30px,5vw,50px);font-weight:800;letter-spacing:-.035em;max-width:16ch;margin-bottom:10px}
-.hero .lead{color:rgba(255,255,255,.9);max-width:46ch;font-size:16px;margin-bottom:20px}
-.hero .search{background:#fff;color:#25252b;border:0;padding:16px 22px;border-radius:999px;box-shadow:0 14px 34px rgba(60,0,35,.28)}
+.hero{position:relative;z-index:1;padding:68px 20px 84px}
+.hero h1{color:#fff;font-size:clamp(34px,6vw,60px);font-weight:800;letter-spacing:-.035em;max-width:16ch;margin-bottom:14px}
+.hero .lead{color:rgba(255,255,255,.9);max-width:46ch}
+.hero .search{background:#fff;color:#25252b;border:0;padding:18px 22px;border-radius:999px;box-shadow:0 14px 34px rgba(60,0,35,.28)}
 .hero .search::placeholder{color:#6b6b76}
 #none{color:#fff}
-h2{font-size:28px;font-weight:800;letter-spacing:-.03em}
+h2{font-size:30px;font-weight:800;letter-spacing:-.03em}
 h2::after{content:"";display:block;width:38px;height:4px;border-radius:4px;background:var(--pink);margin:10px 0 14px}
+#odkazy{padding-top:44px}
 .links a{display:flex;align-items:center;gap:14px;padding:16px 18px;transition:transform .15s,border-color .15s}
 .links a:hover{transform:translateY(-3px)}
 .ic{flex:none;width:46px;height:46px;border-radius:14px;background:var(--pink-soft);display:grid;place-items:center;font-size:22px}
@@ -116,82 +121,26 @@ h2::after{content:"";display:block;width:38px;height:4px;border-radius:4px;backg
 .fc .q{font-size:clamp(22px,3.4vw,32px);font-style:normal;font-weight:700;letter-spacing:-.02em}
 .fc .cat{font-size:13px}
 .nav3 .main{box-shadow:0 8px 20px rgba(211,39,127,.3)}
-
-/* Tab Bar CSS */
-.tab-bar{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid var(--line)}
-.tab-btn{background:var(--card);border:1px solid var(--line);color:var(--ink);padding:10px 18px;border-radius:10px;font-weight:600;font-size:15px;cursor:pointer;white-space:nowrap;box-shadow:var(--shadow);transition:all .15s}
-.tab-btn:hover{border-color:var(--pink)}
-.tab-btn.active{background:var(--pink);color:#fff;border-color:var(--pink)}
-
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 <header><div class="wrap bar">
-<div class="logo" onclick="switchTab('odkazy')">SK Hub <span>Klik</span></div>
-<nav aria-label="Sekcie">
-  <button type="button" class="tab-nav active" data-tab="odkazy">Odkazy</button>
-  <button type="button" class="tab-nav" data-tab="splatnosti">Splatnosti</button>
-  <button type="button" class="tab-nav" data-tab="vypovede">Výpovede</button>
-  <button type="button" class="tab-nav" data-tab="statusy">Statusy</button>
-  <button type="button" class="tab-nav" data-tab="argumenty">Argumenty</button>
-  <button type="button" class="tab-nav" data-tab="majetok">Majetok</button>
-  <button type="button" class="tab-nav" data-tab="problemy">Otázky</button>
-</nav>
+<a class="logo" href="#top">SK Hub <span>Klik</span></a>
+<nav aria-label="Sekcie"><a href="#odkazy">Odkazy</a><a href="#splatnosti">Splatnosti</a><a href="#vypovede">Výpovede</a><a href="#statusy">Statusy</a><a href="#argumenty">Argumenty</a><a href="#majetok">Majetok</a></nav>
 <a class="btn" href="https://srovnejto.daktela.com/dashboard/" target="_blank" rel="noopener">Dashboard</a>
 </div></header>
 
 <main id="top">
-<div class="heroband"><div class="wrap hero"><h1>Poistenie majetku SK na jednom mieste</h1><p class="lead">Odkazy, splatnosti, výpovede, statusy a argumentácia. Všetko na samostatných záložkách.</p>
-<input id="q" class="search" type="search" placeholder="Čo potrebuješ nájsť? (vyhľadáva naprieč celou stránkou)" aria-label="Hľadať v hube">
+<div class="heroband"><div class="wrap hero"><h1>Poistenie majetku SK na jednom mieste</h1><p class="lead">Odkazy, splatnosti, statusy a argumentácia. Všetko, čo potrebuješ pri hovore.</p>
+<input id="q" class="search" type="search" placeholder="Čo potrebuješ nájsť? Napríklad podpoistenie" aria-label="Hľadať v hube">
 <div id="none" class="hide">Nič sa nenašlo. Skús iné slovo.</div>
 </div></div>
 
-<div class="wrap" style="margin-top: 20px;">
+<div class="wrap">
+<section id="odkazy"><h2>Odkazy na prvý hovor</h2><p class="sub">Všetko, čo potrebuješ mať po ruke, keď začneš volať.</p><div class="links"><a href="https://srovnejto.daktela.com/dashboard/" target="_blank" rel="noopener" data-s="dashboard daktela"><span class="ic">📊</span><span class="tx">Dashboard<small>Daktela</small></span></a><a href="https://nf.klik.sk/poistenie-domov-domacnosti-porovnanie-kalkulacka/" target="_blank" rel="noopener" data-s="kalkulačka klik"><span class="ic">🧮</span><span class="tx">Kalkulačka Klik<small>Poistenie domu, bytu a domácnosti</small></span></a><a href="https://sp.nfhub.sk/poistenie-domov-domacnosti-porovnanie-kalkulacka/" target="_blank" rel="noopener" data-s="kalkulačka superpoistenie"><span class="ic">🧮</span><span class="tx">Kalkulačka SuperPoistenie<small>Poistenie domu, bytu a domácnosti</small></span></a><a href="https://www.netfinancie.sk/poistenie-nehnutelnosti/" target="_blank" rel="noopener" data-s="kalkulačka netfinancie"><span class="ic">🧮</span><span class="tx">Kalkulačka Netfinancie<small>Poistenie nehnuteľnosti – Porovnanie – Kalkulačka</small></span></a><a href="https://zbgis.skgeodesy.sk/mapka/sk/kataster?pos=47.928408,18.207431,15" target="_blank" rel="noopener" data-s="kataster nehnuteľnosti"><span class="ic">🗺️</span><span class="tx">Kataster nehnuteľností<small>Mapa ZBGIS</small></span></a><a href="https://www.netfinancie.com/vypoved-poistnej-zmluvy/poistenie-nehnutelnosti/" target="_blank" rel="noopener" data-s="výpoveď vzor"><span class="ic">🧮</span><span class="tx">Výpoveď poistenia nehnuteľnosti<small>Vzor od Netfinancie</small></span></a></div></section>
+<section id="splatnosti"><h2>Splatnosť poistenia</h2><p class="sub">Dokedy musí klient zaplatiť prvé poistné. Ružová lehota sa počíta od začiatku poistenia, zelená od uzatvorenia.</p><div class="spg"><div class="sp zac" data-s="splatnosť allianz"><b>Allianz</b><span class="chip">5 dní</span><span class="bs">od začiatku poistenia</span><small>do 5 kalendárnych dní od dátumu začiatku poistenia</small></div><div class="sp zac" data-s="splatnosť colonnade"><b>Colonnade</b><span class="chip">15 dní</span><span class="bs">od začiatku poistenia</span><small>do 15 kalendárnych dní od dátumu začiatku poistenia</small></div><div class="sp uz" data-s="splatnosť generali"><b>Generali</b><span class="chip">30 dní</span><span class="bs">od uzatvorenia poistenia</span><small>do 30 dní odo dňa uzatvorenia poistenia</small></div><div class="sp zac" data-s="splatnosť komunálna"><b>Komunálna</b><span class="chip">10 dní</span><span class="bs">od začiatku poistenia</span><small>v lehote desiatich kalendárnych dní odo dňa začiatku poistenia</small></div><div class="sp uz" data-s="splatnosť kooperativa"><b>Kooperativa</b><span class="chip">15 dní</span><span class="bs">od uzatvorenia poistenia</span><small>do 15 kalendárnych dní odo dňa uzatvorenia poistenia</small></div><div class="sp zac" data-s="splatnosť premium"><b>Premium</b><span class="chip">15 dní</span><span class="bs">od začiatku poistenia</span><small>do 15 kalendárnych dní od dátumu začiatku poistenia</small></div><div class="sp zac" data-s="splatnosť union"><b>Union</b><span class="chip">15 dní</span><span class="bs">od začiatku poistenia</span><small>do 15 kalendárnych dní od dátumu začiatku poistenia</small></div><div class="sp zac" data-s="splatnosť uniqa"><b>UNIQA</b><span class="chip">15 dní</span><span class="bs">od začiatku poistenia</span><small>v lehote 15 kalendárnych dní odo dňa začiatku poistenia</small></div><div class="sp uz" data-s="splatnosť wüstenrot"><b>Wüstenrot</b><span class="chip">15 dní</span><span class="bs">od uzatvorenia poistenia</span><small>do 15 kalendárnych dní odo dňa uzatvorenia poistenia</small></div></div></section>
 
-<!-- Rýchle prepínanie záložiek -->
-<div class="tab-bar">
-  <button type="button" class="tab-btn active" data-tab="odkazy">🔗 Odkazy</button>
-  <button type="button" class="tab-btn" data-tab="splatnosti">⏳ Splatnosti</button>
-  <button type="button" class="tab-btn" data-tab="vypovede">📄 Výpovede poistenia</button>
-  <button type="button" class="tab-btn" data-tab="statusy">📌 Statusy</button>
-  <button type="button" class="tab-btn" data-tab="argumenty">💬 Argumentácia</button>
-  <button type="button" class="tab-btn" data-tab="majetok">🏠 Majetok v skratke</button>
-  <button type="button" class="tab-btn" data-tab="problemy">❓ Časté otázky</button>
-</div>
-
-<!-- SEKCIA 1: ODKAZY -->
-<section id="odkazy" class="active-tab">
-<h2>Odkazy na prvý hovor</h2>
-<p class="sub">Všetko, čo potrebuješ mať po ruke, keď začneš volať.</p>
-<div class="links">
-  <a href="https://srovnejto.daktela.com/dashboard/" target="_blank" rel="noopener" data-s="dashboard daktela"><span class="ic">📊</span><span class="tx">Dashboard<small>Daktela</small></span></a>
-  <a href="https://nf.klik.sk/poistenie-domov-domacnosti-porovnanie-kalkulacka/" target="_blank" rel="noopener" data-s="kalkulačka klik"><span class="ic">🧮</span><span class="tx">Kalkulačka Klik<small>Poistenie domu, bytu a domácnosti</small></span></a>
-  <a href="https://sp.nfhub.sk/poistenie-domov-domacnosti-porovnanie-kalkulacka/" target="_blank" rel="noopener" data-s="kalkulačka superpoistenie"><span class="ic">🧮</span><span class="tx">Kalkulačka SuperPoistenie<small>Poistenie domu, bytu a domácnosti</small></span></a>
-  <a href="https://www.netfinancie.com/" target="_blank" rel="noopener" data-s="kalkulačka netfinancie"><span class="ic">🧮</span><span class="tx">Kalkulačka Netfinancie<small>Porovnanie poistenia</small></span></a>
-  <a href="https://zbgis.skgeodesy.sk/mapka/sk/kataster?pos=47.928408,18.207431,15" target="_blank" rel="noopener" data-s="kataster nehnuteľnosti"><span class="ic">🗺️</span><span class="tx">Kataster nehnuteľností<small>Mapa ZBGIS</small></span></a>
-  <a href="https://www.netfinancie.com/vypoved-poistnej-zmluvy/poistenie-nehnutelnosti/" target="_blank" rel="noopener" data-s="výpoveď vzor"><span class="ic">🧮</span><span class="tx">Výpoveď poistenia nehnuteľnosti<small>Vzor od Netfinancie</small></span></a>
-</div>
-</section>
-
-<!-- SEKCIA 2: SPLATNOSTI -->
-<section id="splatnosti">
-<h2>Splatnosť poistenia</h2>
-<p class="sub">Dokedy musí klient zaplatiť prvé poistné. Ružová lehota sa počíta od začiatku poistenia, zelená od uzatvorenia.</p>
-<div class="spg">
-  <div class="sp zac" data-s="splatnosť allianz"><b>Allianz</b><span class="chip">5 dní</span><span class="bs">od začiatku poistenia</span><small>do 5 kalendárnych dní od dátumu začiatku poistenia</small></div>
-  <div class="sp zac" data-s="splatnosť colonnade"><b>Colonnade</b><span class="chip">15 dní</span><span class="bs">od začiatku poistenia</span><small>do 15 kalendárnych dní od dátumu začiatku poistenia</small></div>
-  <div class="sp uz" data-s="splatnosť generali"><b>Generali</b><span class="chip">30 dní</span><span class="bs">od uzatvorenia poistenia</span><small>do 30 dní odo dňa uzatvorenia poistenia</small></div>
-  <div class="sp zac" data-s="splatnosť komunálna"><b>Komunálna</b><span class="chip">10 dní</span><span class="bs">od začiatku poistenia</span><small>v lehote desiatich kalendárnych dní odo dňa začiatku poistenia</small></div>
-  <div class="sp uz" data-s="splatnosť kooperativa"><b>Kooperativa</b><span class="chip">15 dní</span><span class="bs">od uzatvorenia poistenia</span><small>do 15 kalendárnych dní odo dňa uzatvorenia poistenia</small></div>
-  <div class="sp zac" data-s="splatnosť premium"><b>Premium</b><span class="chip">15 dní</span><span class="bs">od začiatku poistenia</span><small>do 15 kalendárnych dní od dátumu začiatku poistenia</small></div>
-  <div class="sp zac" data-s="splatnosť union"><b>Union</b><span class="chip">15 dní</span><span class="bs">od začiatku poistenia</span><small>do 15 kalendárnych dní od dátumu začiatku poistenia</small></div>
-  <div class="sp zac" data-s="splatnosť uniqa"><b>UNIQA</b><span class="chip">15 dní</span><span class="bs">od začiatku poistenia</span><small>v lehote 15 kalendárnych dní odo dňa začiatku poistenia</small></div>
-  <div class="sp uz" data-s="splatnosť wüstenrot"><b>Wüstenrot</b><span class="chip">15 dní</span><span class="bs">od uzatvorenia poistenia</span><small>do 15 kalendárnych dní odo dňa uzatvorenia poistenia</small></div>
-</div>
-</section>
-
-<!-- SEKCIA 3: VÝPOVEDE -->
 <section id="vypovede">
 <h2>Výpoveď poistenia</h2>
 <p class="sub">Prehľad podateľní, e-mailov poisťovní a možností, kedy je možné poistnú zmluvu vypovedať.</p>
@@ -224,50 +173,25 @@ h2::after{content:"";display:block;width:38px;height:4px;border-radius:4px;backg
 </div>
 </section>
 
-<!-- SEKCIA 4: STATUSY -->
-<section id="statusy">
-<h2>Ako zatvárať statusy</h2>
-<p class="sub">Čo nastaviť po hovore a komu kontakt zostáva.</p>
-<p class="grp">Nechávaš pod svojím menom</p>
-<div class="st">
-  <div data-s="status preplánované – volaj neskôr"><b>Preplánované – volaj neskôr</b><span>Naplánuješ spätný hovor.</span></div>
-  <div data-s="status nedovolané"><b>Nedovolané</b><span>Ak je to tvoj kontakt, napríklad si mu už predtým volal a zdvihol ti.</span></div>
-  <div data-s="status zlý kontakt"><b>Zlý kontakt</b><span>Bez plánovania. Kontakt nechce byť kontaktovaný.</span></div>
-  <div data-s="status nemá záujem"><b>Nemá záujem</b><span>Bez plánovania.</span></div>
-  <div data-s="status duplicita"><b>Duplicita</b><span>Bez plánovania.</span></div>
-</div>
-<p class="grp">Dávaš na Miriam</p>
-<div class="st mir">
-  <div data-s="status nedovolané"><b>Nedovolané</b><span>Ak je to fresh lead, s ktorým si ešte nikdy nehovoril a nedovolal si sa mu. Kontakt znova expiruje o 2 hodiny a dostane ho iný operátor.</span></div>
-</div>
-</section>
-
-<!-- SEKCIA 5: ARGUMENTY -->
-<section id="argumenty">
-<h2>Argumentačné karty</h2>
-<p class="sub">Klient povie námietku, ty si odpoveď skús povedať sám a potom kartu otoč.</p>
-<div class="deck" data-s="argumentácia námietky karty">
-  <div class="tools"><input id="cq" class="search" type="search" placeholder="Hľadať v námietkach..." aria-label="Hľadať v námietkach"><span id="cnt" class="pill"></span><button id="shuf" class="pill" type="button">Zamiešať</button></div>
-  <div id="deck"></div>
-  <div class="nav3"><button id="prv" class="pill" type="button">Predošlá</button><button id="flp" class="pill main" type="button">Otočiť kartu</button><button id="nxt" class="pill" type="button">Ďalšia</button></div>
-</div>
-</section>
-
-<!-- SEKCIA 6: MAJETOK -->
+<section id="statusy"><h2>Ako zatvárať statusy</h2><p class="sub">Čo nastaviť po hovore a komu kontakt zostáva.</p>
+<p class="grp">Nechávaš pod svojím menom</p><div class="st"><div data-s="status preplánované – volaj neskôr"><b>Preplánované – volaj neskôr</b><span>Naplánuješ spätný hovor.</span></div><div data-s="status nedovolané"><b>Nedovolané</b><span>Ak je to tvoj kontakt, napríklad si mu už predtým volal a zdvihol ti.</span></div><div data-s="status zlý kontakt"><b>Zlý kontakt</b><span>Bez plánovania. Kontakt nechce byť kontaktovaný.</span></div><div data-s="status nemá záujem"><b>Nemá záujem</b><span>Bez plánovania.</span></div><div data-s="status duplicita"><b>Duplicita</b><span>Bez plánovania.</span></div></div>
+<p class="grp">Dávaš na Miriam</p><div class="st mir"><div data-s="status nedovolané"><b>Nedovolané</b><span>Ak je to fresh lead, s ktorým si ešte nikdy nehovoril a nedovolal si sa mu. Kontakt znova expiruje o 2 hodiny a dostane ho iný operátor.</span></div></div></section>
+<section id="argumenty"><h2>Argumentačné karty</h2><p class="sub">Klient povie námietku, ty si odpoveď skús povedať sám a potom kartu otoč.</p>
+<div class="deck" data-s="argumentácia námietky karty"><div class="tools"><input id="cq" class="search" type="search" placeholder="Hľadať v námietkach..." aria-label="Hľadať v námietkach"><span id="cnt" class="pill"></span><button id="shuf" class="pill" type="button">Zamiešať</button></div><div id="deck"></div>
+<div class="nav3"><button id="prv" class="pill" type="button">Predošlá</button><button id="flp" class="pill main" type="button">Otočiť kartu</button><button id="nxt" class="pill" type="button">Ďalšia</button></div></div></section>
 <section id="majetok">
 <h2>Poistenie majetku v skratke</h2>
 <p class="sub">Klient rieši nehnuteľnosť, domácnosť a často aj zodpovednosť. Najlepšie je poistiť všetko, lebo každé kryje niečo iné.</p>
 <div class="grid">
-  <div class="card" data-s="nehnuteľnosť stavba dom byt strecha steny"><h3>Poistenie nehnuteľnosti</h3><p>Kryje samotnú stavbu: steny, strechu, okná, podlahy. Ak víchrica zhodí strom na strechu, platí toto poistenie.</p></div>
-  <div class="card" data-s="domácnosť vybavenie nábytok elektro"><h3>Poistenie domácnosti</h3><p>Kryje vybavenie vnútri: nábytok, elektro, oblečenie, športové veci.</p></div>
-  <div class="card" data-s="zodpovednosť škoda cudzí sused"><h3>Poistenie zodpovednosti</h3><p>Platí, keď klient neúmyselne spôsobí škodu niekomu inému, napríklad zatečie sused.</p></div>
-  <div class="card" data-s="podpoistenie suma hodnota"><h3>Podpoistenie</h3><p>Dom je poistený na nižšiu sumu, než je jeho reálna hodnota. Pri škode potom klient nedostane plnú náhradu.</p></div>
-  <div class="card" data-s="limit plnenia maximálna suma"><h3>Limit poistného plnenia</h3><p>Maximálna suma, ktorú môže klient od poisťovne dostať. Pri rastúcich cenách sa často podhodnotí.</p></div>
-  <div class="card" data-s="asistencia asistenčné služby zámky havária"><h3>Asistenčné služby</h3><p>Pomoc pri havárii alebo zabuchnutých dverách. Ponúkajú ich niektoré poisťovne.</p></div>
+<div class="card" data-s="nehnuteľnosť stavba dom byt strecha steny"><h3>Poistenie nehnuteľnosti</h3><p>Kryje samotnú stavbu: steny, strechu, okná, podlahy. Ak víchrica zhodí strom na strechu, platí toto poistenie.</p></div>
+<div class="card" data-s="domácnosť vybavenie nábytok elektro"><h3>Poistenie domácnosti</h3><p>Kryje vybavenie vnútri: nábytok, elektro, oblečenie, športové veci.</p></div>
+<div class="card" data-s="zodpovednosť škoda cudzí sused"><h3>Poistenie zodpovednosti</h3><p>Platí, keď klient neúmyselne spôsobí škodu niekomu inému, napríklad zatečie sused.</p></div>
+<div class="card" data-s="podpoistenie suma hodnota"><h3>Podpoistenie</h3><p>Dom je poistený na nižšiu sumu, než je jeho reálna hodnota. Pri škode potom klient nedostane plnú náhradu.</p></div>
+<div class="card" data-s="limit plnenia maximálna suma"><h3>Limit poistného plnenia</h3><p>Maximálna suma, ktorú môže klient od poisťovne dostať. Pri rastúcich cenách sa často podhodnotí.</p></div>
+<div class="card" data-s="asistencia asistenčné služby zámky havária"><h3>Asistenčné služby</h3><p>Pomoc pri havárii alebo zabuchnutých dverách. Ponúkajú ich niektoré poisťovne.</p></div>
 </div>
 </section>
 
-<!-- SEKCIA 7: PROBLÉMY / OTÁZKY -->
 <section id="problemy">
 <h2>Časté problémy a otázky</h2>
 <p class="sub">Otázky, ktoré klienti kladú najčastejšie. Ďalšie pridáme podľa vašich skúseností z hovorov.</p>
@@ -283,69 +207,34 @@ h2::after{content:"";display:block;width:38px;height:4px;border-radius:4px;backg
 <footer><div class="wrap">Interný pomocník pre nováčikov. Nezadávaj sem údaje zákazníkov.</div></footer>
 
 <script>
-// Prepínanie záložiek (Tabs)
-function switchTab(tabId) {
-  var sections = document.querySelectorAll('section');
-  var navBtns = document.querySelectorAll('.tab-nav');
-  var barBtns = document.querySelectorAll('.tab-btn');
-  
-  sections.forEach(function(s) {
-    if (s.id === tabId) {
-      s.classList.add('active-tab');
-    } else {
-      s.classList.remove('active-tab');
-    }
-  });
-
-  navBtns.forEach(function(b) {
-    b.classList.toggle('active', b.getAttribute('data-tab') === tabId);
-  });
-  
-  barBtns.forEach(function(b) {
-    b.classList.toggle('active', b.getAttribute('data-tab') === tabId);
-  });
-}
-
-document.querySelectorAll('[data-tab]').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    switchTab(this.getAttribute('data-tab'));
-  });
-});
-
-// Vyhľadávanie naprieč celým webom
 (function(){
 var q=document.getElementById('q'),none=document.getElementById('none');
 var items=[].slice.call(document.querySelectorAll('[data-s]'));
 function norm(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')}
 q.addEventListener('input',function(){
 var v=norm(q.value.trim()),found=0;
-if(v) {
-  // Ak sa vyhľadáva, zobrazíme všetky sekcie
-  document.querySelectorAll('section').forEach(function(s){ s.classList.add('active-tab'); });
-} else {
-  // Ak vymaže vyhľadávanie, vráti sa na aktívnu záložku (odkazy)
-  switchTab('odkazy');
-}
-
 items.forEach(function(el){
 var t=norm(el.getAttribute('data-s')+' '+el.textContent);
 var ok=!v||t.indexOf(v)>-1;
 el.classList.toggle('hide',!ok);if(ok)found++;
 });
-
-if(v) {
-  document.querySelectorAll('section').forEach(function(s){
-    s.classList.toggle('hide',!s.querySelector('[data-s]:not(.hide)'));
-  });
-} else {
-  document.querySelectorAll('section').forEach(function(s){ s.classList.remove('hide'); });
-}
-
+document.querySelectorAll('section').forEach(function(s){
+s.classList.toggle('hide',!!v&&!s.querySelector('[data-s]:not(.hide)'));
+});
 none.classList.toggle('hide',!v||found>0);
+});
+var boxes=[].slice.call(document.querySelectorAll('#checklist input'));
+var saved=[];
+try{saved=JSON.parse(localStorage.getItem('skhub-check')||'[]')}catch(e){}
+boxes.forEach(function(b,i){
+b.checked=!!saved[i];
+b.addEventListener('change',function(){
+var st=boxes.map(function(x){return x.checked});
+try{localStorage.setItem('skhub-check',JSON.stringify(st))}catch(e){}
+});
 });
 })();
 </script>
-
 <script>
 (function(){
 var all=[{c:'Platba a zmluva',q:'Teraz som to zaplatil na rok dopredu.',a:[['Ťah na bránku','Priamy obchod','Zmluvu vieme vypovedať s vrátením peňazí do 2 mesiacov od zjednania, pozrieme sa, či predsa len nenájdeme ešte niečo výhodnejšie na tento rok?',0],['Preklopenie','Zjemnenie / Pripomienka / Mail','Jasné, tak si Vás tu poznačím na budúci rok a pozrieme potom, ako to vychádza, môže byť?',1]]}];
