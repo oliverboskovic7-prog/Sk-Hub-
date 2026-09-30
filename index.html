@@ -1,1 +1,369 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SK Hub Klik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f6f8;--card:#fff;--ink:#25252b;--muted:#6b6b76;--line:#e8e8ee;--pink:#d3277f;--pink-soft:#fbe6f1;--green:#4c9a2a;--shadow:0 2px 10px rgba(30,20,40,.07);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#16161a;--card:#202026;--ink:#f1f1f4;--muted:#a2a2ae;--line:#33333c;--pink:#ee4d9b;--pink-soft:#3a1c2d;--green:#63b53f;--shadow:none}}
+:root[data-theme="dark"]{--bg:#16161a;--card:#202026;--ink:#f1f1f4;--muted:#a2a2ae;--line:#33333c;--pink:#ee4d9b;--pink-soft:#3a1c2d;--green:#63b53f;--shadow:none}
+html{scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--pink);text-decoration:none}a:hover{text-decoration:underline}
+:focus-visible{outline:3px solid var(--pink);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--card);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:20px;height:64px}
+.logo{font-weight:700;font-size:22px;color:var(--pink);letter-spacing:-.02em;cursor:pointer}
+.logo span{color:var(--ink);font-weight:600}
+nav{display:flex;gap:10px;margin-left:auto;overflow-x:auto;white-space:nowrap;padding:4px 0}
+nav button{background:transparent;border:0;color:var(--ink);font-weight:600;font-size:15px;padding:8px 14px;border-radius:999px;cursor:pointer;transition:all .15s}
+nav button:hover{background:var(--line)}
+nav button.active{background:var(--pink);color:#fff}
+.btn{background:var(--green);color:#fff;font-weight:600;padding:9px 18px;border-radius:999px;font-size:15px;white-space:nowrap}
+.btn:hover{text-decoration:none;filter:brightness(1.08)}
+.hero{padding:40px 0 30px}
+h1{font-size:clamp(32px,5vw,50px);line-height:1.1;letter-spacing:-.03em;margin:0 0 12px;max-width:16ch}
+.lead{color:var(--muted);font-size:18px;margin:0 0 24px;max-width:52ch}
+.search{display:block;width:100%;max-width:560px;padding:16px 20px;font:inherit;font-size:17px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+.search::placeholder{color:var(--muted)}
+h2{font-size:28px;letter-spacing:-.02em;margin:0 0 6px}
+section{padding:30px 0;display:none}
+section.active-tab{display:block}
+.sub{color:var(--muted);margin:0 0 22px;max-width:60ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.card{background:var(--card);border-radius:14px;padding:20px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.card h3{margin:0 0 6px;font-size:18px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.tag{display:inline-block;margin-top:12px;font-size:13px;font-weight:600;color:var(--pink);background:var(--pink-soft);padding:3px 10px;border-radius:999px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px;box-shadow:var(--shadow)}
+summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--pink);font-size:22px;line-height:1}
+details[open] summary::after{content:"\2212"}
+details p{margin:10px 0 0;color:var(--muted)}
+.links{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.links a{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-weight:600;color:var(--ink);box-shadow:var(--shadow)}
+.links a small{display:block;font-weight:400;color:var(--muted);font-size:14px}
+.links a:hover{border-color:var(--pink);text-decoration:none}
+.hide{display:none!important}
+#none{color:var(--muted);padding:12px 0}
+footer{padding:32px 0 48px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.tbl{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+.tbl th, .tbl td{padding:12px 16px;border-top:1px solid var(--line);vertical-align:top;text-align:left}
+.tbl th{background:var(--pink-soft);color:var(--pink);font-weight:700}
+.tbl tr:first-child td{border-top:0}
+.tbl td:first-child{font-weight:600;width:25%}
+.grp{margin:0 0 8px;font-weight:700;font-size:17px}
+.st{display:grid;gap:10px;margin-bottom:24px}.st div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+.st b{display:block}.st span{color:var(--muted);font-size:15px}
+.deck{max-width:760px}.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.tools .search{max-width:none;flex:1;min-width:200px;padding:11px 16px;font-size:15px;box-shadow:none}
+.pill{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font:inherit;font-size:14px;color:var(--ink)}
+button.pill{cursor:pointer}
+.fc{display:block;width:100%;min-height:260px;text-align:left;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-top:4px solid var(--pink);border-radius:16px;padding:24px;box-shadow:var(--shadow);cursor:pointer}
+.fc.back{border-top-color:var(--green)}
+.fc .cat{display:inline-block;font-size:13px;font-weight:700;color:var(--pink);background:var(--pink-soft);padding:4px 12px;border-radius:999px}
+.fc .q{display:block;font-size:24px;font-weight:600;font-style:italic;text-align:center;margin:40px 0 16px}
+.fc .hint,.fc .ans,.fc .txt,.fc .h{display:block}
+.fc .hint{text-align:center;color:var(--muted);font-size:14px}
+.fc .h{font-weight:700;color:var(--green);margin-bottom:4px}
+.ans{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:12px}
+.ans .t{display:inline-block;font-size:12px;font-weight:700;color:#fff;padding:3px 10px;border-radius:6px;background:var(--pink);margin-right:8px}
+.ans .t.b2{background:#3b5bdb}.ans small{color:var(--muted)}.ans .txt{margin-top:8px;font-weight:600}
+.nav3{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;margin-top:12px}
+.nav3 .pill{padding:14px;text-align:center;font-weight:600}.nav3 .main{background:var(--pink);color:#fff;border-color:var(--pink)}
 
+h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
+header{box-shadow:0 1px 0 var(--line)}
+.logo{font-weight:800;font-size:21px}.logo span{color:var(--ink);font-weight:700}
+.heroband{background:linear-gradient(135deg,#d3277f 0%,#a3195f 100%);color:#fff;position:relative;overflow:hidden}
+.heroband::before{content:"";position:absolute;right:-120px;top:-150px;width:480px;height:480px;border-radius:50%;background:rgba(255,255,255,.1)}
+.heroband::after{content:"";position:absolute;right:140px;bottom:-210px;width:340px;height:340px;border-radius:50%;background:rgba(255,255,255,.07)}
+.hero{position:relative;z-index:1;padding:48px 20px 54px}
+.hero h1{color:#fff;font-size:clamp(30px,5vw,50px);font-weight:800;letter-spacing:-.035em;max-width:16ch;margin-bottom:10px}
+.hero .lead{color:rgba(255,255,255,.9);max-width:46ch;font-size:16px;margin-bottom:20px}
+.hero .search{background:#fff;color:#25252b;border:0;padding:16px 22px;border-radius:999px;box-shadow:0 14px 34px rgba(60,0,35,.28)}
+.hero .search::placeholder{color:#6b6b76}
+#none{color:#fff}
+h2{font-size:28px;font-weight:800;letter-spacing:-.03em}
+h2::after{content:"";display:block;width:38px;height:4px;border-radius:4px;background:var(--pink);margin:10px 0 14px}
+.links a{display:flex;align-items:center;gap:14px;padding:16px 18px;transition:transform .15s,border-color .15s}
+.links a:hover{transform:translateY(-3px)}
+.ic{flex:none;width:46px;height:46px;border-radius:14px;background:var(--pink-soft);display:grid;place-items:center;font-size:22px}
+.tx small{display:block}
+.spg{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.sp{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px}
+.sp b{font-size:17px}
+.chip{align-self:flex-start;font-weight:800;font-size:26px;letter-spacing:-.02em;padding:4px 14px;border-radius:12px;color:var(--pink);background:var(--pink-soft)}
+.sp.uz .chip{color:var(--green);background:rgba(76,154,42,.14)}
+.bs{font-weight:600;font-size:14px}
+.sp small{color:var(--muted);font-size:13px}
+.st div{border-left:5px solid var(--pink)}
+.st.mir div{border-left-color:var(--green)}
+.st b{font-family:Sora,Inter,sans-serif}
+.card{border-top:4px solid var(--pink-soft)}
+.fc{position:relative;overflow:hidden;min-height:300px;border-radius:20px}
+.fc>*{position:relative;z-index:1}
+.fc:not(.back)::after{content:"\201C";position:absolute;right:18px;bottom:-56px;font:800 220px/1 Sora,sans-serif;color:var(--pink-soft);z-index:0}
+.fc .q{font-size:clamp(22px,3.4vw,32px);font-style:normal;font-weight:700;letter-spacing:-.02em}
+.fc .cat{font-size:13px}
+.nav3 .main{box-shadow:0 8px 20px rgba(211,39,127,.3)}
+
+/* Tab Bar CSS */
+.tab-bar{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid var(--line)}
+.tab-btn{background:var(--card);border:1px solid var(--line);color:var(--ink);padding:10px 18px;border-radius:10px;font-weight:600;font-size:15px;cursor:pointer;white-space:nowrap;box-shadow:var(--shadow);transition:all .15s}
+.tab-btn:hover{border-color:var(--pink)}
+.tab-btn.active{background:var(--pink);color:#fff;border-color:var(--pink)}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+<div class="logo" onclick="switchTab('odkazy')">SK Hub <span>Klik</span></div>
+<nav aria-label="Sekcie">
+  <button type="button" class="tab-nav active" data-tab="odkazy">Odkazy</button>
+  <button type="button" class="tab-nav" data-tab="splatnosti">Splatnosti</button>
+  <button type="button" class="tab-nav" data-tab="vypovede">Výpovede</button>
+  <button type="button" class="tab-nav" data-tab="statusy">Statusy</button>
+  <button type="button" class="tab-nav" data-tab="argumenty">Argumenty</button>
+  <button type="button" class="tab-nav" data-tab="majetok">Majetok</button>
+  <button type="button" class="tab-nav" data-tab="problemy">Otázky</button>
+</nav>
+<a class="btn" href="https://srovnejto.daktela.com/dashboard/" target="_blank" rel="noopener">Dashboard</a>
+</div></header>
+
+<main id="top">
+<div class="heroband"><div class="wrap hero"><h1>Poistenie majetku SK na jednom mieste</h1><p class="lead">Odkazy, splatnosti, výpovede, statusy a argumentácia. Všetko na samostatných záložkách.</p>
+<input id="q" class="search" type="search" placeholder="Čo potrebuješ nájsť? (vyhľadáva naprieč celou stránkou)" aria-label="Hľadať v hube">
+<div id="none" class="hide">Nič sa nenašlo. Skús iné slovo.</div>
+</div></div>
+
+<div class="wrap" style="margin-top: 20px;">
+
+<!-- Rýchle prepínanie záložiek -->
+<div class="tab-bar">
+  <button type="button" class="tab-btn active" data-tab="odkazy">🔗 Odkazy</button>
+  <button type="button" class="tab-btn" data-tab="splatnosti">⏳ Splatnosti</button>
+  <button type="button" class="tab-btn" data-tab="vypovede">📄 Výpovede poistenia</button>
+  <button type="button" class="tab-btn" data-tab="statusy">📌 Statusy</button>
+  <button type="button" class="tab-btn" data-tab="argumenty">💬 Argumentácia</button>
+  <button type="button" class="tab-btn" data-tab="majetok">🏠 Majetok v skratke</button>
+  <button type="button" class="tab-btn" data-tab="problemy">❓ Časté otázky</button>
+</div>
+
+<!-- SEKCIA 1: ODKAZY -->
+<section id="odkazy" class="active-tab">
+<h2>Odkazy na prvý hovor</h2>
+<p class="sub">Všetko, čo potrebuješ mať po ruke, keď začneš volať.</p>
+<div class="links">
+  <a href="https://srovnejto.daktela.com/dashboard/" target="_blank" rel="noopener" data-s="dashboard daktela"><span class="ic">📊</span><span class="tx">Dashboard<small>Daktela</small></span></a>
+  <a href="https://nf.klik.sk/poistenie-domov-domacnosti-porovnanie-kalkulacka/" target="_blank" rel="noopener" data-s="kalkulačka klik"><span class="ic">🧮</span><span class="tx">Kalkulačka Klik<small>Poistenie domu, bytu a domácnosti</small></span></a>
+  <a href="https://sp.nfhub.sk/poistenie-domov-domacnosti-porovnanie-kalkulacka/" target="_blank" rel="noopener" data-s="kalkulačka superpoistenie"><span class="ic">🧮</span><span class="tx">Kalkulačka SuperPoistenie<small>Poistenie domu, bytu a domácnosti</small></span></a>
+  <a href="https://www.netfinancie.com/" target="_blank" rel="noopener" data-s="kalkulačka netfinancie"><span class="ic">🧮</span><span class="tx">Kalkulačka Netfinancie<small>Porovnanie poistenia</small></span></a>
+  <a href="https://zbgis.skgeodesy.sk/mapka/sk/kataster?pos=47.928408,18.207431,15" target="_blank" rel="noopener" data-s="kataster nehnuteľnosti"><span class="ic">🗺️</span><span class="tx">Kataster nehnuteľností<small>Mapa ZBGIS</small></span></a>
+  <a href="https://www.netfinancie.com/vypoved-poistnej-zmluvy/poistenie-nehnutelnosti/" target="_blank" rel="noopener" data-s="výpoveď vzor"><span class="ic">🧮</span><span class="tx">Výpoveď poistenia nehnuteľnosti<small>Vzor od Netfinancie</small></span></a>
+</div>
+</section>
+
+<!-- SEKCIA 2: SPLATNOSTI -->
+<section id="splatnosti">
+<h2>Splatnosť poistenia</h2>
+<p class="sub">Dokedy musí klient zaplatiť prvé poistné. Ružová lehota sa počíta od začiatku poistenia, zelená od uzatvorenia.</p>
+<div class="spg">
+  <div class="sp zac" data-s="splatnosť allianz"><b>Allianz</b><span class="chip">5 dní</span><span class="bs">od začiatku poistenia</span><small>do 5 kalendárnych dní od dátumu začiatku poistenia</small></div>
+  <div class="sp zac" data-s="splatnosť colonnade"><b>Colonnade</b><span class="chip">15 dní</span><span class="bs">od začiatku poistenia</span><small>do 15 kalendárnych dní od dátumu začiatku poistenia</small></div>
+  <div class="sp uz" data-s="splatnosť generali"><b>Generali</b><span class="chip">30 dní</span><span class="bs">od uzatvorenia poistenia</span><small>do 30 dní odo dňa uzatvorenia poistenia</small></div>
+  <div class="sp zac" data-s="splatnosť komunálna"><b>Komunálna</b><span class="chip">10 dní</span><span class="bs">od začiatku poistenia</span><small>v lehote desiatich kalendárnych dní odo dňa začiatku poistenia</small></div>
+  <div class="sp uz" data-s="splatnosť kooperativa"><b>Kooperativa</b><span class="chip">15 dní</span><span class="bs">od uzatvorenia poistenia</span><small>do 15 kalendárnych dní odo dňa uzatvorenia poistenia</small></div>
+  <div class="sp zac" data-s="splatnosť premium"><b>Premium</b><span class="chip">15 dní</span><span class="bs">od začiatku poistenia</span><small>do 15 kalendárnych dní od dátumu začiatku poistenia</small></div>
+  <div class="sp zac" data-s="splatnosť union"><b>Union</b><span class="chip">15 dní</span><span class="bs">od začiatku poistenia</span><small>do 15 kalendárnych dní od dátumu začiatku poistenia</small></div>
+  <div class="sp zac" data-s="splatnosť uniqa"><b>UNIQA</b><span class="chip">15 dní</span><span class="bs">od začiatku poistenia</span><small>v lehote 15 kalendárnych dní odo dňa začiatku poistenia</small></div>
+  <div class="sp uz" data-s="splatnosť wüstenrot"><b>Wüstenrot</b><span class="chip">15 dní</span><span class="bs">od uzatvorenia poistenia</span><small>do 15 kalendárnych dní odo dňa uzatvorenia poistenia</small></div>
+</div>
+</section>
+
+<!-- SEKCIA 3: VÝPOVEDE -->
+<section id="vypovede">
+<h2>Výpoveď poistenia</h2>
+<p class="sub">Prehľad podateľní, e-mailov poisťovní a možností, kedy je možné poistnú zmluvu vypovedať.</p>
+
+<p class="grp">Podateľne a e-maily poisťovní (výpovedná lehota je štandardne 6 týždňov)</p>
+<div style="overflow-x:auto; margin-bottom: 28px;">
+<table class="tbl" data-s="výpoveď e-mail email podateľňa portál allianz generali kooperativa uniqa union komunálna">
+<thead>
+<tr><th>Poisťovňa</th><th>Možnosť výpovede / Portál</th><th>E-mail</th></tr>
+</thead>
+<tbody>
+<tr><td><b>Allianz</b></td><td><b>Môj Allianz</b> (portál pre správu zmlúv)</td><td>allianz@allianz.sk</td></tr>
+<tr><td><b>Generali</b></td><td><b>Klientsky portál</b> (online formuláre)</td><td>servis.sk@generali.com</td></tr>
+<tr><td><b>Kooperativa</b></td><td><b>eKooperativa</b> (portál pre klientov)</td><td>info@kooperativa.sk</td></tr>
+<tr><td><b>UNIQA</b></td><td><b>Moja UNIQA</b> (portál aj mobilná appka)</td><td>info@uniqa.sk</td></tr>
+<tr><td><b>Union</b></td><td><b>Online formulár</b> na webe Union</td><td>union@union.sk</td></tr>
+<tr><td><b>Komunálna</b></td><td>Cez portál <b>Moja Komunálna</b></td><td>info@kpas.sk</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="grp">Dôvody a prípady, kedy možno podať výpoveď</p>
+<div class="grid">
+<div class="card" data-s="výpoveď ku koncu poistného obdobia 6 týždňov výročiu"><h3>Ku koncu poistného obdobia</h3><p>Výpoveď musí byť doručená poisťovni najneskôr <b>6 týždňov</b> pred výročím zmluvy (koncom poistného obdobia).</p></div>
+<div class="card" data-s="výpoveď do 2 mesiacov od uzavretia uzatvorenia zjednania"><h3>Do 2 mesiacov od uzavretia</h3><p>Zmluvu je možné vypovedať do 2 mesiacov od jej dojednania. Výpovedná lehota je 8 dní a poistka zaniká jej uplynutím.</p></div>
+<div class="card" data-s="výpoveď poistná udalosť škoda"><h3>Pri vzniku poistnej udalosti</h3><p>Výpoveď je možné podať do 1 mesiaca od oznámenia poskytnutia alebo odmietnutia poistného plnenia.</p></div>
+<div class="card" data-s="výpoveď predaj nehnuteľnosti zmena vlastníka darovanie"><h3>Zmena vlastníka nehnuteľnosti</h3><p>Pri predaji alebo darovaní nehnuteľnosti. Zaniká dňom zápisu nového vlastníka do katastra (pripája sa list vlastníctva alebo kúpna zmluva).</p></div>
+<div class="card" data-s="výpoveď zánik nehnuteľnosti zničenie demolácia"><h3>Zánik poistného rizika / predmetu</h3><p>Ak nehnuteľnosť fyzicky zanikla (napr. demoličný výmer, zničenie stavby).</p></div>
+<div class="card" data-s="výpoveď nezaplatenie poistného"><h3>Nezaplatením poistného</h3><p>Poistka zanikne automaticky, ak poistné nie je zaplatené do určitej lehoty od výzvy poisťovne (neodporúča sa ako štandardný krok).</p></div>
+</div>
+</section>
+
+<!-- SEKCIA 4: STATUSY -->
+<section id="statusy">
+<h2>Ako zatvárať statusy</h2>
+<p class="sub">Čo nastaviť po hovore a komu kontakt zostáva.</p>
+<p class="grp">Nechávaš pod svojím menom</p>
+<div class="st">
+  <div data-s="status preplánované – volaj neskôr"><b>Preplánované – volaj neskôr</b><span>Naplánuješ spätný hovor.</span></div>
+  <div data-s="status nedovolané"><b>Nedovolané</b><span>Ak je to tvoj kontakt, napríklad si mu už predtým volal a zdvihol ti.</span></div>
+  <div data-s="status zlý kontakt"><b>Zlý kontakt</b><span>Bez plánovania. Kontakt nechce byť kontaktovaný.</span></div>
+  <div data-s="status nemá záujem"><b>Nemá záujem</b><span>Bez plánovania.</span></div>
+  <div data-s="status duplicita"><b>Duplicita</b><span>Bez plánovania.</span></div>
+</div>
+<p class="grp">Dávaš na Miriam</p>
+<div class="st mir">
+  <div data-s="status nedovolané"><b>Nedovolané</b><span>Ak je to fresh lead, s ktorým si ešte nikdy nehovoril a nedovolal si sa mu. Kontakt znova expiruje o 2 hodiny a dostane ho iný operátor.</span></div>
+</div>
+</section>
+
+<!-- SEKCIA 5: ARGUMENTY -->
+<section id="argumenty">
+<h2>Argumentačné karty</h2>
+<p class="sub">Klient povie námietku, ty si odpoveď skús povedať sám a potom kartu otoč.</p>
+<div class="deck" data-s="argumentácia námietky karty">
+  <div class="tools"><input id="cq" class="search" type="search" placeholder="Hľadať v námietkach..." aria-label="Hľadať v námietkach"><span id="cnt" class="pill"></span><button id="shuf" class="pill" type="button">Zamiešať</button></div>
+  <div id="deck"></div>
+  <div class="nav3"><button id="prv" class="pill" type="button">Predošlá</button><button id="flp" class="pill main" type="button">Otočiť kartu</button><button id="nxt" class="pill" type="button">Ďalšia</button></div>
+</div>
+</section>
+
+<!-- SEKCIA 6: MAJETOK -->
+<section id="majetok">
+<h2>Poistenie majetku v skratke</h2>
+<p class="sub">Klient rieši nehnuteľnosť, domácnosť a často aj zodpovednosť. Najlepšie je poistiť všetko, lebo každé kryje niečo iné.</p>
+<div class="grid">
+  <div class="card" data-s="nehnuteľnosť stavba dom byt strecha steny"><h3>Poistenie nehnuteľnosti</h3><p>Kryje samotnú stavbu: steny, strechu, okná, podlahy. Ak víchrica zhodí strom na strechu, platí toto poistenie.</p></div>
+  <div class="card" data-s="domácnosť vybavenie nábytok elektro"><h3>Poistenie domácnosti</h3><p>Kryje vybavenie vnútri: nábytok, elektro, oblečenie, športové veci.</p></div>
+  <div class="card" data-s="zodpovednosť škoda cudzí sused"><h3>Poistenie zodpovednosti</h3><p>Platí, keď klient neúmyselne spôsobí škodu niekomu inému, napríklad zatečie sused.</p></div>
+  <div class="card" data-s="podpoistenie suma hodnota"><h3>Podpoistenie</h3><p>Dom je poistený na nižšiu sumu, než je jeho reálna hodnota. Pri škode potom klient nedostane plnú náhradu.</p></div>
+  <div class="card" data-s="limit plnenia maximálna suma"><h3>Limit poistného plnenia</h3><p>Maximálna suma, ktorú môže klient od poisťovne dostať. Pri rastúcich cenách sa často podhodnotí.</p></div>
+  <div class="card" data-s="asistencia asistenčné služby zámky havária"><h3>Asistenčné služby</h3><p>Pomoc pri havárii alebo zabuchnutých dverách. Ponúkajú ich niektoré poisťovne.</p></div>
+</div>
+</section>
+
+<!-- SEKCIA 7: PROBLÉMY / OTÁZKY -->
+<section id="problemy">
+<h2>Časté problémy a otázky</h2>
+<p class="sub">Otázky, ktoré klienti kladú najčastejšie. Ďalšie pridáme podľa vašich skúseností z hovorov.</p>
+<details data-s="rozdiel nehnuteľnosť domácnosť"><summary>Aký je rozdiel medzi poistením domácnosti a nehnuteľnosti?</summary><p>Domácnosť kryje vybavenie, nehnuteľnosť kryje stavbu. Ak strom počas víchrice poškodí strechu, poistenie domácnosti nestačí.</p></details>
+<details data-s="poisťovňa porovnávač klik"><summary>Je Klik.sk poisťovňa?</summary><p>Nie, Klik.sk je porovnávač. Zmluvu klient uzatvára priamo s vybranou poisťovňou.</p></details>
+<details data-s="telefón osobné údaje nechce"><summary>Klient nechce dať telefónne číslo alebo osobné údaje</summary><p>Bez telefónneho čísla sa nedá zaobísť. Údaje sú potrebné aj na uzatvorenie zmluvy a podliehajú prísnym pravidlám ochrany osobných údajov.</p></details>
+<details data-s="zodpovednosť spolu balík"><summary>Dá sa k majetku dojednať aj zodpovednosť?</summary><p>Áno, pri niektorých produktoch. Kryje vlastníka nehnuteľnosti aj ďalších členov domácnosti.</p></details>
+</section>
+
+</div>
+</main>
+
+<footer><div class="wrap">Interný pomocník pre nováčikov. Nezadávaj sem údaje zákazníkov.</div></footer>
+
+<script>
+// Prepínanie záložiek (Tabs)
+function switchTab(tabId) {
+  var sections = document.querySelectorAll('section');
+  var navBtns = document.querySelectorAll('.tab-nav');
+  var barBtns = document.querySelectorAll('.tab-btn');
+  
+  sections.forEach(function(s) {
+    if (s.id === tabId) {
+      s.classList.add('active-tab');
+    } else {
+      s.classList.remove('active-tab');
+    }
+  });
+
+  navBtns.forEach(function(b) {
+    b.classList.toggle('active', b.getAttribute('data-tab') === tabId);
+  });
+  
+  barBtns.forEach(function(b) {
+    b.classList.toggle('active', b.getAttribute('data-tab') === tabId);
+  });
+}
+
+document.querySelectorAll('[data-tab]').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    switchTab(this.getAttribute('data-tab'));
+  });
+});
+
+// Vyhľadávanie naprieč celým webom
+(function(){
+var q=document.getElementById('q'),none=document.getElementById('none');
+var items=[].slice.call(document.querySelectorAll('[data-s]'));
+function norm(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')}
+q.addEventListener('input',function(){
+var v=norm(q.value.trim()),found=0;
+if(v) {
+  // Ak sa vyhľadáva, zobrazíme všetky sekcie
+  document.querySelectorAll('section').forEach(function(s){ s.classList.add('active-tab'); });
+} else {
+  // Ak vymaže vyhľadávanie, vráti sa na aktívnu záložku (odkazy)
+  switchTab('odkazy');
+}
+
+items.forEach(function(el){
+var t=norm(el.getAttribute('data-s')+' '+el.textContent);
+var ok=!v||t.indexOf(v)>-1;
+el.classList.toggle('hide',!ok);if(ok)found++;
+});
+
+if(v) {
+  document.querySelectorAll('section').forEach(function(s){
+    s.classList.toggle('hide',!s.querySelector('[data-s]:not(.hide)'));
+  });
+} else {
+  document.querySelectorAll('section').forEach(function(s){ s.classList.remove('hide'); });
+}
+
+none.classList.toggle('hide',!v||found>0);
+});
+})();
+</script>
+
+<script>
+(function(){
+var all=[{c:'Platba a zmluva',q:'Teraz som to zaplatil na rok dopredu.',a:[['Ťah na bránku','Priamy obchod','Zmluvu vieme vypovedať s vrátením peňazí do 2 mesiacov od zjednania, pozrieme sa, či predsa len nenájdeme ešte niečo výhodnejšie na tento rok?',0],['Preklopenie','Zjemnenie / Pripomienka / Mail','Jasné, tak si Vás tu poznačím na budúci rok a pozrieme potom, ako to vychádza, môže byť?',1]]}];
+var list=all.slice(),i=0,back=false,host=document.getElementById('deck'),cnt=document.getElementById('cnt');
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function draw(){
+if(!list.length){host.innerHTML='<div class="card">Nič sa nenašlo.</div>';cnt.textContent='Karta 0 z 0';return}
+var c=list[i];cnt.textContent='Karta '+(i+1)+' z '+list.length;
+host.innerHTML=back?'<button class="fc back" type="button"><span class="h">Argumentácia a reakcia</span>'+c.a.map(function(a){return '<span class="ans"><span class="t'+(a[3]?' b2':'')+'">'+esc(a[0])+'</span><small>('+esc(a[1])+')</small><span class="txt">'+esc(a[2])+'</span></span>'}).join('')+'</button>':'<button class="fc" type="button"><span class="cat">'+esc(c.c)+'</span><span class="q">„'+esc(c.q)+'“</span><span class="hint">Klikni na kartu a zobrazí sa odpoveď</span></button>';
+host.firstChild.onclick=function(){back=!back;draw()}}
+function go(d){if(!list.length)return;i=(i+d+list.length)%list.length;back=false;draw()}
+document.getElementById('nxt').onclick=function(){go(1)};
+document.getElementById('prv').onclick=function(){go(-1)};
+document.getElementById('flp').onclick=function(){if(list.length){back=!back;draw()}};
+document.getElementById('shuf').onclick=function(){for(var k=list.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1)),t=list[k];list[k]=list[j];list[j]=t}i=0;back=false;draw()};
+document.getElementById('cq').addEventListener('input',function(e){var v=e.target.value.toLowerCase().trim();list=all.filter(function(c){return !v||(c.q+' '+c.c+' '+c.a.map(function(a){return a[2]}).join(' ')).toLowerCase().indexOf(v)>-1});i=0;back=false;draw()});
+draw();
+})();
+</script>
+</body>
+</html>
