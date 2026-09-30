@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SK Hub Klik</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -97,25 +98,7 @@ footer{padding:32px 0 48px;color:var(--muted);font-size:14px;border-top:1px soli
 .st.mir div{border-left-color:var(--green)}
 .st b{display:block;font-family:Sora,Inter,sans-serif}.st span{color:var(--muted);font-size:15px}
 
-.deck{max-width:760px}.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-.tools .search{max-width:none;flex:1;min-width:200px;padding:11px 16px;font-size:15px;box-shadow:none;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
-.pill{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font:inherit;font-size:14px;color:var(--ink)}
-button.pill{cursor:pointer}
-.fc{display:block;width:100%;min-height:260px;text-align:left;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-top:4px solid var(--pink);border-radius:20px;padding:24px;box-shadow:var(--shadow);cursor:pointer;position:relative;overflow:hidden}
-.fc.back{border-top-color:var(--green)}
-.fc>*{position:relative;z-index:1}
-.fc:not(.back)::after{content:"\201C";position:absolute;right:18px;bottom:-56px;font:800 220px/1 Sora,sans-serif;color:var(--pink-soft);z-index:0}
-.fc .cat{display:inline-block;font-size:13px;font-weight:700;color:var(--pink);background:var(--pink-soft);padding:4px 12px;border-radius:999px}
-.fc .q{display:block;font-size:clamp(20px,3vw,28px);font-weight:700;text-align:center;margin:30px 0 16px;letter-spacing:-.02em}
-.fc .hint{text-align:center;color:var(--muted);font-size:14px}
-.fc .h{font-weight:700;color:var(--green);margin-bottom:4px}
-.ans{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:12px}
-.ans .t{display:inline-block;font-size:12px;font-weight:700;color:#fff;padding:3px 10px;border-radius:6px;background:var(--pink);margin-right:8px}
-.ans .t.b2{background:#3b5bdb}.ans small{color:var(--muted)}.ans .txt{margin-top:8px;font-weight:600}
-.nav3{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;margin-top:12px}
-.nav3 .pill{padding:14px;text-align:center;font-weight:600}.nav3 .main{background:var(--pink);color:#fff;border-color:var(--pink);box-shadow:0 8px 20px rgba(211,39,127,.3)}
-
-h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
+h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
 @media(max-width:640px){nav{display:flex}}
 </style>
 </head>
@@ -130,7 +113,6 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
       <a onclick="switchTab('vinkulacie')" id="nav-vinkulacie">Vinkulácie</a>
       <a onclick="switchTab('kalkulacka')" id="nav-kalkulacka">Kalkulačka podpoistenia</a>
       <a onclick="switchTab('statusy')" id="nav-statusy">Statusy</a>
-      <a onclick="switchTab('argumenty')" id="nav-argumenty">Argumenty</a>
       <a onclick="switchTab('majetok')" id="nav-majetok">Majetok</a>
     </nav>
     <a class="btn" href="https://srovnejto.daktela.com/dashboard/" target="_blank" rel="noopener">Dashboard</a>
@@ -158,7 +140,7 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
         <a href="https://srovnejto.daktela.com/dashboard/" target="_blank" rel="noopener" data-s="dashboard daktela"><span class="ic">📊</span><span class="tx">Dashboard<small>Daktela</small></span></a>
         <a href="https://nf.klik.sk/poistenie-domov-domacnosti-porovnanie-kalkulacka/" target="_blank" rel="noopener" data-s="kalkulačka klik"><span class="ic">🧮</span><span class="tx">Kalkulačka Klik<small>Poistenie domu, bytu a domácnosti</small></span></a>
         <a href="https://sp.nfhub.sk/poistenie-domov-domacnosti-porovnanie-kalkulacka/" target="_blank" rel="noopener" data-s="kalkulačka superpoistenie"><span class="ic">🧮</span><span class="tx">Kalkulačka SuperPoistenie<small>Poistenie domu, bytu a domácnosti</small></span></a>
-        <a href="https://www.netfinancie.sk/poistenie-domov-domacnosti-porovnanie-kalkulacka/" target="_blank" rel="noopener" data-s="kalkulačka netfinancie"><span class="ic">🧮</span><span class="tx">Kalkulačka Netfinancie<small>Porovnanie poistenia nehnuteľnosti</small></span></a>
+        <a href="https://office.klik.cz" target="_blank" rel="noopener" data-s="kalkulačka netfinancie office nf klik"><span class="ic">🧮</span><span class="tx">Kalkulačka Netfinancie<small>Office [NF] Klik.cz & ePojisteni.cz s.r.o.</small></span></a>
         <a href="https://zbgis.skgeodesy.sk/mapka/sk/kataster?pos=47.928408,18.207431,15" target="_blank" rel="noopener" data-s="kataster nehnuteľnosti"><span class="ic">🗺️</span><span class="tx">Kataster nehnuteľností<small>Mapa ZBGIS</small></span></a>
         <a href="https://www.netfinancie.com/vypoved-poistnej-zmluvy/poistenie-nehnutelnosti/" target="_blank" rel="noopener" data-s="výpoveď vzor"><span class="ic">🧮</span><span class="tx">Výpoveď poistenia nehnuteľnosti<small>Vzor od Netfinancie</small></span></a>
       </div>
@@ -308,27 +290,7 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
       </div>
     </div>
 
-    <!-- TAB 7: ARGUMENTY -->
-    <div id="tab-argumenty" class="tab-page">
-      <h2>Argumentačné karty</h2>
-      <p class="sub">Klient povie námietku, ty si odpoveď skús povedať sám a potom kartu otoč. (Fungujú aj šípky na klávesnici)</p>
-      
-      <div class="deck" data-s="argumentácia námietky karty">
-        <div class="tools">
-          <input id="cq" class="search" type="search" placeholder="Hľadať v námietkach..." aria-label="Hľadať v námietkach">
-          <span id="cnt" class="pill"></span>
-          <button id="shuf" class="pill" type="button">Zamiešať</button>
-        </div>
-        <div id="deck"></div>
-        <div class="nav3">
-          <button id="prv" class="pill" type="button">Predošlá</button>
-          <button id="flp" class="pill main" type="button">Otočiť kartu</button>
-          <button id="nxt" class="pill" type="button">Ďalšia</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- TAB 8: MAJETOK -->
+    <!-- TAB 7: MAJETOK -->
     <div id="tab-majetok" class="tab-page">
       <h2>Poistenie majetku v skratke</h2>
       <p class="sub">Klient rieši nehnuteľnosť, domácnosť a často aj zodpovednosť. Najlepšie je poistiť všetko, lebo každé kryje niečo iné.</p>
@@ -448,81 +410,6 @@ function switchTab(tabId) {
     cType.addEventListener('change', recalc);
     cArea.addEventListener('input', recalc);
     recalc();
-  }
-})();
-
-// Flashcard Script (Rozšírené argumentačné karty)
-(function(){
-  var all = [
-    {
-      c:'Platba a zmluva',
-      q:'Teraz som to zaplatil na rok dopredu.',
-      a:[
-        ['Ťah na bránku','Priamy obchod','Zmluvu vieme vypovedať s vrátením nespotrebovaného poistného do 2 mesiacov od zjednania. Pozrieme sa, či Vám neušetríme peniaze už na tento rok?',0],
-        ['Preklopenie','Zjemnenie / Pripomienka','Jasné, rozumiem. Poznačím si Vás pred koncom poistného obdobia a porovnáme ponuky s predstihom, môže byť?',1]
-      ]
-    },
-    {
-      c:'Hypotéka a banka',
-      q:'Mám to poistené priamo v banke k hypotéke.',
-      a:[
-        ['Argument krytia','Banka vs. Špecialista','Banky často dávajú len základné balíčky, ktoré nepokrývajú podpoistenie alebo zodpovednosť. Preveríme, či nemáte zbytočne drahé alebo nedostatočné krytie?',0],
-        ['Vinkulácia','Rýchle vybavenie','Vinkuláciu pre Vašu banku vybavíme kompletne za Vás bez poplatkov, len vymeníme poisťovňu za výhodnejšiu.',1]
-      ]
-    },
-    {
-      c:'Nedôvera / Súkromie',
-      q:'Poisťovne aj tak nikdy nič nezaplatia, sú to vyhodené peniaze.',
-      a:[
-        ['Pochopenie','Presné podmienky','Rozumiem Vašej skúsenosti. Problém býva často v zlom nastavení poistných súm alebo podpoistení. Práve preto spoločne nastavíme zmluvu tak, aby tam neboli žiadne kľučky.',0]
-      ]
-    },
-    {
-      c:'Čas a zaneprázdnenosť',
-      q:'Nemám teraz čas to riešiť, pošlite mi to do mailu.',
-      a:[
-        ['Rýchlosť hovoru','Priechod na hovor','Mailom Vám viem poslať len všeobecnú ponuku. Keď mi dáte 2 minúty na 3 základné otázky, pošlem Vám ponuku presne na mieru Vašej nehnuteľnosti.',0]
-      ]
-    },
-    {
-      c:'Stará zmluva',
-      q:'Mám starú zmluvu už 10 rokov a som spokojný.',
-      a:[
-        ['Riziko podpoistenia','Aktualizácia hodnôt','Za 10 rokov stúpla hodnota nehnuteľností aj o 100 %. Ak by sa niečo stalo, stará zmluva Vám dnes zaplatí len polovicu škody. Pozrieme sa na reálnu dnešnú hodnotu?',0]
-      ]
-    }
-  ];
-
-  var list = all.slice(), i = 0, back = false, host = document.getElementById('deck'), cnt = document.getElementById('cnt');
-  
-  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-  
-  function draw(){
-    if(!list.length){host.innerHTML='<div class="card">Nič sa nenašlo.</div>';cnt.textContent='Karta 0 z 0';return}
-    var c=list[i];cnt.textContent='Karta '+(i+1)+' z '+list.length;
-    host.innerHTML=back?'<button class="fc back" type="button"><span class="h">Argumentácia a reakcia</span>'+c.a.map(function(a){return '<span class="ans"><span class="t'+(a[3]?' b2':'')+'">'+esc(a[0])+'</span><small>('+esc(a[1])+')</small><span class="txt">'+esc(a[2])+'</span></span>'}).join('')+'</button>':'<button class="fc" type="button"><span class="cat">'+esc(c.c)+'</span><span class="q">„'+esc(c.q)+'“</span><span class="hint">Klikni na kartu a zobrazí sa odpoveď</span></button>';
-    host.firstChild.onclick=function(){back=!back;draw()}
-  }
-  
-  function go(d){if(!list.length)return;i=(i+d+list.length)%list.length;back=false;draw()}
-  
-  if(document.getElementById('nxt')){
-    document.getElementById('nxt').onclick=function(){go(1)};
-    document.getElementById('prv').onclick=function(){go(-1)};
-    document.getElementById('flp').onclick=function(){if(list.length){back=!back;draw()}};
-    document.getElementById('shuf').onclick=function(){for(var k=list.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1)),t=list[k];list[k]=list[j];list[j]=t}i=0;back=false;draw()};
-    document.getElementById('cq').addEventListener('input',function(e){var v=e.target.value.toLowerCase().trim();list=all.filter(function(c){return !v||(c.q+' '+c.c+' '+c.a.map(function(a){return a[2]}).join(' ')).toLowerCase().indexOf(v)>-1});i=0;back=false;draw()});
-    
-    // Klávesové skratky pre rýchlejšie ovládanie pri hovore
-    document.addEventListener('keydown', function(e) {
-      if (document.getElementById('tab-argumenty').classList.contains('active') && document.activeElement.tagName !== 'INPUT') {
-        if (e.key === 'ArrowRight') go(1);
-        if (e.key === 'ArrowLeft') go(-1);
-        if (e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); if(list.length){back=!back;draw();} }
-      }
-    });
-
-    draw();
   }
 })();
 </script>
