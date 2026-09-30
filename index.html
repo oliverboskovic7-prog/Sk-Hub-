@@ -47,25 +47,10 @@ h2{font-size:28px;font-weight:800;letter-spacing:-.03em;margin:0 0 6px}
 h2::after{content:"";display:block;width:38px;height:4px;border-radius:4px;background:var(--pink);margin:10px 0 14px}
 .sub{color:var(--muted);margin:0 0 22px;max-width:60ch}
 
-/* Navigation Dashboard Grid */
-.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
-.menu-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow);cursor:pointer;transition:transform .15s, border-color .15s;display:flex;flex-direction:column;gap:8px}
-.menu-card:hover{transform:translateY(-3px);border-color:var(--pink)}
-.menu-card .icon{font-size:32px;margin-bottom:4px}
-.menu-card h3{margin:0;font-size:18px;color:var(--ink)}
-.menu-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.4}
-
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
 .card{background:var(--card);border-radius:14px;padding:20px;box-shadow:var(--shadow);border:1px solid var(--line);border-top:4px solid var(--pink-soft)}
 .card h3{margin:0 0 6px;font-size:18px}
 .card p{margin:0;color:var(--muted);font-size:15px}
-
-details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px;box-shadow:var(--shadow)}
-summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";color:var(--pink);font-size:22px;line-height:1}
-details[open] summary::after{content:"\2212"}
-details p{margin:10px 0 0;color:var(--muted)}
 
 .links{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
 .links a{display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--card);border:1px solid var(--line);border-radius:12px;font-weight:600;color:var(--ink);box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
@@ -81,8 +66,23 @@ details p{margin:10px 0 0;color:var(--muted)}
 .bs{font-weight:600;font-size:14px}
 .sp small{color:var(--muted);font-size:13px}
 
+/* Vinkulácia List Style */
+.vink-box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow);margin-bottom:24px}
+.vink-list{list-style:none;padding:0;margin:16px 0 0}
+.vink-list li{position:relative;padding-left:36px;margin-bottom:16px;font-size:15px;line-height:1.5}
+.vink-list li::before{content:attr(data-step);position:absolute;left:0;top:2px;width:24px;height:24px;background:var(--pink);color:#fff;border-radius:50%;font-size:12px;font-weight:700;display:grid;place-items:center}
+.vink-mail{background:var(--pink-soft);color:var(--pink);padding:2px 8px;border-radius:6px;font-weight:700}
+
+/* Kalkulačka podpoistenia */
+.calc-box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow);max-width:600px;margin-top:20px}
+.calc-field{margin-bottom:16px}
+.calc-field label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
+.calc-field input, .calc-field select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;background:var(--bg);color:var(--ink)}
+.calc-res{background:var(--pink-soft);border-radius:12px;padding:16px;margin-top:20px;text-align:center}
+.calc-res .val{font-size:28px;font-weight:800;color:var(--pink);display:block;margin-top:4px}
+
 .hide{display:none!important}
-#none{color:#fff;margin-top:10px}
+#none{color:#fff;margin-top:10px;font-weight:600}
 footer{padding:32px 0 48px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
 .tbl{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
 .tbl th, .tbl td{padding:12px 16px;border-top:1px solid var(--line);vertical-align:top;text-align:left}
@@ -119,15 +119,15 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
 <body>
 <header>
   <div class="wrap bar">
-    <div class="logo" onclick="switchTab('domov')">SK Hub <span>Klik</span></div>
+    <div class="logo" onclick="switchTab('odkazy')">SK Hub <span>Klik</span></div>
     <nav aria-label="Sekcie">
-      <a onclick="switchTab('domov')" id="nav-domov" class="active">Úvod</a>
-      <a onclick="switchTab('odkazy')" id="nav-odkazy">Odkazy</a>
+      <a onclick="switchTab('odkazy')" id="nav-odkazy" class="active">Odkazy</a>
       <a onclick="switchTab('splatnosti')" id="nav-splatnosti">Splatnosti</a>
       <a onclick="switchTab('vypovede')" id="nav-vypovede">Výpovede</a>
+      <a onclick="switchTab('vinkulacie')" id="nav-vinkulacie">Vinkulácie</a>
       <a onclick="switchTab('statusy')" id="nav-statusy">Statusy</a>
       <a onclick="switchTab('argumenty')" id="nav-argumenty">Argumenty</a>
-      <a onclick="switchTab('majetok')" id="nav-majetok">Majetok</a>
+      <a onclick="switchTab('majetok')" id="nav-majetok">Majetok & Podpoistenie</a>
     </nav>
     <a class="btn" href="https://srovnejto.daktela.com/dashboard/" target="_blank" rel="noopener">Dashboard</a>
   </div>
@@ -138,55 +138,16 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
   <div class="heroband">
     <div class="wrap hero">
       <h1>Poistenie majetku SK na jednom mieste</h1>
-      <p class="lead">Odkazy, splatnosti, statusy a argumentácia. Všetko, čo potrebuješ pri hovore.</p>
-      <input id="q" class="search" type="search" placeholder="Čo potrebuješ nájsť? Napríklad podpoistenie..." aria-label="Hľadať v hube">
+      <p class="lead">Odkazy, splatnosti, vinkulácie a kalkulačka podpoistenia. Všetko pri hovore.</p>
+      <input id="q" class="search" type="search" placeholder="Čo potrebuješ nájsť? Napríklad vinkulácia..." aria-label="Hľadať v hube">
       <div id="none" class="hide">Nič sa nenašlo. Skús iné slovo.</div>
     </div>
   </div>
 
-  <div class="wrap">
+  <div class="wrap" id="results-anchor">
     
-    <!-- TAB 0: ÚVODNÁ STRÁNKA / PREHĽAD -->
-    <div id="tab-domov" class="tab-page active">
-      <h2>Kam sa chceš pozrieť?</h2>
-      <p class="sub">Klikni na sekciu, ktorú práve potrebuješ pri hovore.</p>
-      
-      <div class="menu-grid">
-        <div class="menu-card" onclick="switchTab('odkazy')">
-          <div class="icon">🔗</div>
-          <h3>Odkazy na hovor</h3>
-          <p>Kalkulačky, Kataster, Daktela dashboard a vzory výpovedí.</p>
-        </div>
-        <div class="menu-card" onclick="switchTab('splatnosti')">
-          <div class="icon">📅</div>
-          <h3>Splatnosti poistenia</h3>
-          <p>Dokedy musí klient zaplatiť prvé poistné v jednotlivých poisťovniach.</p>
-        </div>
-        <div class="menu-card" onclick="switchTab('vypovede')">
-          <div class="icon">📝</div>
-          <h3>Výpovede zmlúv</h3>
-          <p>E-maily, podateľne, portály a zákonné lehoty na výpoveď.</p>
-        </div>
-        <div class="menu-card" onclick="switchTab('statusy')">
-          <div class="icon">📌</div>
-          <h3>Statusy v CRM</h3>
-          <p>Ako správne zatvárať hovory a kedy dať kontakt na Miriam.</p>
-        </div>
-        <div class="menu-card" onclick="switchTab('argumenty')">
-          <div class="icon">🎴</div>
-          <h3>Argumentačné karty</h3>
-          <p>Interaktívne karty s odpoveďami na najčastejšie námietky klientov.</p>
-        </div>
-        <div class="menu-card" onclick="switchTab('majetok')">
-          <div class="icon">🏠</div>
-          <h3>Majetok v skratke</h3>
-          <p>Rozdiel medzi nehnuteľnosťou a domácnosťou, podpoistenie a asistenčné služby.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- TAB 1: ODKAZY -->
-    <div id="tab-odkazy" class="tab-page">
+    <!-- TAB 1: ODKAZY (HNEĎ OD ZAČIATKU AKO HLAVNÁ STRÁNKA) -->
+    <div id="tab-odkazy" class="tab-page active">
       <h2>Odkazy na prvý hovor</h2>
       <p class="sub">Všetko, čo potrebuješ mať po ruke, keď začneš volať.</p>
       <div class="links">
@@ -221,24 +182,24 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
       <h2>Výpoveď poistenia</h2>
       <p class="sub">Prehľad podateľní, e-mailov poisťovní a možností, kedy je možné poistnú zmluvu vypovedať.</p>
 
-      <p class="grp">Podateľne a e-maily poisťovní (výpovedná lehota je štandardne 6 týždňov)</p>
-      <div style="overflow-x:auto; margin-bottom: 28px;">
-        <table class="tbl" data-s="výpoveď e-mail email podateľňa portál allianz generali kooperativa uniqa union komunálna">
+      <div class="tbl-wrap" style="overflow-x:auto; margin-bottom: 28px;">
+        <p class="grp">Podateľne a e-maily poisťovní (výpovedná lehota je štandardne 6 týždňov)</p>
+        <table class="tbl">
           <thead>
             <tr><th>Poisťovňa</th><th>Možnosť výpovede / Portál</th><th>E-mail</th></tr>
           </thead>
           <tbody>
-            <tr><td><b>Allianz</b></td><td><b>Môj Allianz</b> (portál pre správu zmlúv)</td><td>allianz@allianz.sk</td></tr>
-            <tr><td><b>Generali</b></td><td><b>Klientsky portál</b> (online formuláre)</td><td>servis.sk@generali.com</td></tr>
-            <tr><td><b>Kooperativa</b></td><td><b>eKooperativa</b> (portál pre klientov)</td><td>info@kooperativa.sk</td></tr>
-            <tr><td><b>UNIQA</b></td><td><b>Moja UNIQA</b> (portál aj mobilná appka)</td><td>info@uniqa.sk</td></tr>
-            <tr><td><b>Union</b></td><td><b>Online formulár</b> na webe Union</td><td>union@union.sk</td></tr>
-            <tr><td><b>Komunálna</b></td><td>Cez portál <b>Moja Komunálna</b></td><td>info@kpas.sk</td></tr>
+            <tr data-s="výpoveď e-mail email podateľňa portál allianz"><td><b>Allianz</b></td><td><b>Môj Allianz</b> (portál pre správu zmlúv)</td><td>allianz@allianz.sk</td></tr>
+            <tr data-s="výpoveď e-mail email podateľňa portál generali"><td><b>Generali</b></td><td><b>Klientsky portál</b> (online formuláre)</td><td>servis.sk@generali.com</td></tr>
+            <tr data-s="výpoveď e-mail email podateľňa portál kooperativa"><td><b>Kooperativa</b></td><td><b>eKooperativa</b> (portál pre klientov)</td><td>info@kooperativa.sk</td></tr>
+            <tr data-s="výpoveď e-mail email podateľňa portál uniqa"><td><b>UNIQA</b></td><td><b>Moja UNIQA</b> (portál aj mobilná appka)</td><td>info@uniqa.sk</td></tr>
+            <tr data-s="výpoveď e-mail email podateľňa portál union"><td><b>Union</b></td><td><b>Online formulár</b> na webe Union</td><td>union@union.sk</td></tr>
+            <tr data-s="výpoveď e-mail email podateľňa portál komunálna"><td><b>Komunálna</b></td><td>Cez portál <b>Moja Komunálna</b></td><td>info@kpas.sk</td></tr>
           </tbody>
         </table>
       </div>
 
-      <p class="grp">Dôvody a prípady, kedy možno podať výpoveď</p>
+      <p class="grp grp-reasons">Dôvody a prípady, kedy možno podať výpoveď</p>
       <div class="grid">
         <div class="card" data-s="výpoveď ku koncu poistného obdobia 6 týždňov výročiu"><h3>Ku koncu poistného obdobia</h3><p>Výpoveď musí byť doručená poisťovni najneskôr <b>6 týždňov</b> pred výročím zmluvy (koncom poistného obdobia).</p></div>
         <div class="card" data-s="výpoveď do 2 mesiacov od uzavretia uzatvorenia zjednania"><h3>Do 2 mesiacov od uzavretia</h3><p>Zmluvu je možné vypovedať do 2 mesiacov od jej dojednania. Výpovedná lehota je 8 dní a poistka zaniká jej uplynutím.</p></div>
@@ -249,7 +210,27 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
       </div>
     </div>
 
-    <!-- TAB 4: STATUSY -->
+    <!-- TAB 4: VINKULÁCIE (NOVÝ TAB) -->
+    <div id="tab-vinkulacie" class="tab-page">
+      <h2>Vinkulácia poistenia k hypotéke</h2>
+      <p class="sub">Postup pre operátora, keď klient potrebuje vinkuláciu v prospech banky.</p>
+      
+      <div class="vink-box" data-s="vinkulácia vinkulovanie banka hypotéka netfinancie mail tlačivá">
+        <p class="grp">Postup spracovania vinkulácie:</p>
+        <ul class="vink-list">
+          <li data-step="1"><b>Inštrukcie pre klienta:</b> Klient musí na náš e-mail poslať doplňujúce podklady:
+            <ul style="margin-top:6px; color:var(--muted)">
+              <li><b>Vinkulačné tlačivá</b> od svojej banky (ak ich banka vyžaduje).</li>
+              <li><b>Potvrdenie o zaplatení</b> poistného (doklad z bankovníctva alebo šek).</li>
+            </ul>
+          </li>
+          <li data-step="2"><b>Krok operátora:</b> Získané podklady (tlačivá + potvrdenie o platbe) prepošli na e-mail <span class="vink-mail">info@netfinancie.sk</span>.</li>
+          <li data-step="3"><b>Vybavenie:</b> Tím Netfinancie následne zabezpečí oficiálne potvrdenie vinkulácie v poisťovni a jej zaslanie klientovi/banke.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TAB 5: STATUSY -->
     <div id="tab-statusy" class="tab-page">
       <h2>Ako zatvárať statusy</h2>
       <p class="sub">Čo nastaviť po hovore a komu kontakt zostáva.</p>
@@ -269,7 +250,7 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
       </div>
     </div>
 
-    <!-- TAB 5: ARGUMENTY -->
+    <!-- TAB 6: ARGUMENTY -->
     <div id="tab-argumenty" class="tab-page">
       <h2>Argumentačné karty</h2>
       <p class="sub">Klient povie námietku, ty si odpoveď skús povedať sám a potom kartu otoč.</p>
@@ -289,25 +270,39 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
       </div>
     </div>
 
-    <!-- TAB 6: MAJETOK & OTÁZKY -->
+    <!-- TAB 7: MAJETOK & KALKULAČKA PODPOISTENIA -->
     <div id="tab-majetok" class="tab-page">
-      <h2>Poistenie majetku v skratke</h2>
+      <h2>Kalkulačka orientačnej hodnoty (Podpoistenie)</h2>
+      <p class="sub">Pomôcka na rýchly výpočet reálnej hodnoty nehnuteľnosti počas hovoru, aby sa predišlo podpoisteniu.</p>
+      
+      <div class="calc-box" data-s="podpoistenie kalkulačka výpočet hodnota stavby m2 štvorcové metre">
+        <div class="calc-field">
+          <label for="c-type">Typ nehnuteľnosti</label>
+          <select id="c-type">
+            <option value="1600">Byt (štandard)</option>
+            <option value="1900">Byt (novostavba / krajské mesto)</option>
+            <option value="1400">Rodinný dom (štandard)</option>
+            <option value="1800">Rodinný dom (nadštandard / novostavba)</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label for="c-area">Užitková plocha v m²</label>
+          <input type="number" id="c-area" placeholder="Napr. 75" value="75">
+        </div>
+        <div class="calc-res">
+          Odporúčaná minimálna poistná suma nehnuteľnosti:
+          <span class="val" id="c-res">120 000 €</span>
+        </div>
+      </div>
+
+      <h2 style="margin-top: 40px;">Poistenie majetku v skratke</h2>
       <p class="sub">Klient rieši nehnuteľnosť, domácnosť a často aj zodpovednosť. Najlepšie je poistiť všetko, lebo každé kryje niečo iné.</p>
-      <div class="grid" style="margin-bottom: 40px;">
+      <div class="grid">
         <div class="card" data-s="nehnuteľnosť stavba dom byt strecha steny"><h3>Poistenie nehnuteľnosti</h3><p>Kryje samotnú stavbu: steny, strechu, okná, podlahy. Ak víchrica zhodí strom na strechu, platí toto poistenie.</p></div>
         <div class="card" data-s="domácnosť vybavenie nábytok elektro"><h3>Poistenie domácnosti</h3><p>Kryje vybavenie vnútri: nábytok, elektro, oblečenie, športové veci.</p></div>
         <div class="card" data-s="zodpovednosť škoda cudzí sused"><h3>Poistenie zodpovednosti</h3><p>Platí, keď klient neúmyselne spôsobí škodu niekomu inému, napríklad zatečie sused.</p></div>
         <div class="card" data-s="podpoistenie suma hodnota"><h3>Podpoistenie</h3><p>Dom je poistený na nižšiu sumu, než je jeho reálna hodnota. Pri škode potom klient nedostane plnú náhradu.</p></div>
-        <div class="card" data-s="limit plnenia maximálna suma"><h3>Limit poistného plnenia</h3><p>Maximálna suma, ktorú môže klient od poisťovne dostať. Pri rastúcich cenách sa často podhodnotí.</p></div>
-        <div class="card" data-s="asistencia asistenčné služby zámky havária"><h3>Asistenčné služby</h3><p>Pomoc pri havárii alebo zabuchnutých dverách. Ponúkajú ich niektoré poisťovne.</p></div>
       </div>
-
-      <h2>Časté problémy a otázky</h2>
-      <p class="sub">Otázky, ktoré klienti kladú najčastejšie.</p>
-      <details data-s="rozdiel nehnuteľnosť domácnosť"><summary>Aký je rozdiel medzi poistením domácnosti a nehnuteľnosti?</summary><p>Domácnosť kryje vybavenie, nehnuteľnosť kryje stavbu. Ak strom počas víchrice poškodí strechu, poistenie domácnosti nestačí.</p></details>
-      <details data-s="poisťovňa porovnávač klik"><summary>Je Klik.sk poisťovňa?</summary><p>Nie, Klik.sk je porovnávač. Zmluvu klient uzatvára priamo s vybranou poisťovňou.</p></details>
-      <details data-s="telefón osobné údaje nechce"><summary>Klient nechce dať telefónne číslo alebo osobné údaje</summary><p>Bez telefónneho čísla sa nedá zaobísť. Údaje sú potrebné aj na uzatvorenie zmluvy a podliehajú prísnym pravidlám ochrany osobných údajov.</p></details>
-      <details data-s="zodpovednosť spolu balík"><summary>Dá sa k majetku dojednať aj zodpovednosť?</summary><p>Áno, pri niektorých produktoch. Kryje vlastníka nehnuteľnosti aj ďalších členov domácnosti.</p></details>
     </div>
 
   </div>
@@ -318,30 +313,26 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
 <script>
 // Tab Switching Logic
 function switchTab(tabId) {
-  // Hide all tab pages
   var pages = document.querySelectorAll('.tab-page');
   pages.forEach(function(page) {
     page.classList.remove('active');
   });
 
-  // Deactivate all navigation links
   var navLinks = document.querySelectorAll('nav a');
   navLinks.forEach(function(link) {
     link.classList.remove('active');
   });
 
-  // Activate selected tab page and nav link
   var activePage = document.getElementById('tab-' + tabId);
   var activeNav = document.getElementById('nav-' + tabId);
 
   if (activePage) activePage.classList.add('active');
   if (activeNav) activeNav.classList.add('active');
 
-  // Scroll smoothly to top of main content
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Global Search Logic Across Tabs
+// Global Search Logic
 (function(){
   var q = document.getElementById('q'), none = document.getElementById('none');
   var items = [].slice.call(document.querySelectorAll('[data-s]'));
@@ -349,25 +340,71 @@ function switchTab(tabId) {
   function norm(s){ return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
 
   q.addEventListener('input', function(){
-    var v = norm(q.value.trim()), found = 0;
+    var v = norm(q.value.trim());
+    var foundTotal = 0;
 
     if (v) {
-      // If user types, show all tab pages to render search results across sections
-      document.querySelectorAll('.tab-page').forEach(function(p){ p.classList.add('active'); });
+      var targetAnchor = document.getElementById('results-anchor');
+      if (targetAnchor) {
+        var headerOffset = 80;
+        var elementPosition = targetAnchor.getBoundingClientRect().top;
+        var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      }
+
+      items.forEach(function(el){
+        var t = norm(el.getAttribute('data-s') + ' ' + el.textContent);
+        var ok = t.indexOf(v) > -1;
+        el.classList.toggle('hide', !ok);
+        if (ok) foundTotal++;
+      });
+
+      var tabs = document.querySelectorAll('.tab-page');
+      tabs.forEach(function(tab){
+        var hasVisibleItems = tab.querySelector('[data-s]:not(.hide)');
+        if (hasVisibleItems) {
+          tab.classList.add('active');
+        } else {
+          tab.classList.remove('active');
+        }
+      });
+
+      var tblWraps = document.querySelectorAll('.tbl-wrap');
+      tblWraps.forEach(function(wrap){
+        var visibleRows = wrap.querySelectorAll('tbody tr:not(.hide)');
+        wrap.style.display = visibleRows.length ? '' : 'none';
+      });
+
+      none.classList.toggle('hide', foundTotal > 0);
+
     } else {
-      // Reset back to home tab when search is cleared
-      switchTab('domov');
+      items.forEach(function(el){ el.classList.remove('hide'); });
+      var tblWraps = document.querySelectorAll('.tbl-wrap');
+      tblWraps.forEach(function(wrap){ wrap.style.display = ''; });
+      none.classList.add('hide');
+      switchTab('odkazy');
     }
-
-    items.forEach(function(el){
-      var t = norm(el.getAttribute('data-s') + ' ' + el.textContent);
-      var ok = !v || t.indexOf(v) > -1;
-      el.classList.toggle('hide', !ok);
-      if (ok) found++;
-    });
-
-    none.classList.toggle('hide', !v || found > 0);
   });
+})();
+
+// Podpoistenie Calculator
+(function(){
+  var cType = document.getElementById('c-type');
+  var cArea = document.getElementById('c-area');
+  var cRes = document.getElementById('c-res');
+
+  function recalc(){
+    var rate = parseFloat(cType.value) || 0;
+    var area = parseFloat(cArea.value) || 0;
+    var total = Math.round(rate * area);
+    cRes.textContent = total.toLocaleString('sk-SK') + ' €';
+  }
+
+  if(cType && cArea){
+    cType.addEventListener('change', recalc);
+    cArea.addEventListener('input', recalc);
+    recalc();
+  }
 })();
 
 // Flashcard Script
@@ -386,13 +423,14 @@ function switchTab(tabId) {
   
   function go(d){if(!list.length)return;i=(i+d+list.length)%list.length;back=false;draw()}
   
-  document.getElementById('nxt').onclick=function(){go(1)};
-  document.getElementById('prv').onclick=function(){go(-1)};
-  document.getElementById('flp').onclick=function(){if(list.length){back=!back;draw()}};
-  document.getElementById('shuf').onclick=function(){for(var k=list.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1)),t=list[k];list[k]=list[j];list[j]=t}i=0;back=false;draw()};
-  document.getElementById('cq').addEventListener('input',function(e){var v=e.target.value.toLowerCase().trim();list=all.filter(function(c){return !v||(c.q+' '+c.c+' '+c.a.map(function(a){return a[2]}).join(' ')).toLowerCase().indexOf(v)>-1});i=0;back=false;draw()});
-  
-  draw();
+  if(document.getElementById('nxt')){
+    document.getElementById('nxt').onclick=function(){go(1)};
+    document.getElementById('prv').onclick=function(){go(-1)};
+    document.getElementById('flp').onclick=function(){if(list.length){back=!back;draw()}};
+    document.getElementById('shuf').onclick=function(){for(var k=list.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1)),t=list[k];list[k]=list[j];list[j]=t}i=0;back=false;draw()};
+    document.getElementById('cq').addEventListener('input',function(e){var v=e.target.value.toLowerCase().trim();list=all.filter(function(c){return !v||(c.q+' '+c.c+' '+c.a.map(function(a){return a[2]}).join(' ')).toLowerCase().indexOf(v)>-1});i=0;back=false;draw()});
+    draw();
+  }
 })();
 </script>
 </body>
