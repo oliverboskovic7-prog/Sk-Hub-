@@ -71,10 +71,11 @@ h2::after{content:"";display:block;width:38px;height:4px;border-radius:4px;backg
 .vink-list{list-style:none;padding:0;margin:16px 0 0}
 .vink-list li{position:relative;padding-left:36px;margin-bottom:16px;font-size:15px;line-height:1.5}
 .vink-list li::before{content:attr(data-step);position:absolute;left:0;top:2px;width:24px;height:24px;background:var(--pink);color:#fff;border-radius:50%;font-size:12px;font-weight:700;display:grid;place-items:center}
-.vink-mail{background:var(--pink-soft);color:var(--pink);padding:2px 8px;border-radius:6px;font-weight:700}
+.vink-mail{background:var(--pink-soft);color:var(--pink);padding:2px 8px;border-radius:6px;font-weight:700;cursor:pointer;transition:background 0.2s}
+.vink-mail:hover{background:var(--pink);color:#fff}
 
 /* Kalkulačka podpoistenia */
-.calc-box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow);max-width:600px;margin-top:10px}
+.calc-box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow);max-width:650px;margin-top:10px}
 .calc-field{margin-bottom:16px}
 .calc-field label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
 .calc-field input, .calc-field select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;background:var(--bg);color:var(--ink)}
@@ -89,6 +90,8 @@ footer{padding:32px 0 48px;color:var(--muted);font-size:14px;border-top:1px soli
 .tbl th{background:var(--pink-soft);color:var(--pink);font-weight:700}
 .tbl tr:first-child td{border-top:0}
 .tbl td:first-child{font-weight:600;width:25%}
+.tbl td.copy-mail{cursor:pointer;color:var(--pink);font-weight:600}
+.tbl td.copy-mail:hover{text-decoration:underline}
 .grp{margin:0 0 8px;font-weight:700;font-size:17px}
 .st{display:grid;gap:10px;margin-bottom:24px}.st div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;border-left:5px solid var(--pink)}
 .st.mir div{border-left-color:var(--green)}
@@ -181,7 +184,7 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
     <!-- TAB 3: VÝPOVEDE -->
     <div id="tab-vypovede" class="tab-page">
       <h2>Výpoveď poistenia</h2>
-      <p class="sub">Prehľad podateľní, e-mailov poisťovní a možností, kedy je možné poistnú zmluvu vypovedať.</p>
+      <p class="sub">Prehľad podateľní, e-mailov poisťovní a možností, kedy je možné poistnú zmluvu vypovedať. (Klikni na e-mail pre skopírovanie)</p>
 
       <div class="tbl-wrap" style="overflow-x:auto; margin-bottom: 28px;">
         <p class="grp">Podateľne a e-maily poisťovní (výpovedná lehota je štandardne 6 týždňov)</p>
@@ -190,12 +193,12 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
             <tr><th>Poisťovňa</th><th>Možnosť výpovede / Portál</th><th>E-mail</th></tr>
           </thead>
           <tbody>
-            <tr data-s="výpoveď e-mail email podateľňa portál allianz"><td><b>Allianz</b></td><td><b>Môj Allianz</b> (portál pre správu zmlúv)</td><td>allianz@allianz.sk</td></tr>
-            <tr data-s="výpoveď e-mail email podateľňa portál generali"><td><b>Generali</b></td><td><b>Klientsky portál</b> (online formuláre)</td><td>servis.sk@generali.com</td></tr>
-            <tr data-s="výpoveď e-mail email podateľňa portál kooperativa"><td><b>Kooperativa</b></td><td><b>eKooperativa</b> (portál pre klientov)</td><td>info@kooperativa.sk</td></tr>
-            <tr data-s="výpoveď e-mail email podateľňa portál uniqa"><td><b>UNIQA</b></td><td><b>Moja UNIQA</b> (portál aj mobilná appka)</td><td>info@uniqa.sk</td></tr>
-            <tr data-s="výpoveď e-mail email podateľňa portál union"><td><b>Union</b></td><td><b>Online formulár</b> na webe Union</td><td>union@union.sk</td></tr>
-            <tr data-s="výpoveď e-mail email podateľňa portál komunálna"><td><b>Komunálna</b></td><td>Cez portál <b>Moja Komunálna</b></td><td>info@kpas.sk</td></tr>
+            <tr data-s="výpoveď e-mail email podateľňa portál allianz"><td><b>Allianz</b></td><td><b>Môj Allianz</b> (portál pre správu zmlúv)</td><td class="copy-mail" onclick="copyText('allianz@allianz.sk')">allianz@allianz.sk</td></tr>
+            <tr data-s="výpoveď e-mail email podateľňa portál generali"><td><b>Generali</b></td><td><b>Klientsky portál</b> (online formuláre)</td><td class="copy-mail" onclick="copyText('servis.sk@generali.com')">servis.sk@generali.com</td></tr>
+            <tr data-s="výpoveď e-mail email podateľňa portál kooperativa"><td><b>Kooperativa</b></td><td><b>eKooperativa</b> (portál pre klientov)</td><td class="copy-mail" onclick="copyText('info@kooperativa.sk')">info@kooperativa.sk</td></tr>
+            <tr data-s="výpoveď e-mail email podateľňa portál uniqa"><td><b>UNIQA</b></td><td><b>Moja UNIQA</b> (portál aj mobilná appka)</td><td class="copy-mail" onclick="copyText('info@uniqa.sk')">info@uniqa.sk</td></tr>
+            <tr data-s="výpoveď e-mail email podateľňa portál union"><td><b>Union</b></td><td><b>Online formulár</b> na webe Union</td><td class="copy-mail" onclick="copyText('union@union.sk')">union@union.sk</td></tr>
+            <tr data-s="výpoveď e-mail email podateľňa portál komunálna"><td><b>Komunálna</b></td><td>Cez portál <b>Moja Komunálna</b></td><td class="copy-mail" onclick="copyText('info@kpas.sk')">info@kpas.sk</td></tr>
           </tbody>
         </table>
       </div>
@@ -225,25 +228,53 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
               <li><b>Potvrdenie o zaplatení</b> poistného (doklad z bankovníctva alebo šek).</li>
             </ul>
           </li>
-          <li data-step="2"><b>Krok operátora:</b> Získané podklady (tlačivá + potvrdenie o platbe) prepošli na e-mail <span class="vink-mail">info@netfinancie.sk</span>.</li>
+          <li data-step="2"><b>Krok operátora:</b> Získané podklady (tlačivá + potvrdenie o platbe) prepošli na e-mail <span class="vink-mail" onclick="copyText('info@netfinancie.sk')">info@netfinancie.sk</span> (klikni pre kopírovanie).</li>
           <li data-step="3"><b>Vybavenie:</b> Tím Netfinancie následne zabezpečí oficiálne potvrdenie vinkulácie v poisťovni a jej zaslanie klientovi/banke.</li>
         </ul>
       </div>
     </div>
 
-    <!-- TAB 5: KALKULAČKA PODPOISTENIA (SAMOSTATNÁ ZÁLOŽKA) -->
+    <!-- TAB 5: KALKULAČKA PODPOISTENIA -->
     <div id="tab-kalkulacka" class="tab-page">
       <h2>Kalkulačka podpoistenia</h2>
-      <p class="sub">Rýchly výpočet orientačnej hodnoty domu alebo bytu na základe výmery m², aby mal nováčik okamžite predstavu pri rozhovore s klientom.</p>
+      <p class="sub">Rýchly výpočet orientačnej hodnoty domu alebo bytu podľa kraja a m², aby si mal okamžite predstavu pri rozhovore s klientom.</p>
       
-      <div class="calc-box" data-s="podpoistenie kalkulačka výpočet hodnota stavby m2 štvorcové metre cena meter">
+      <div class="calc-box" data-s="podpoistenie kalkulačka výpočet hodnota stavby m2 štvorcové metre cena meter kraje mestá bratislava trnava nitra trenčín žilina banská bystrica prešov košice">
         <div class="calc-field">
-          <label for="c-type">Typ a štandard nehnuteľnosti</label>
+          <label for="c-type">Kraj a typ nehnuteľnosti</label>
           <select id="c-type">
-            <option value="1600">Byt (štandardný bytový dom)</option>
-            <option value="1900">Byt (novostavba / krajské mesto)</option>
-            <option value="1400">Rodinný dom (štandardné prevedenie)</option>
-            <option value="1800">Rodinný dom (nadštandard / novostavba)</option>
+            <optgroup label="Bratislavský kraj (BA, Pezinok, Senec, Malacky)">
+              <option value="3100">Byt – Bratislavský kraj (cca 3 100 €/m²)</option>
+              <option value="2300">Rodinný dom – Bratislavský kraj (cca 2 300 €/m²)</option>
+            </optgroup>
+            <optgroup label="Trnavský kraj (TT, Piešťany, Dunajská Streda...)">
+              <option value="2100">Byt – Trnavský kraj (cca 2 100 €/m²)</option>
+              <option value="1700">Rodinný dom – Trnavský kraj (cca 1 700 €/m²)</option>
+            </optgroup>
+            <optgroup label="Nitriansky kraj (NR, Nové Zámky, Levice...)">
+              <option value="1900">Byt – Nitriansky kraj (cca 1 900 €/m²)</option>
+              <option value="1550">Rodinný dom – Nitriansky kraj (cca 1 550 €/m²)</option>
+            </optgroup>
+            <optgroup label="Trenčiansky kraj (TN, Prievidza, Považská Bystrica...)">
+              <option value="1850">Byt – Trenčiansky kraj (cca 1 850 €/m²)</option>
+              <option value="1500">Rodinný dom – Trenčiansky kraj (cca 1 500 €/m²)</option>
+            </optgroup>
+            <optgroup label="Žilinský kraj (ZA, Martin, Liptovský Mikuláš...)">
+              <option value="2200">Byt – Žilinský kraj (cca 2 200 €/m²)</option>
+              <option value="1750">Rodinný dom – Žilinský kraj (cca 1 750 €/m²)</option>
+            </optgroup>
+            <optgroup label="Banskobystrický kraj (BB, Zvolen, Lučenec...)">
+              <option value="1800">Byt – Banskobystrický kraj (cca 1 800 €/m²)</option>
+              <option value="1450">Rodinný dom – Banskobystrický kraj (cca 1 450 €/m²)</option>
+            </optgroup>
+            <optgroup label="Prešovský kraj (PO, Poprad, Humenné...)">
+              <option value="2000">Byt – Prešovský kraj (cca 2 000 €/m²)</option>
+              <option value="1600">Rodinný dom – Prešovský kraj (cca 1 600 €/m²)</option>
+            </optgroup>
+            <optgroup label="Košický kraj (KE, Michalovce, Spišská Nová Ves...)">
+              <option value="2250">Byt – Košický kraj (cca 2 250 €/m²)</option>
+              <option value="1700">Rodinný dom – Košický kraj (cca 1 700 €/m²)</option>
+            </optgroup>
           </select>
         </div>
         <div class="calc-field">
@@ -252,7 +283,7 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
         </div>
         <div class="calc-res">
           Odporúčaná poistná suma pre zamedzenie podpoistenia:
-          <span class="val" id="c-res">120 000 €</span>
+          <span class="val" id="c-res">232 500 €</span>
         </div>
       </div>
     </div>
@@ -280,7 +311,7 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
     <!-- TAB 7: ARGUMENTY -->
     <div id="tab-argumenty" class="tab-page">
       <h2>Argumentačné karty</h2>
-      <p class="sub">Klient povie námietku, ty si odpoveď skús povedať sám a potom kartu otoč.</p>
+      <p class="sub">Klient povie námietku, ty si odpoveď skús povedať sám a potom kartu otoč. (Fungujú aj šípky na klávesnici)</p>
       
       <div class="deck" data-s="argumentácia námietky karty">
         <div class="tools">
@@ -315,6 +346,15 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
 <footer><div class="wrap">Interný pomocník pre nováčikov. Nezadávaj sem údaje zákazníkov.</div></footer>
 
 <script>
+// Pomocná funkcia na kopírovanie textu
+function copyText(text) {
+  navigator.clipboard.writeText(text).then(function() {
+    alert('Skopírované do schránky: ' + text);
+  }).catch(function(err) {
+    console.error('Chyba pri kopírovaní: ', err);
+  });
+}
+
 // Tab Switching Logic
 function switchTab(tabId) {
   var pages = document.querySelectorAll('.tab-page');
@@ -411,9 +451,48 @@ function switchTab(tabId) {
   }
 })();
 
-// Flashcard Script
+// Flashcard Script (Rozšírené argumentačné karty)
 (function(){
-  var all = [{c:'Platba a zmluva',q:'Teraz som to zaplatil na rok dopredu.',a:[['Ťah na bránku','Priamy obchod','Zmluvu vieme vypovedať s vrátením peňazí do 2 mesiacov od zjednania, pozrieme sa, či predsa len nenájdeme ešte niečo výhodnejšie na tento rok?',0],['Preklopenie','Zjemnenie / Pripomienka / Mail','Jasné, tak si Vás tu poznačím na budúci rok a pozrieme potom, ako to vychádza, môže byť?',1]]}];
+  var all = [
+    {
+      c:'Platba a zmluva',
+      q:'Teraz som to zaplatil na rok dopredu.',
+      a:[
+        ['Ťah na bránku','Priamy obchod','Zmluvu vieme vypovedať s vrátením nespotrebovaného poistného do 2 mesiacov od zjednania. Pozrieme sa, či Vám neušetríme peniaze už na tento rok?',0],
+        ['Preklopenie','Zjemnenie / Pripomienka','Jasné, rozumiem. Poznačím si Vás pred koncom poistného obdobia a porovnáme ponuky s predstihom, môže byť?',1]
+      ]
+    },
+    {
+      c:'Hypotéka a banka',
+      q:'Mám to poistené priamo v banke k hypotéke.',
+      a:[
+        ['Argument krytia','Banka vs. Špecialista','Banky často dávajú len základné balíčky, ktoré nepokrývajú podpoistenie alebo zodpovednosť. Preveríme, či nemáte zbytočne drahé alebo nedostatočné krytie?',0],
+        ['Vinkulácia','Rýchle vybavenie','Vinkuláciu pre Vašu banku vybavíme kompletne za Vás bez poplatkov, len vymeníme poisťovňu za výhodnejšiu.',1]
+      ]
+    },
+    {
+      c:'Nedôvera / Súkromie',
+      q:'Poisťovne aj tak nikdy nič nezaplatia, sú to vyhodené peniaze.',
+      a:[
+        ['Pochopenie','Presné podmienky','Rozumiem Vašej skúsenosti. Problém býva často v zlom nastavení poistných súm alebo podpoistení. Práve preto spoločne nastavíme zmluvu tak, aby tam neboli žiadne kľučky.',0]
+      ]
+    },
+    {
+      c:'Čas a zaneprázdnenosť',
+      q:'Nemám teraz čas to riešiť, pošlite mi to do mailu.',
+      a:[
+        ['Rýchlosť hovoru','Priechod na hovor','Mailom Vám viem poslať len všeobecnú ponuku. Keď mi dáte 2 minúty na 3 základné otázky, pošlem Vám ponuku presne na mieru Vašej nehnuteľnosti.',0]
+      ]
+    },
+    {
+      c:'Stará zmluva',
+      q:'Mám starú zmluvu už 10 rokov a som spokojný.',
+      a:[
+        ['Riziko podpoistenia','Aktualizácia hodnôt','Za 10 rokov stúpla hodnota nehnuteľností aj o 100 %. Ak by sa niečo stalo, stará zmluva Vám dnes zaplatí len polovicu škody. Pozrieme sa na reálnu dnešnú hodnotu?',0]
+      ]
+    }
+  ];
+
   var list = all.slice(), i = 0, back = false, host = document.getElementById('deck'), cnt = document.getElementById('cnt');
   
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
@@ -433,6 +512,16 @@ function switchTab(tabId) {
     document.getElementById('flp').onclick=function(){if(list.length){back=!back;draw()}};
     document.getElementById('shuf').onclick=function(){for(var k=list.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1)),t=list[k];list[k]=list[j];list[j]=t}i=0;back=false;draw()};
     document.getElementById('cq').addEventListener('input',function(e){var v=e.target.value.toLowerCase().trim();list=all.filter(function(c){return !v||(c.q+' '+c.c+' '+c.a.map(function(a){return a[2]}).join(' ')).toLowerCase().indexOf(v)>-1});i=0;back=false;draw()});
+    
+    // Klávesové skratky pre rýchlejšie ovládanie pri hovore
+    document.addEventListener('keydown', function(e) {
+      if (document.getElementById('tab-argumenty').classList.contains('active') && document.activeElement.tagName !== 'INPUT') {
+        if (e.key === 'ArrowRight') go(1);
+        if (e.key === 'ArrowLeft') go(-1);
+        if (e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); if(list.length){back=!back;draw();} }
+      }
+    });
+
     draw();
   }
 })();
