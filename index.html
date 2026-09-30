@@ -74,12 +74,12 @@ h2::after{content:"";display:block;width:38px;height:4px;border-radius:4px;backg
 .vink-mail{background:var(--pink-soft);color:var(--pink);padding:2px 8px;border-radius:6px;font-weight:700}
 
 /* Kalkulačka podpoistenia */
-.calc-box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow);max-width:600px;margin-top:20px}
+.calc-box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow);max-width:600px;margin-top:10px}
 .calc-field{margin-bottom:16px}
 .calc-field label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
 .calc-field input, .calc-field select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;background:var(--bg);color:var(--ink)}
 .calc-res{background:var(--pink-soft);border-radius:12px;padding:16px;margin-top:20px;text-align:center}
-.calc-res .val{font-size:28px;font-weight:800;color:var(--pink);display:block;margin-top:4px}
+.calc-res .val{font-size:32px;font-weight:800;color:var(--pink);display:block;margin-top:4px}
 
 .hide{display:none!important}
 #none{color:#fff;margin-top:10px;font-weight:600}
@@ -125,9 +125,10 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
       <a onclick="switchTab('splatnosti')" id="nav-splatnosti">Splatnosti</a>
       <a onclick="switchTab('vypovede')" id="nav-vypovede">Výpovede</a>
       <a onclick="switchTab('vinkulacie')" id="nav-vinkulacie">Vinkulácie</a>
+      <a onclick="switchTab('kalkulacka')" id="nav-kalkulacka">Kalkulačka podpoistenia</a>
       <a onclick="switchTab('statusy')" id="nav-statusy">Statusy</a>
       <a onclick="switchTab('argumenty')" id="nav-argumenty">Argumenty</a>
-      <a onclick="switchTab('majetok')" id="nav-majetok">Majetok & Podpoistenie</a>
+      <a onclick="switchTab('majetok')" id="nav-majetok">Majetok</a>
     </nav>
     <a class="btn" href="https://srovnejto.daktela.com/dashboard/" target="_blank" rel="noopener">Dashboard</a>
   </div>
@@ -139,14 +140,14 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
     <div class="wrap hero">
       <h1>Poistenie majetku SK na jednom mieste</h1>
       <p class="lead">Odkazy, splatnosti, vinkulácie a kalkulačka podpoistenia. Všetko pri hovore.</p>
-      <input id="q" class="search" type="search" placeholder="Čo potrebuješ nájsť? Napríklad vinkulácia..." aria-label="Hľadať v hube">
+      <input id="q" class="search" type="search" placeholder="Čo potrebuješ nájsť? Napríklad podpoistenie..." aria-label="Hľadať v hube">
       <div id="none" class="hide">Nič sa nenašlo. Skús iné slovo.</div>
     </div>
   </div>
 
   <div class="wrap" id="results-anchor">
     
-    <!-- TAB 1: ODKAZY (HNEĎ OD ZAČIATKU AKO HLAVNÁ STRÁNKA) -->
+    <!-- TAB 1: ODKAZY -->
     <div id="tab-odkazy" class="tab-page active">
       <h2>Odkazy na prvý hovor</h2>
       <p class="sub">Všetko, čo potrebuješ mať po ruke, keď začneš volať.</p>
@@ -210,7 +211,7 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
       </div>
     </div>
 
-    <!-- TAB 4: VINKULÁCIE (NOVÝ TAB) -->
+    <!-- TAB 4: VINKULÁCIE -->
     <div id="tab-vinkulacie" class="tab-page">
       <h2>Vinkulácia poistenia k hypotéke</h2>
       <p class="sub">Postup pre operátora, keď klient potrebuje vinkuláciu v prospech banky.</p>
@@ -230,7 +231,33 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
       </div>
     </div>
 
-    <!-- TAB 5: STATUSY -->
+    <!-- TAB 5: KALKULAČKA PODPOISTENIA (SAMOSTATNÁ ZÁLOŽKA) -->
+    <div id="tab-kalkulacka" class="tab-page">
+      <h2>Kalkulačka podpoistenia</h2>
+      <p class="sub">Rýchly výpočet orientačnej hodnoty domu alebo bytu na základe výmery m², aby mal nováčik okamžite predstavu pri rozhovore s klientom.</p>
+      
+      <div class="calc-box" data-s="podpoistenie kalkulačka výpočet hodnota stavby m2 štvorcové metre cena meter">
+        <div class="calc-field">
+          <label for="c-type">Typ a štandard nehnuteľnosti</label>
+          <select id="c-type">
+            <option value="1600">Byt (štandardný bytový dom)</option>
+            <option value="1900">Byt (novostavba / krajské mesto)</option>
+            <option value="1400">Rodinný dom (štandardné prevedenie)</option>
+            <option value="1800">Rodinný dom (nadštandard / novostavba)</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label for="c-area">Užitková plocha nehnuteľnosti (m²)</label>
+          <input type="number" id="c-area" placeholder="Zadaj m² (napr. 75)" value="75">
+        </div>
+        <div class="calc-res">
+          Odporúčaná poistná suma pre zamedzenie podpoistenia:
+          <span class="val" id="c-res">120 000 €</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 6: STATUSY -->
     <div id="tab-statusy" class="tab-page">
       <h2>Ako zatvárať statusy</h2>
       <p class="sub">Čo nastaviť po hovore a komu kontakt zostáva.</p>
@@ -250,7 +277,7 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
       </div>
     </div>
 
-    <!-- TAB 6: ARGUMENTY -->
+    <!-- TAB 7: ARGUMENTY -->
     <div id="tab-argumenty" class="tab-page">
       <h2>Argumentačné karty</h2>
       <p class="sub">Klient povie námietku, ty si odpoveď skús povedať sám a potom kartu otoč.</p>
@@ -270,32 +297,9 @@ h1,h2,.logo,.fc .q,.chip{font-family:Sora,Inter,system-ui,sans-serif}
       </div>
     </div>
 
-    <!-- TAB 7: MAJETOK & KALKULAČKA PODPOISTENIA -->
+    <!-- TAB 8: MAJETOK -->
     <div id="tab-majetok" class="tab-page">
-      <h2>Kalkulačka orientačnej hodnoty (Podpoistenie)</h2>
-      <p class="sub">Pomôcka na rýchly výpočet reálnej hodnoty nehnuteľnosti počas hovoru, aby sa predišlo podpoisteniu.</p>
-      
-      <div class="calc-box" data-s="podpoistenie kalkulačka výpočet hodnota stavby m2 štvorcové metre">
-        <div class="calc-field">
-          <label for="c-type">Typ nehnuteľnosti</label>
-          <select id="c-type">
-            <option value="1600">Byt (štandard)</option>
-            <option value="1900">Byt (novostavba / krajské mesto)</option>
-            <option value="1400">Rodinný dom (štandard)</option>
-            <option value="1800">Rodinný dom (nadštandard / novostavba)</option>
-          </select>
-        </div>
-        <div class="calc-field">
-          <label for="c-area">Užitková plocha v m²</label>
-          <input type="number" id="c-area" placeholder="Napr. 75" value="75">
-        </div>
-        <div class="calc-res">
-          Odporúčaná minimálna poistná suma nehnuteľnosti:
-          <span class="val" id="c-res">120 000 €</span>
-        </div>
-      </div>
-
-      <h2 style="margin-top: 40px;">Poistenie majetku v skratke</h2>
+      <h2>Poistenie majetku v skratke</h2>
       <p class="sub">Klient rieši nehnuteľnosť, domácnosť a často aj zodpovednosť. Najlepšie je poistiť všetko, lebo každé kryje niečo iné.</p>
       <div class="grid">
         <div class="card" data-s="nehnuteľnosť stavba dom byt strecha steny"><h3>Poistenie nehnuteľnosti</h3><p>Kryje samotnú stavbu: steny, strechu, okná, podlahy. Ak víchrica zhodí strom na strechu, platí toto poistenie.</p></div>
