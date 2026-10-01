@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<script>try{var _t=localStorage.getItem("sk-theme");if(_t)document.documentElement.setAttribute("data-theme",_t)}catch(e){}</script>
 <style>
 :root{--bg:#f6f6f8;--card:#fff;--ink:#25252b;--muted:#6b6b76;--line:#e8e8ee;--pink:#d3277f;--pink-soft:#fbe6f1;--green:#4c9a2a;--shadow:0 2px 10px rgba(30,20,40,.07);
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -133,6 +134,13 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
 .tl-tip{margin:8px 0 0;font-size:13px;color:var(--muted)}
 .tl-end{background:var(--pink-soft);border-radius:14px;padding:14px 20px;margin:8px 0 0}
 @media(max-width:560px){.tl-step{gap:10px}.tl-n span{width:34px;height:34px}.tl::before{left:16px}.tl-card{padding:14px}}
+
+/* Prepínač tmavého režimu */
+:root{color-scheme:light}
+:root[data-theme="dark"]{color-scheme:dark}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark}}
+.theme-btn{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center}
+.theme-btn:hover{border-color:var(--pink)}
 </style>
 </head>
 <body>
@@ -150,6 +158,7 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
       <a onclick="switchTab('majetok')" id="nav-majetok">Majetok</a>
     </nav>
     <a class="btn" href="https://srovnejto.daktela.com/dashboard/" target="_blank" rel="noopener">Dashboard</a>
+    <button type="button" class="theme-btn" id="theme-btn" aria-label="Prepnúť svetlý/tmavý režim" title="Svetlý / tmavý režim">🌙</button>
   </div>
 </header>
 
@@ -518,6 +527,20 @@ function switchTab(tabId) {
   function upd(){var n=0;boxes.forEach(function(b){b.closest('.tl-step').classList.toggle('done',b.checked);if(b.checked)n++;});cnt.textContent=n;}
   boxes.forEach(function(b){b.addEventListener('change',upd);});
   document.getElementById('tl-reset').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});upd();window.scrollTo({top:0,behavior:'smooth'});});
+})();
+</script>
+<script>
+// Tmavý režim: predvolene podľa systému, voľba sa pamätá v prehliadači
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme-btn');
+  function sys(){return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;}
+  function cur(){return root.getAttribute('data-theme')||(sys()?'dark':'light');}
+  function apply(t){root.setAttribute('data-theme',t);btn.textContent=(t==='dark')?'☀️':'🌙';btn.setAttribute('aria-pressed',t==='dark'?'true':'false');}
+  apply(cur());
+  btn.addEventListener('click',function(){
+    var t=(cur()==='dark')?'light':'dark';apply(t);
+    try{localStorage.setItem('sk-theme',t);}catch(e){}
+  });
 })();
 </script>
 </body>
