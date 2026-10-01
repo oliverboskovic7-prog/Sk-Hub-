@@ -191,10 +191,10 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
 /* Otvoriť šablónu ako koncept v Outlooku */
 .tpl-act{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
 .tpl-act a,.tpl-act .tpl-copy{font:inherit;font-size:14px;font-weight:600;padding:9px 16px;border-radius:999px;text-decoration:none;cursor:pointer;white-space:nowrap}
-.tpl-act .tpl-mail{background:var(--pink);color:#fff;border:1px solid var(--pink)}
-.tpl-act .tpl-web,.tpl-act .tpl-copy{background:transparent;color:var(--pink);border:1px solid var(--pink)}
-.tpl-act .tpl-web:hover,.tpl-act .tpl-copy:hover{background:var(--pink-soft);filter:none;text-decoration:none}
-.tpl-act .tpl-mail:hover{filter:brightness(1.08);text-decoration:none}
+.tpl-act .tpl-web{background:var(--pink);color:#fff;border:1px solid var(--pink)}
+.tpl-act .tpl-web:hover{filter:brightness(1.08);text-decoration:none}
+.tpl-act .tpl-copy{background:transparent;color:var(--pink);border:1px solid var(--pink)}
+.tpl-act .tpl-copy:hover{background:var(--pink-soft);filter:none}
 @media(max-width:640px){.tpl-h{flex-wrap:wrap}.tpl-act{justify-content:flex-start}}
 </style>
 </head>
@@ -475,7 +475,7 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
 ďakujem za hovor. v prípade akýchkoľvek otázok ma môžete kontaktovať na tomto e-maile.
 
 s pozdravom">
-<div class="tpl-h"><div><h3>Vizitka: kontakt na mňa</h3><small>Na konci hovoru alebo v e-maile</small></div><div class="tpl-act"><a class="tpl-mail" href="#" title="Otvorí nový e-mail v predvolenej poštovej aplikácii (Outlook)">✉️ Otvoriť v Outlooku</a><a class="tpl-web" href="#" target="_blank" rel="noopener" title="Otvorí nový e-mail v Outlooku na webe">Outlook web</a><button type="button" class="tpl-copy" data-l="Kopírovať">Kopírovať</button></div></div>
+<div class="tpl-h"><div><h3>Vizitka: kontakt na mňa</h3><small>Na konci hovoru alebo v e-maile</small></div><div class="tpl-act"><a class="tpl-web" href="#" target="_blank" rel="noopener" title="Otvorí nový e-mail v Outlooku s vyplneným predmetom a textom">✉️ Outlook</a><button type="button" class="tpl-copy" data-l="Kopírovať">Kopírovať</button></div></div>
 <div class="tpl-text">Dobrý deň,
 
 ďakujem za hovor. V prípade akýchkoľvek otázok ma môžete kontaktovať na tomto e-maile.
@@ -490,7 +490,7 @@ k vinkulácii poistenia v prospech vašej banky prosím zašlite na tento e-mail
 po ich doručení vinkuláciu potvrdíme u poisťovne a potvrdenie zašleme vám, prípadne priamo banke.
 
 s pozdravom">
-<div class="tpl-h"><div><h3>Vinkulácia: čo mi pošlite</h3><small>Keď klient chce poistenie vinkulovať v prospech banky</small></div><div class="tpl-act"><a class="tpl-mail" href="#" title="Otvorí nový e-mail v predvolenej poštovej aplikácii (Outlook)">✉️ Otvoriť v Outlooku</a><a class="tpl-web" href="#" target="_blank" rel="noopener" title="Otvorí nový e-mail v Outlooku na webe">Outlook web</a><button type="button" class="tpl-copy" data-l="Kopírovať">Kopírovať</button></div></div>
+<div class="tpl-h"><div><h3>Vinkulácia: čo mi pošlite</h3><small>Keď klient chce poistenie vinkulovať v prospech banky</small></div><div class="tpl-act"><a class="tpl-web" href="#" target="_blank" rel="noopener" title="Otvorí nový e-mail v Outlooku s vyplneným predmetom a textom">✉️ Outlook</a><button type="button" class="tpl-copy" data-l="Kopírovať">Kopírovať</button></div></div>
 <div class="tpl-text">Dobrý deň,
 
 k vinkulácii poistenia v prospech vašej banky prosím zašlite na tento e-mail:
@@ -508,7 +508,7 @@ vzor výpovede nájdete tu:
 https://www.netfinancie.com/vypoved-poistnej-zmluvy/poistenie-nehnutelnosti/
 
 s pozdravom">
-<div class="tpl-h"><div><h3>Výpoveď pôvodného poistenia</h3><small>Keď klient mení poisťovňu a treba vypovedať staré poistenie</small></div><div class="tpl-act"><a class="tpl-mail" href="#" title="Otvorí nový e-mail v predvolenej poštovej aplikácii (Outlook)">✉️ Otvoriť v Outlooku</a><a class="tpl-web" href="#" target="_blank" rel="noopener" title="Otvorí nový e-mail v Outlooku na webe">Outlook web</a><button type="button" class="tpl-copy" data-l="Kopírovať">Kopírovať</button></div></div>
+<div class="tpl-h"><div><h3>Výpoveď pôvodného poistenia</h3><small>Keď klient mení poisťovňu a treba vypovedať staré poistenie</small></div><div class="tpl-act"><a class="tpl-web" href="#" target="_blank" rel="noopener" title="Otvorí nový e-mail v Outlooku s vyplneným predmetom a textom">✉️ Outlook</a><button type="button" class="tpl-copy" data-l="Kopírovať">Kopírovať</button></div></div>
 <div class="tpl-text">Dobrý deň,
 
 k výpovedi pôvodného poistenia: výpoveď musí byť poisťovni doručená najneskôr 6 týždňov pred výročím zmluvy.
@@ -770,8 +770,7 @@ function switchTab(tabId) {
     var subj=t.getAttribute('data-subject')||'', box=t.querySelector('.tpl-text');
     if(!box)return;
     var body=box.textContent;
-    var m=t.querySelector('.tpl-mail'), w=t.querySelector('.tpl-web');
-    if(m)m.href='mailto:?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body).replace(/%0A/g,'%0D%0A');
+    var w=t.querySelector('.tpl-web');
     if(w)w.href='https://outlook.office.com/mail/deeplink/compose?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
   });
 })();
