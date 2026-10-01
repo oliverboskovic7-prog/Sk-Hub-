@@ -507,7 +507,7 @@ vzor výpovede nájdete tu:
 https://www.netfinancie.com/vypoved-poistnej-zmluvy/poistenie-nehnutelnosti/
 
 s pozdravom">
-<div class="tpl-h"><div><h3>Výpoveď pôvodného poistenia</h3><small>Keď klient mení poisťovňu a treba vypovedať staré poistenie</small></div><div class="tpl-act"><a class="tpl-web" href="#" target="_blank" rel="noopener" title="Otvorí nový e-mail v Outlooku s vyplneným predmetom a textom">✉️️ Outlook</a><button type="button" class="tpl-copy" data-l="Kopírovať">Kopírovať</button></div></div>
+<div class="tpl-h"><div><h3>Výpoveď pôvodného poistenia</h3><small>Keď klient mení poisťovňu a treba vypovedať staré poistenie</small></div><div class="tpl-act"><a class="tpl-web" href="#" target="_blank" rel="noopener" title="Otvorí nový e-mail v Outlooku s vyplneným predmetom a textom">✉ Outlook</a><button type="button" class="tpl-copy" data-l="Kopírovať">Kopírovať</button></div></div>
 <div class="tpl-text">Dobrý deň,
 
 k výpovedi pôvodného poistenia: výpoveď musí byť poisťovni doručená najneskôr 6 týždňov pred výročím zmluvy.
@@ -699,7 +699,6 @@ function switchTab(tabId) {
   function addDays(d,n){return new Date(d.getFullYear(),d.getMonth(),d.getDate()+n);}
   function addMonths(d,n){var m=d.getMonth()+n,t=new Date(d.getFullYear(),m,d.getDate()),exp=((m%12)+12)%12;if(t.getMonth()!==exp)t=new Date(d.getFullYear(),m+1,0);return t;}
   function fmt(d){try{return d.toLocaleDateString('sk-SK',{weekday:'long',day:'numeric',month:'long',year:'numeric'});}catch(e){return iso(d);}}
-  function plural(n){var a=Math.abs(n);return a===1?'deň':(a>=2&&a<=4?'dni':'dní');}
   function rel(d,t){var n=Math.round((d-t)/86400000);if(n===0)return 'dnes';if(n>0)return 'o '+n+' '+plural(n);return 'pred '+(-n)+(n===-1?' dňom':' dňami');}
 
   // --- Kalkulačka výročia ---
@@ -710,7 +709,7 @@ function switchTab(tabId) {
     if(!d){anOut.innerHTML='<p class="dc-hint">Zadaj dátum výročia. Zobrazí sa, kedy klienta odložiť a dokedy musí byť doručená výpoveď.</p>';return;}
     var ann=d, rolled=false, guard=0;
     while(ann<t && guard++<500){ann=addMonths(ann,12);rolled=true;}
-    var post=addMonths(ann,-3), dead=addDays(ann,-42), h='';
+    var dead=addDays(ann,-42), h='';
     
     // Kontrola, či sa výpoveď ešte stíha (dnes je pred alebo v deň deadlinu)
     var canCancel = dead >= t;
@@ -721,10 +720,9 @@ function switchTab(tabId) {
     if(rolled)h+='<p class="dc-hint">Zadaný dátum už prebehol, počítam k najbližšiemu výročiu.</p>';
     h+='<p class="dc-hint">Najbližšie výročie: <b>'+fmt(ann)+'</b> ('+rel(ann,t)+')</p>';
     h+='<div class="dc-tiles">'
-      +'<div class="dc-tile"><small>Poznačiť kontakt 3 mesiace pred výročím</small><b>'+fmt(post)+'</b><span>'+rel(post,t)+'</span></div>'
+      +'<div class="dc-tile"><small>Poznačiť kontakt</small><b>Poznačiť 3 mesiace pred výročím</b></div>'
       +'<div class="dc-tile" style="'+tileStyle+'"><small style="color:inherit">Výpoveď doručiť najneskôr (6 týždňov pred výročím)</small><b style="color:inherit">'+fmt(dead)+'</b><span style="color:inherit">'+rel(dead,t)+'</span></div></div>';
     if(dead<t)h+='<p class="dc-warn">⚠️ Termín na výpoveď k tomuto výročiu už uplynul.</p>';
-    if(post<t)h+='<p class="dc-warn">⚠️ Dátum odloženia už prešiel.</p>';
     anOut.innerHTML=h;
   }
   if(an){an.addEventListener('input',calcAn);calcAn();}
