@@ -255,7 +255,7 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
         <!-- SKRYTÉ: Prihlásenie KLIK (odkomentuj pre návrat)
         <a href="https://nf.klik.sk/kerberos/" target="_blank" rel="noopener noreferrer" data-s="klik prihlásenie kerberos login nf"><span class="ic">🔑</span><span class="tx">Prihlásenie KLIK<small>Najprv sa prihlás, potom kalkulačka</small></span></a>
         -->
-        <a href="https://zbgis.skgeodesy.sk/mapka/sk/kataster?pos=47.928408,18.207431,15" target="_blank" rel="noopener" data-s="kataster nehnuteľnosti"><span class="ic">🗺️</span><span class="tx">Kataster nehnuteľností<small>Mapa ZBGIS</small></span></a>
+        <a href="https://zbgis.skgeodesy.sk/mapka/sk/kataster?pos=47.928408,18.207431,15" target="_blank" rel="noopener" data-s="kataster nehnuteľnosti"><span class="ic">🗺️️</span><span class="tx">Kataster nehnuteľností<small>Mapa ZBGIS</small></span></a>
         <a href="https://www.netfinancie.com/vypoved-poistnej-zmluvy/poistenie-nehnutelnosti/" target="_blank" rel="noopener" data-s="výpoveď vzor"><span class="ic">🧮</span><span class="tx">Výpoveď poistenia nehnuteľnosti<small>Vzor od Netfinancie</small></span></a>
       </div>
     </div>
@@ -721,7 +721,7 @@ function switchTab(tabId) {
     h+='<div class="dc-tiles">'
       +'<div class="dc-tile"><small>Poznačiť kontakt</small><b>Poznačiť 3 mesiace pred výročím</b></div>'
       +'<div class="dc-tile" style="'+rightStyle+'"><small>Výpoveď doručiť najneskôr (6 týždňov pred výročím)</small><b style="color:'+rightColor+'">'+fmt(dead)+'</b><span>'+rel(dead,t)+'</span></div></div>';
-    if(dead<t)h+='<p class="dc-warn">⚠️ Termín na výpoveď k tomuto výročiu už uplynul.</p>';
+    if(dead<t)h+='<p class="dc-warn">⚠️️ Termín na výpoveď k tomuto výročiu už uplynul.</p>';
     anOut.innerHTML=h;
   }
   if(an){an.addEventListener('input',calcAn);calcAn();}
