@@ -420,7 +420,7 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
 <div class="tl-card"><div class="tl-h"><h3>Súčasné poistenie</h3><div class="tl-chips"><span class="tl-chip">bod 2</span></div></div>
 <ul class="tl-say"><li>„Ide o <b>novú zmluvu</b> (kúpa/prepis), alebo <b>zmenu</b> poistenia?“</li><li>Pri zmene, pred ponukou: „Kedy máte <b>výročie</b>?“</li><li>„V akej ste <b>poisťovni</b>, čo to <b>obsahuje</b> a koľko <b>platíte</b>?“</li></ul>
 <p class="tl-warn">🚫 Nevynechaj výročie, poisťovňu, cenu ani obsah.</p><p class="tl-tip">Zmluva z minulého roka: stačia cenotvorné údaje. Staršia ako 2 roky: over aj súčasné poistenie.</p></div></li>
-<li class="tl-step" data-s="čo sa bude počítať „budeme riešiť nehnuteľnosť, domácnosť alebo oboje?“ „nehnuteľnosť kryje stavbu, domácnosť vybavenie vo vnútri.“ ak klient odmietne: argumentuj, prečo poistiť oboje. nepočítaj len jedno. ponúkni prepočet domácnosti aj nehnuteľnosti. pri nehnuteľnosti na prenájom domácnosť nehodnotíme.">
+<li class="tl-step" data-s="čo sa bude počítať „budeme riešiť nehnuteľnosť, domácnosť alebo oboje?“ „nehnuteľnosť kryje stavbu, domácnosť vybavenie vo vnútri.“ ak klient odmietne: argumentuj, prepo, prečo poistiť oboje. nepočítaj len jedno. ponúkni prepočet domácnosti aj nehnuteľnosti. pri nehnuteľnosti na prenájom domácnosť nehodnotíme.">
 <label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Čo sa bude počítať"><span>3</span></label>
 <div class="tl-card"><div class="tl-h"><h3>Čo sa bude počítať</h3><div class="tl-chips"><span class="tl-chip">bod 3</span></div></div>
 <ul class="tl-say"><li>„Budeme riešiť <b>nehnuteľnosť, domácnosť alebo oboje</b>?“</li><li>„Nehnuteľnosť kryje stavbu, domácnosť vybavenie vo vnútri.“</li><li>Ak klient odmietne: argumentuj, prečo poistiť <b>oboje</b>.</li></ul>
@@ -700,6 +700,7 @@ function switchTab(tabId) {
   function addMonths(d,n){var m=d.getMonth()+n,t=new Date(d.getFullYear(),m,d.getDate()),exp=((m%12)+12)%12;if(t.getMonth()!==exp)t=new Date(d.getFullYear(),m+1,0);return t;}
   function fmt(d){try{return d.toLocaleDateString('sk-SK',{weekday:'long',day:'numeric',month:'long',year:'numeric'});}catch(e){return iso(d);}}
   function rel(d,t){var n=Math.round((d-t)/86400000);if(n===0)return 'dnes';if(n>0)return 'o '+n+' '+plural(n);return 'pred '+(-n)+(n===-1?' dňom':' dňami');}
+  function plural(n){if(n===1)return 'deň';if(n>=2&&n<=4)return 'dni';return 'dní';}
 
   // --- Kalkulačka výročia ---
   var an=$('an-date'), anOut=$('an-out');
@@ -711,23 +712,21 @@ function switchTab(tabId) {
     while(ann<t && guard++<500){ann=addMonths(ann,12);rolled=true;}
     var dead=addDays(ann,-42), h='';
     
-    // Kontrola, či sa výpoveď ešte stíha (dnes je pred alebo v deň deadlinu)
     var canCancel = dead >= t;
-    
-    // Jasne krikľavo zelená vs jasne výrazne červená pre pravú tabuľku/dlaždicu
-    var tileStyle = canCancel ? 'background: #00ff00; color: #000;' : 'background: #ff0000; color: #fff;';
+    var rightStyle = canCancel ? 'background: rgba(76,154,42,0.15); border: 2px solid #4c9a2a;' : 'background: rgba(192,57,43,0.15); border: 2px solid #c0392b;';
+    var rightColor = canCancel ? 'var(--green)' : 'var(--bad)';
 
     if(rolled)h+='<p class="dc-hint">Zadaný dátum už prebehol, počítam k najbližšiemu výročiu.</p>';
     h+='<p class="dc-hint">Najbližšie výročie: <b>'+fmt(ann)+'</b> ('+rel(ann,t)+')</p>';
     h+='<div class="dc-tiles">'
       +'<div class="dc-tile"><small>Poznačiť kontakt</small><b>Poznačiť 3 mesiace pred výročím</b></div>'
-      +'<div class="dc-tile" style="'+tileStyle+'"><small style="color:inherit">Výpoveď doručiť najneskôr (6 týždňov pred výročím)</small><b style="color:inherit">'+fmt(dead)+'</b><span style="color:inherit">'+rel(dead,t)+'</span></div></div>';
+      +'<div class="dc-tile" style="'+rightStyle+'"><small>Výpoveď doručiť najneskôr (6 týždňov pred výročím)</small><b style="color:'+rightColor+'">'+fmt(dead)+'</b><span>'+rel(dead,t)+'</span></div></div>';
     if(dead<t)h+='<p class="dc-warn">⚠️ Termín na výpoveď k tomuto výročiu už uplynul.</p>';
     anOut.innerHTML=h;
   }
   if(an){an.addEventListener('input',calcAn);calcAn();}
 
-  // --- Kalkulačka splatnosti (lehoty sa čítajú z kariet v záložke Splatnosti, výsledok sa zapíše do každej karty) ---
+  // --- Kalkulačka splatnosti ---
   var pc=$('pay-close'), ps=$('pay-start'), reco=$('pay-reco'), btn=$('pay-today');
   var closeTouched=false, startTouched=false;
   function calcPay(){
@@ -769,7 +768,7 @@ function switchTab(tabId) {
     });
   });
 
-  // --- Šablóny: otvorenie konceptu v Outlooku (predmet aj text sú vyplnené, adresáta doplní operátor) ---
+  // --- Šablóny: otvorenie konceptu v Outlooku ---
   [].slice.call(document.querySelectorAll('.tpl')).forEach(function(t){
     var subj=t.getAttribute('data-subject')||'', box=t.querySelector('.tpl-text');
     if(!box)return;
