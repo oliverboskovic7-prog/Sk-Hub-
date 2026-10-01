@@ -170,6 +170,23 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
 .tpl-copy{flex:none;font:inherit;font-size:14px;font-weight:600;padding:9px 16px;border-radius:999px;border:0;background:var(--pink);color:#fff;cursor:pointer}
 .tpl-copy:hover{filter:brightness(1.08)}
 .tpl-text{white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:15px;line-height:1.55;overflow-wrap:anywhere}
+
+/* Bočný panel + bubliny splatnosti */
+.side{display:none;position:fixed;left:0;top:calc(65px + env(safe-area-inset-top,0px));bottom:0;width:220px;padding:14px 12px;background:var(--card);border-right:1px solid var(--line);flex-direction:column;gap:4px;overflow-y:auto;z-index:5}
+.side-h{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding:2px 12px 8px}
+.side button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;font:inherit;font-weight:600;font-size:15px;padding:10px 12px;border:0;border-radius:10px;background:transparent;color:var(--ink);cursor:pointer}
+.side button:hover{background:var(--pink-soft);color:var(--pink)}
+.side button.active{background:var(--pink);color:#fff}
+.side .si{width:22px;text-align:center;flex:none}
+@media(min-width:900px){
+  .side{display:flex}
+  main,footer{margin-left:220px}
+  nav{display:none}
+  .bar .btn{margin-left:auto}
+}
+.sp .due{margin-top:auto;padding-top:8px;border-top:1px dashed var(--line);font-size:13px;color:var(--muted)}
+.sp .due b{display:block;font-size:15px;color:var(--pink);font-weight:700}
+.sp.uz .due b{color:var(--green)}
 </style>
 </head>
 <body>
@@ -191,6 +208,19 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
     <button type="button" class="theme-btn" id="theme-btn" aria-label="Prepnúť svetlý/tmavý režim" title="Svetlý / tmavý režim">🌙</button>
   </div>
 </header>
+<aside class="side" aria-label="Rýchla navigácia">
+<div class="side-h">Záložky</div>
+<button type="button" id="side-odkazy" class="active" onclick="switchTab('odkazy')"><span class="si">📌</span>Odkazy</button>
+<button type="button" id="side-splatnosti" onclick="switchTab('splatnosti')"><span class="si">🗓️</span>Splatnosti</button>
+<button type="button" id="side-vypovede" onclick="switchTab('vypovede')"><span class="si">📄</span>Výpovede</button>
+<button type="button" id="side-vinkulacie" onclick="switchTab('vinkulacie')"><span class="si">🏦</span>Vinkulácie</button>
+<button type="button" id="side-kalkulacka" onclick="switchTab('kalkulacka')"><span class="si">🧮</span>Kalkulačka podpoistenia</button>
+<button type="button" id="side-hovor" onclick="switchTab('hovor')"><span class="si">🎯</span>Skript hovoru</button>
+<button type="button" id="side-sablony" onclick="switchTab('sablony')"><span class="si">✉️</span>Šablóny</button>
+<button type="button" id="side-statusy" onclick="switchTab('statusy')"><span class="si">🔄</span>Statusy</button>
+<button type="button" id="side-majetok" onclick="switchTab('majetok')"><span class="si">🏠</span>Majetok</button>
+</aside>
+
 
 <main>
   <!-- HERO BANNER -->
@@ -235,8 +265,7 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
         </div>
         <button type="button" class="tl-btn" id="pay-today">Nastaviť na dnes</button>
         <p class="dc-reco" id="pay-reco"></p>
-        <div class="dc-wrap"><table class="tbl"><thead><tr><th>Poisťovňa</th><th>Lehota</th><th>Najneskôr do</th></tr></thead><tbody id="pay-body"></tbody></table></div>
-        <p class="dc-small">Orientačný výpočet v kalendárnych dňoch. Presnú lehotu over v podmienkach poisťovne.</p>
+        <p class="dc-small">Dátum splatnosti sa ukáže v bublinách nižšie. Orientačný výpočet v kalendárnych dňoch, presnú lehotu over v podmienkach poisťovne.</p>
       </div>
 
       <div class="spg">
@@ -430,24 +459,20 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
     <!-- TAB: ŠABLÓNY -->
     <div id="tab-sablony" class="tab-page">
       <h2>Šablóny správ</h2>
-      <p class="sub">Klikni na Kopírovať a doplň hodnoty v <span class="ph">[hranatých zátvorkách]</span>. Nevpisuj sem údaje zákazníkov.</p>
+      <p class="sub">Klikni na Kopírovať a vlož text do e-mailu. Nevpisuj sem údaje zákazníkov.</p>
       <div class="tpl-list">
-<div class="tpl" data-s="šablóna správa e-mail vizitka: kontakt na mňa na konci hovoru alebo v e-maile dobrý deň, [oslovenie],
+<div class="tpl" data-s="šablóna správa e-mail vizitka: kontakt na mňa na konci hovoru alebo v e-maile dobrý deň,
 
 ďakujem za hovor. v prípade akýchkoľvek otázok ma môžete kontaktovať na tomto e-maile.
 
-s pozdravom
-[meno a priezvisko]
-klik">
+s pozdravom">
 <div class="tpl-h"><div><h3>Vizitka: kontakt na mňa</h3><small>Na konci hovoru alebo v e-maile</small></div><button type="button" class="tpl-copy" data-l="Kopírovať">Kopírovať</button></div>
-<div class="tpl-text">Dobrý deň, <span class="ph">[oslovenie]</span>,
+<div class="tpl-text">Dobrý deň,
 
 ďakujem za hovor. V prípade akýchkoľvek otázok ma môžete kontaktovať na tomto e-maile.
 
-S pozdravom
-<span class="ph">[Meno a priezvisko]</span>
-Klik</div></div>
-<div class="tpl" data-s="šablóna správa e-mail vinkulácia: čo mi pošlite keď klient chce poistenie vinkulovať v prospech banky dobrý deň, [oslovenie],
+S pozdravom</div></div>
+<div class="tpl" data-s="šablóna správa e-mail vinkulácia: čo mi pošlite keď klient chce poistenie vinkulovať v prospech banky dobrý deň,
 
 k vinkulácii poistenia v prospech vašej banky prosím zašlite na tento e-mail:
 1. vinkulačné tlačivá od vašej banky (ak ich banka vyžaduje),
@@ -455,11 +480,9 @@ k vinkulácii poistenia v prospech vašej banky prosím zašlite na tento e-mail
 
 po ich doručení vinkuláciu potvrdíme u poisťovne a potvrdenie zašleme vám, prípadne priamo banke.
 
-s pozdravom
-[meno a priezvisko]
-klik">
+s pozdravom">
 <div class="tpl-h"><div><h3>Vinkulácia: čo mi pošlite</h3><small>Keď klient chce poistenie vinkulovať v prospech banky</small></div><button type="button" class="tpl-copy" data-l="Kopírovať">Kopírovať</button></div>
-<div class="tpl-text">Dobrý deň, <span class="ph">[oslovenie]</span>,
+<div class="tpl-text">Dobrý deň,
 
 k vinkulácii poistenia v prospech vašej banky prosím zašlite na tento e-mail:
 1. vinkulačné tlačivá od vašej banky (ak ich banka vyžaduje),
@@ -467,72 +490,24 @@ k vinkulácii poistenia v prospech vašej banky prosím zašlite na tento e-mail
 
 Po ich doručení vinkuláciu potvrdíme u poisťovne a potvrdenie zašleme vám, prípadne priamo banke.
 
-S pozdravom
-<span class="ph">[Meno a priezvisko]</span>
-Klik</div></div>
-<div class="tpl" data-s="šablóna správa e-mail e-mail po hovore po dojednaní, spolu so zmluvou dobrý deň, [oslovenie],
+S pozdravom</div></div>
+<div class="tpl" data-s="šablóna správa e-mail výpoveď pôvodného poistenia keď klient mení poisťovňu a treba vypovedať staré poistenie dobrý deň,
 
-ďakujem za hovor. ako sme sa dohodli, v prílohe posielam zmluvu, poistné podmienky, záznam z rokovania a platobné údaje.
-
-pred úhradou si prosím skontrolujte všetky údaje na zmluve. ak niečo nesedí, napíšte mi na tento e-mail.
-
-poistné odporúčame uhradiť do 5 dní od dojednania, najneskôr však do [dátum splatnosti podľa poisťovne].
-
-s pozdravom
-[meno a priezvisko]
-klik">
-<div class="tpl-h"><div><h3>E-mail po hovore</h3><small>Po dojednaní, spolu so zmluvou</small></div><button type="button" class="tpl-copy" data-l="Kopírovať">Kopírovať</button></div>
-<div class="tpl-text">Dobrý deň, <span class="ph">[oslovenie]</span>,
-
-ďakujem za hovor. Ako sme sa dohodli, v prílohe posielam zmluvu, poistné podmienky, záznam z rokovania a platobné údaje.
-
-Pred úhradou si prosím skontrolujte všetky údaje na zmluve. Ak niečo nesedí, napíšte mi na tento e-mail.
-
-Poistné odporúčame uhradiť do 5 dní od dojednania, najneskôr však do <span class="ph">[dátum splatnosti podľa poisťovne]</span>.
-
-S pozdravom
-<span class="ph">[Meno a priezvisko]</span>
-Klik</div></div>
-<div class="tpl" data-s="šablóna správa e-mail pripomienka platby keď sa blíži splatnosť dobrý deň, [oslovenie],
-
-pripomíname, že poistné k vašej zmluve je potrebné uhradiť do [dátum splatnosti]. platobné údaje nájdete v e-maile, ktorý sme vám poslali po dojednaní.
-
-ak ste už uhradili, tento e-mail prosím ignorujte. v prípade otázok mi napíšte na tento e-mail.
-
-s pozdravom
-[meno a priezvisko]
-klik">
-<div class="tpl-h"><div><h3>Pripomienka platby</h3><small>Keď sa blíži splatnosť</small></div><button type="button" class="tpl-copy" data-l="Kopírovať">Kopírovať</button></div>
-<div class="tpl-text">Dobrý deň, <span class="ph">[oslovenie]</span>,
-
-pripomíname, že poistné k vašej zmluve je potrebné uhradiť do <span class="ph">[dátum splatnosti]</span>. Platobné údaje nájdete v e-maile, ktorý sme vám poslali po dojednaní.
-
-Ak ste už uhradili, tento e-mail prosím ignorujte. V prípade otázok mi napíšte na tento e-mail.
-
-S pozdravom
-<span class="ph">[Meno a priezvisko]</span>
-Klik</div></div>
-<div class="tpl" data-s="šablóna správa e-mail výpoveď pôvodného poistenia keď klient mení poisťovňu a treba vypovedať staré poistenie dobrý deň, [oslovenie],
-
-k výpovedi pôvodného poistenia: výpoveď musí byť poisťovni doručená najneskôr 6 týždňov pred výročím zmluvy ([dátum výročia]), teda najneskôr do [dátum].
+k výpovedi pôvodného poistenia: výpoveď musí byť poisťovni doručená najneskôr 6 týždňov pred výročím zmluvy.
 
 vzor výpovede nájdete tu:
 https://www.netfinancie.com/vypoved-poistnej-zmluvy/poistenie-nehnutelnosti/
 
-s pozdravom
-[meno a priezvisko]
-klik">
+s pozdravom">
 <div class="tpl-h"><div><h3>Výpoveď pôvodného poistenia</h3><small>Keď klient mení poisťovňu a treba vypovedať staré poistenie</small></div><button type="button" class="tpl-copy" data-l="Kopírovať">Kopírovať</button></div>
-<div class="tpl-text">Dobrý deň, <span class="ph">[oslovenie]</span>,
+<div class="tpl-text">Dobrý deň,
 
-k výpovedi pôvodného poistenia: výpoveď musí byť poisťovni doručená najneskôr 6 týždňov pred výročím zmluvy (<span class="ph">[dátum výročia]</span>), teda najneskôr do <span class="ph">[dátum]</span>.
+k výpovedi pôvodného poistenia: výpoveď musí byť poisťovni doručená najneskôr 6 týždňov pred výročím zmluvy.
 
 Vzor výpovede nájdete tu:
 https://www.netfinancie.com/vypoved-poistnej-zmluvy/poistenie-nehnutelnosti/
 
-S pozdravom
-<span class="ph">[Meno a priezvisko]</span>
-Klik</div></div>
+S pozdravom</div></div>
       </div>
     </div>
 
@@ -600,6 +575,9 @@ function switchTab(tabId) {
 
   if (activePage) activePage.classList.add('active');
   if (activeNav) activeNav.classList.add('active');
+  document.querySelectorAll('.side button').forEach(function(b){ b.classList.remove('active'); });
+  var activeSide = document.getElementById('side-' + tabId);
+  if (activeSide) activeSide.classList.add('active');
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -736,24 +714,21 @@ function switchTab(tabId) {
   }
   if(an){an.addEventListener('input',calcAn);calcAn();}
 
-  // --- Kalkulačka splatnosti (lehoty sa čítajú z kariet v záložke Splatnosti) ---
-  var pc=$('pay-close'), ps=$('pay-start'), body=$('pay-body'), reco=$('pay-reco'), btn=$('pay-today');
+  // --- Kalkulačka splatnosti (lehoty sa čítajú z kariet v záložke Splatnosti, výsledok sa zapíše do každej karty) ---
+  var pc=$('pay-close'), ps=$('pay-start'), reco=$('pay-reco'), btn=$('pay-today');
   var closeTouched=false, startTouched=false;
-  function insurers(){
-    return [].slice.call(document.querySelectorAll('#tab-splatnosti .sp')).map(function(el){
-      var b=el.querySelector('b'), c=el.querySelector('.chip');
-      return {name:b?b.textContent:'', days:c?parseInt(c.textContent,10):NaN, type:el.classList.contains('uz')?'uz':'zac'};
-    }).filter(function(x){return x.name && !isNaN(x.days);});
-  }
   function calcPay(){
-    if(!pc||!ps||!body)return;
-    var close=parse(pc.value), start=parse(ps.value), h='';
+    if(!pc||!ps)return;
+    var close=parse(pc.value), start=parse(ps.value);
     reco.innerHTML=close?('Naše odporúčanie: uhradiť do <b>'+fmt(addDays(close,5))+'</b> (5 dní od dojednania).'):'Zadaj dátum uzatvorenia.';
-    insurers().forEach(function(x){
-      var base=(x.type==='uz')?close:start, due=base?fmt(addDays(base,x.days)):'—';
-      h+='<tr><td>'+x.name+'</td><td>'+x.days+' dní od '+(x.type==='uz'?'uzatvorenia':'začiatku poistenia')+'</td><td>'+due+'</td></tr>';
+    [].slice.call(document.querySelectorAll('#tab-splatnosti .sp')).forEach(function(el){
+      var c=el.querySelector('.chip'), days=c?parseInt(c.textContent,10):NaN;
+      if(isNaN(days))return;
+      var base=el.classList.contains('uz')?close:start;
+      var d=el.querySelector('.due');
+      if(!d){d=document.createElement('div');d.className='due';el.appendChild(d);}
+      d.innerHTML='<small>Najneskôr do</small><b>'+(base?fmt(addDays(base,days)):'—')+'</b>';
     });
-    body.innerHTML=h;
   }
   function setToday(){var t=iso(today());pc.value=t;ps.value=t;}
   if(pc&&ps){
