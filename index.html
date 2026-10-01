@@ -124,7 +124,6 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
 .tl-h h3{margin:0;font-size:20px;font-family:Sora,Inter,sans-serif;letter-spacing:-.02em}
 .tl-chips{display:flex;gap:6px;flex-wrap:wrap}
 .tl-chip{font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--bg);color:var(--muted);border:1px solid var(--line)}
-.tl-chip.ko{color:var(--bad);border-color:var(--bad)}
 .tl-chip.chk{background:var(--warnbg);color:var(--ink)}
 .tl-say{margin:0 0 12px;padding:0;list-style:none}
 .tl-say li{position:relative;padding-left:20px;margin-bottom:6px;font-size:16px;line-height:1.5}
@@ -225,7 +224,7 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
 <button type="button" id="side-vinkulacie" onclick="switchTab('vinkulacie')"><span class="si">🏦</span>Vinkulácie</button>
 <button type="button" id="side-kalkulacka" onclick="switchTab('kalkulacka')"><span class="si">🧮</span>Kalkulačka podpoistenia</button>
 <button type="button" id="side-hovor" onclick="switchTab('hovor')"><span class="si">🎯</span>Skript hovoru</button>
-<button type="button" id="side-sablony" onclick="switchTab('sablony')"><span class="si">✉️️</span>Šablóny</button>
+<button type="button" id="side-sablony" onclick="switchTab('sablony')"><span class="si">✉</span>Šablóny</button>
 <button type="button" id="side-statusy" onclick="switchTab('statusy')"><span class="si">🔄</span>Statusy</button>
 <button type="button" id="side-majetok" onclick="switchTab('majetok')"><span class="si">🏠</span>Majetok</button>
 </aside>
@@ -423,22 +422,22 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
 <p class="tl-warn">🚫 Nevynechaj výročie, poisťovňu, cenu ani obsah.</p><p class="tl-tip">Zmluva z minulého roka: stačia cenotvorné údaje. Staršia ako 2 roky: over aj súčasné poistenie.</p></div></li>
 <li class="tl-step" data-s="čo sa bude počítať „budeme riešiť nehnuteľnosť, domácnosť alebo oboje?“ „nehnuteľnosť kryje stavbu, domácnosť vybavenie vo vnútri.“ ak klient odmietne: argumentuj, prečo poistiť oboje. nepočítaj len jedno. ponúkni prepočet domácnosti aj nehnuteľnosti. pri nehnuteľnosti na prenájom domácnosť nehodnotíme.">
 <label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Čo sa bude počítať"><span>3</span></label>
-<div class="tl-card"><div class="tl-h"><h3>Čo sa bude počítať</h3><div class="tl-chips"><span class="tl-chip">bod 3</span><span class="tl-chip ko">KO −20 %</span></div></div>
+<div class="tl-card"><div class="tl-h"><h3>Čo sa bude počítať</h3><div class="tl-chips"><span class="tl-chip">bod 3</span></div></div>
 <ul class="tl-say"><li>„Budeme riešiť <b>nehnuteľnosť, domácnosť alebo oboje</b>?“</li><li>„Nehnuteľnosť kryje stavbu, domácnosť vybavenie vo vnútri.“</li><li>Ak klient odmietne: argumentuj, prečo poistiť <b>oboje</b>.</li></ul>
 <p class="tl-warn">🚫 Nepočítaj len jedno. Ponúkni prepočet domácnosti aj nehnuteľnosti.</p><p class="tl-tip">Pri nehnuteľnosti na prenájom domácnosť nehodnotíme.</p></div></li>
 <li class="tl-step" data-s="potreby, riziká a pripoistenia skontroluj údaje o klientovi a o nehnuteľnosti/domácnosti. over poistnú sumu a pri nehnuteľnosti aj účel využitia. prejdi s klientom riziká a pripoistenia: každé vysvetli a odprezentuj. nepreskakuj údaje, poistnú sumu ani riziká a pripoistenia.">
 <label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Potreby, riziká a pripoistenia"><span>4</span></label>
-<div class="tl-card"><div class="tl-h"><h3>Potreby, riziká a pripoistenia</h3><div class="tl-chips"><span class="tl-chip">bod 4 + 5</span><span class="tl-chip ko">KO −20 %</span><span class="tl-chip chk">⚠ overiť</span></div></div>
+<div class="tl-card"><div class="tl-h"><h3>Potreby, riziká a pripoistenia</h3><div class="tl-chips"><span class="tl-chip">bod 4 + 5</span><span class="tl-chip chk">⚠ overiť</span></div></div>
 <ul class="tl-say"><li>Skontroluj <b>údaje o klientovi</b> a <b>o nehnuteľnosti/domácnosti</b>.</li><li>Over <b>poistnú sumu</b> a pri nehnuteľnosti aj <b>účel využitia</b>.</li><li>Prejdi s klientom <b>riziká a pripoistenia</b>: každé <b>vysvetli a odprezentuj</b>.</li></ul>
 <p class="tl-warn">🚫 Nepreskakuj údaje, poistnú sumu ani riziká a pripoistenia.</p></div></li>
 <li class="tl-step" data-s="prezentácia produktu povedz päť vecí: poisťovňa, obsah, limity, spoluúčasť, cena. „ponúkam poistenie v … za … €, kryje …, spoluúčasť …“ hovor stručne a prehľadne. nezatajuj lacnejší produkt, keď sa klient pýta na nižšiu cenu.">
 <label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Prezentácia produktu"><span>5</span></label>
-<div class="tl-card"><div class="tl-h"><h3>Prezentácia produktu</h3><div class="tl-chips"><span class="tl-chip">bod 6</span><span class="tl-chip ko">KO −20 %</span></div></div>
+<div class="tl-card"><div class="tl-h"><h3>Prezentácia produktu</h3><div class="tl-chips"><span class="tl-chip">bod 6</span></div></div>
 <ul class="tl-say"><li>Povedz päť vecí: <b>poisťovňa, obsah, limity, spoluúčasť, cena</b>.</li><li>„Ponúkam poistenie v … za … €, kryje …, spoluúčasť …“</li><li>Hovor <b>stručne a prehľadne</b>.</li></ul>
 <p class="tl-warn">🚫 Nezatajuj lacnejší produkt, keď sa klient pýta na nižšiu cenu.</p></div></li>
 <li class="tl-step" data-s="ťah na bránku „ponuka je pripravená, môžeme ju uzavrieť hneď.“ pri negácii argumentuj ešte pred odoslaním ponúk. ak stále nie: odlož max. na druhý deň a zapíš do kalendára. neposielaj ponuku e-mailom bez snahy o predaj.">
 <label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Ťah na bránku"><span>6</span></label>
-<div class="tl-card"><div class="tl-h"><h3>Ťah na bránku</h3><div class="tl-chips"><span class="tl-chip">bod 7</span><span class="tl-chip ko">KO −30 %</span><span class="tl-chip chk">⚠ overiť</span></div></div>
+<div class="tl-card"><div class="tl-h"><h3>Ťah na bránku</h3><div class="tl-chips"><span class="tl-chip">bod 7</span><span class="tl-chip chk">⚠ overiť</span></div></div>
 <ul class="tl-say"><li>„Ponuka je pripravená, môžeme ju <b>uzavrieť hneď</b>.“</li><li>Pri negácii argumentuj <b>ešte pred odoslaním ponúk</b>.</li><li>Ak stále nie: odlož <b>max. na druhý deň</b> a zapíš do kalendára.</li></ul>
 <p class="tl-warn">🚫 Neposielaj ponuku e-mailom bez snahy o predaj.</p></div></li>
 <li class="tl-step" data-s="pred exportom a záver „zmluvu, podmienky, záznam z rokovania a platobné údaje vám pošleme e-mailom.“ (poštou na žiadosť) dorieš výpoveď pôvodného poistenia: 6 týždňov pred výročím / 14 dní od dojednania online / do 2 mesiacov na pobočke. „pred úhradou si skontrolujte všetky údaje na zmluve.“ nezabudni na výpoveď a kontrolu údajov pred úhradou.">
@@ -448,21 +447,21 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
 <p class="tl-warn">🚫 Nezabudni na výpoveď a kontrolu údajov pred úhradou.</p></div></li>
 <li class="tl-step" data-s="platba „poistné odporúčame uhradiť do 5 dní od dojednania. kedy a ako budete platiť?“ každá poisťovňa má inú splatnosť (pozri splatnosti). päť dní je len naše odporúčanie. ak nie do 5 dní: dopytaj sa na dátum. neponúkaj hneď odloženie platby k počiatku. pri počiatku v deň exportu je platba obratom nutná. zloženky nezasielame.">
 <label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Platba"><span>8</span></label>
-<div class="tl-card"><div class="tl-h"><h3>Platba</h3><div class="tl-chips"><span class="tl-chip">bod 11</span><span class="tl-chip ko">KO −20 %</span></div></div>
+<div class="tl-card"><div class="tl-h"><h3>Platba</h3><div class="tl-chips"><span class="tl-chip">bod 11</span></div></div>
 <ul class="tl-say"><li>„Poistné odporúčame uhradiť <b>do 5 dní od dojednania</b>. <b>Kedy a ako</b> budete platiť?“</li><li>Každá poisťovňa má <b>inú splatnosť</b> (pozri <a class="tl-link" onclick="switchTab('splatnosti')">Splatnosti</a>). Päť dní je len naše odporúčanie.</li><li>Ak nie do 5 dní: dopytaj sa na <b>dátum</b>.</li></ul>
 <p class="tl-warn">🚫 Neponúkaj hneď odloženie platby k počiatku.</p><p class="tl-tip">Pri počiatku v deň exportu je platba obratom nutná. Zloženky nezasielame.</p></div></li>
 <li class="tl-step" data-s="maximalizácia „máte ešte ďalšiu nehnuteľnosť, ktorú by sme poistili?“ ak áno, prepočet, alebo aspoň výročie na poptávku. pri negácii argumentuj. nezabudni sa opýtať na ďalšiu nehnuteľnosť.">
 <label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Maximalizácia"><span>9</span></label>
-<div class="tl-card"><div class="tl-h"><h3>Maximalizácia</h3><div class="tl-chips"><span class="tl-chip">bod 12</span><span class="tl-chip ko">KO −20 %</span></div></div>
+<div class="tl-card"><div class="tl-h"><h3>Maximalizácia</h3><div class="tl-chips"><span class="tl-chip">bod 12</span></div></div>
 <ul class="tl-say"><li>„Máte ešte <b>ďalšiu nehnuteľnosť</b>, ktorú by sme poistili?“ Ak áno, prepočet, alebo aspoň výročie na poptávku.</li><li>Pri negácii <b>argumentuj</b>.</li></ul>
 <p class="tl-warn">🚫 Nezabudni sa opýtať na ďalšiu nehnuteľnosť.</p></div></li>
 <li class="tl-step" data-s="poznámka a kalendár zapíš: stav ps, výročie, súčasné poistenie, domácnosť/nehnuteľnosť, čo klient rieši. ak klient neuzavrel: odlož ho vždy 3 mesiace pred výročím. nevynechaj nič z poznámky. odlož presne 3 mesiace pred výročím. ps = poistná zmluva.">
 <label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Poznámka a kalendár"><span>10</span></label>
-<div class="tl-card"><div class="tl-h"><h3>Poznámka a kalendár</h3><div class="tl-chips"><span class="tl-chip">bod 8</span><span class="tl-chip ko">KO −10 %</span></div></div>
+<div class="tl-card"><div class="tl-h"><h3>Poznámka a kalendár</h3><div class="tl-chips"><span class="tl-chip">bod 8</span></div></div>
 <ul class="tl-say"><li>Zapíš: <b>stav PS, výročie, súčasné poistenie, domácnosť/nehnuteľnosť, čo klient rieši</b>.</li><li>Ak klient neuzavrel: odlož ho <b>vždy 3 mesiace pred výročím</b>.</li></ul>
 <p class="tl-warn">🚫 Nevynechaj nič z poznámky. Odlož presne 3 mesiace pred výročím.</p><p class="tl-tip">PS = poistná zmluva.</p></div></li>
       </ol>
-      <p class="tl-end" data-s="celý hovor prístup ke klientovi korektne vulgarizmy pomluva návrh zmluvy vinkulácia">🤝 <b>Celý hovor:</b> jednaj korektne a na úrovni. Bez vulgarizmov, pomlúvania konkurencie a skákania do reči. Návrh zmluvy je OK iba pri vinkulácii.</p>
+      <p class="tl-end" data-s="celý hovor prístup ke klientovi korektne vulgarizmy pomluva návrh zmluvy vinkulácia">🤝 <b>Celý hovor:</b> jednaj korektne a na úrovni. Bez vulgarizmov, pomlúvania konkurencie a skákania do reči.</p>
     </div>
 
     <!-- TAB: ŠABLÓNY -->
@@ -508,7 +507,7 @@ vzor výpovede nájdete tu:
 https://www.netfinancie.com/vypoved-poistnej-zmluvy/poistenie-nehnutelnosti/
 
 s pozdravom">
-<div class="tpl-h"><div><h3>Výpoveď pôvodného poistenia</h3><small>Keď klient mení poisťovňu a treba vypovedať staré poistenie</small></div><div class="tpl-act"><a class="tpl-web" href="#" target="_blank" rel="noopener" title="Otvorí nový e-mail v Outlooku s vyplneným predmetom a textom">✉️ Outlook</a><button type="button" class="tpl-copy" data-l="Kopírovať">Kopírovať</button></div></div>
+<div class="tpl-h"><div><h3>Výpoveď pôvodného poistenia</h3><small>Keď klient mení poisťovňu a treba vypovedať staré poistenie</small></div><div class="tpl-act"><a class="tpl-web" href="#" target="_blank" rel="noopener" title="Otvorí nový e-mail v Outlooku s vyplneným predmetom a textom">✉️️ Outlook</a><button type="button" class="tpl-copy" data-l="Kopírovať">Kopírovať</button></div></div>
 <div class="tpl-text">Dobrý deň,
 
 k výpovedi pôvodného poistenia: výpoveď musí byť poisťovni doručená najneskôr 6 týždňov pred výročím zmluvy.
@@ -715,13 +714,15 @@ function switchTab(tabId) {
     
     // Kontrola, či sa výpoveď ešte stíha (dnes je pred alebo v deň deadlinu)
     var canCancel = dead >= t;
-    var tileStyle = canCancel ? 'background: var(--okbg);' : 'background: var(--warnbg);';
+    
+    // Jasne krikľavo zelená vs jasne výrazne červená pre pravú tabuľku/dlaždicu
+    var tileStyle = canCancel ? 'background: #00ff00; color: #000;' : 'background: #ff0000; color: #fff;';
 
     if(rolled)h+='<p class="dc-hint">Zadaný dátum už prebehol, počítam k najbližšiemu výročiu.</p>';
     h+='<p class="dc-hint">Najbližšie výročie: <b>'+fmt(ann)+'</b> ('+rel(ann,t)+')</p>';
     h+='<div class="dc-tiles">'
-      +'<div class="dc-tile"><small>Poznačiť 3 mesiace pred výročím</small><b>'+fmt(post)+'</b><span>'+rel(post,t)+'</span></div>'
-      +'<div class="dc-tile" style="'+tileStyle+'"><small>Výpoveď doručiť najneskôr (6 týždňov pred výročím)</small><b>'+fmt(dead)+'</b><span>'+rel(dead,t)+'</span></div></div>';
+      +'<div class="dc-tile"><small>Poznačiť kontakt 3 mesiace pred výročím</small><b>'+fmt(post)+'</b><span>'+rel(post,t)+'</span></div>'
+      +'<div class="dc-tile" style="'+tileStyle+'"><small style="color:inherit">Výpoveď doručiť najneskôr (6 týždňov pred výročím)</small><b style="color:inherit">'+fmt(dead)+'</b><span style="color:inherit">'+rel(dead,t)+'</span></div></div>';
     if(dead<t)h+='<p class="dc-warn">⚠️ Termín na výpoveď k tomuto výročiu už uplynul.</p>';
     if(post<t)h+='<p class="dc-warn">⚠️ Dátum odloženia už prešiel.</p>';
     anOut.innerHTML=h;
