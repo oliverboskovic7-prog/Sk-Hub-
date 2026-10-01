@@ -129,6 +129,7 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
 .tl-say li{position:relative;padding-left:20px;margin-bottom:6px;font-size:16px;line-height:1.5}
 .tl-say li::before{content:"";position:absolute;left:3px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--pink)}
 .tl-warn{margin:0;background:var(--warnbg);border-radius:10px;padding:8px 12px;font-size:14px;font-weight:600}
+.tl-link{cursor:pointer;font-weight:600}
 .tl-tip{margin:8px 0 0;font-size:13px;color:var(--muted)}
 .tl-end{background:var(--pink-soft);border-radius:14px;padding:14px 20px;margin:8px 0 0}
 @media(max-width:560px){.tl-step{gap:10px}.tl-n span{width:34px;height:34px}.tl::before{left:16px}.tl-card{padding:14px}}
@@ -310,7 +311,7 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
     <div id="tab-hovor" class="tab-page">
       <div class="tl-top">
         <div><h2>Skript hovoru</h2><p class="sub">Choď zhora nadol. Klikni na číslo, keď máš krok hotový. „Bod“ je číslo v hodnotiacom formulári.</p></div>
-        <div class="tl-tools"><span><b id="tl-count">0</b> / 12</span><button type="button" class="tl-btn" id="tl-reset">Nový hovor</button></div>
+        <div class="tl-tools"><span><b id="tl-count">0</b> / 10</span><button type="button" class="tl-btn" id="tl-reset">Nový hovor</button></div>
       </div>
       <ol class="tl">
 <li class="tl-step" data-s="úvod „dobrý deň, volám sa … zo spoločnosti klik.“ „hovor je monitorovaný.“ „najprv si overíme údaje o vás a o nehnuteľnosti/domácnosti, potom vám prepočítam ponuky.“ nezabudni na meno, firmu, monitoring a štruktúru hovoru.">
@@ -318,61 +319,51 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
 <div class="tl-card"><div class="tl-h"><h3>Úvod</h3><div class="tl-chips"><span class="tl-chip">bod 1</span></div></div>
 <ul class="tl-say"><li>„Dobrý deň, volám sa … zo spoločnosti Klik.“</li><li>„Hovor je <b>monitorovaný</b>.“</li><li>„Najprv si overíme <b>údaje o vás a o nehnuteľnosti/domácnosti</b>, potom vám prepočítam ponuky.“</li></ul>
 <p class="tl-warn">🚫 Nezabudni na meno, firmu, monitoring a štruktúru hovoru.</p></div></li>
-<li class="tl-step" data-s="overenie klienta „hovorím s poistníkom / vlastníkom nehnuteľnosti?“ ak volá iná osoba: „súhlasí poistník s kalkuláciou, zmluvou a spracovaním údajov?“ nevynechaj súhlas poistníka, ak volá iná osoba. pri poistení domácnosti u nájmu poistník overený byť nemusí.">
-<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Overenie klienta"><span>2</span></label>
-<div class="tl-card"><div class="tl-h"><h3>Overenie klienta</h3><div class="tl-chips"><span class="tl-chip">bod 9</span><span class="tl-chip ko">KO −20 %</span></div></div>
-<ul class="tl-say"><li>„Hovorím s <b>poistníkom</b> / <b>vlastníkom</b> nehnuteľnosti?“</li><li>Ak volá iná osoba: „Súhlasí poistník s <b>kalkuláciou, zmluvou a spracovaním údajov</b>?“</li></ul>
-<p class="tl-warn">🚫 Nevynechaj súhlas poistníka, ak volá iná osoba.</p><p class="tl-tip">Pri poistení domácnosti u nájmu poistník overený byť nemusí.</p></div></li>
 <li class="tl-step" data-s="súčasné poistenie „ide o novú zmluvu (kúpa/prepis), alebo zmenu poistenia?“ pri zmene, pred ponukou: „kedy máte výročie?“ „v akej ste poisťovni, čo to obsahuje a koľko platíte?“ nevynechaj výročie, poisťovňu, cenu ani obsah. zmluva z minulého roka: stačia cenotvorné údaje. staršia ako 2 roky: over aj súčasné poistenie.">
-<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Súčasné poistenie"><span>3</span></label>
+<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Súčasné poistenie"><span>2</span></label>
 <div class="tl-card"><div class="tl-h"><h3>Súčasné poistenie</h3><div class="tl-chips"><span class="tl-chip">bod 2</span></div></div>
 <ul class="tl-say"><li>„Ide o <b>novú zmluvu</b> (kúpa/prepis), alebo <b>zmenu</b> poistenia?“</li><li>Pri zmene, pred ponukou: „Kedy máte <b>výročie</b>?“</li><li>„V akej ste <b>poisťovni</b>, čo to <b>obsahuje</b> a koľko <b>platíte</b>?“</li></ul>
 <p class="tl-warn">🚫 Nevynechaj výročie, poisťovňu, cenu ani obsah.</p><p class="tl-tip">Zmluva z minulého roka: stačia cenotvorné údaje. Staršia ako 2 roky: over aj súčasné poistenie.</p></div></li>
 <li class="tl-step" data-s="čo sa bude počítať „budeme riešiť nehnuteľnosť, domácnosť alebo oboje?“ „nehnuteľnosť kryje stavbu, domácnosť vybavenie vo vnútri.“ ak klient odmietne: argumentuj, prečo poistiť oboje. nepočítaj len jedno. ponúkni prepočet domácnosti aj nehnuteľnosti. pri nehnuteľnosti na prenájom domácnosť nehodnotíme.">
-<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Čo sa bude počítať"><span>4</span></label>
+<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Čo sa bude počítať"><span>3</span></label>
 <div class="tl-card"><div class="tl-h"><h3>Čo sa bude počítať</h3><div class="tl-chips"><span class="tl-chip">bod 3</span><span class="tl-chip ko">KO −20 %</span></div></div>
 <ul class="tl-say"><li>„Budeme riešiť <b>nehnuteľnosť, domácnosť alebo oboje</b>?“</li><li>„Nehnuteľnosť kryje stavbu, domácnosť vybavenie vo vnútri.“</li><li>Ak klient odmietne: argumentuj, prečo poistiť <b>oboje</b>.</li></ul>
 <p class="tl-warn">🚫 Nepočítaj len jedno. Ponúkni prepočet domácnosti aj nehnuteľnosti.</p><p class="tl-tip">Pri nehnuteľnosti na prenájom domácnosť nehodnotíme.</p></div></li>
-<li class="tl-step" data-s="potreby a cenotvorné údaje „aké riziká chcete mať poistené?“ skontroluj údaje o klientovi a o nehnuteľnosti/domácnosti. over poistnú sumu a pri nehnuteľnosti aj účel využitia. nepreskakuj poistnú sumu, účel ani cenotvorné údaje.">
-<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Potreby a cenotvorné údaje"><span>5</span></label>
-<div class="tl-card"><div class="tl-h"><h3>Potreby a cenotvorné údaje</h3><div class="tl-chips"><span class="tl-chip">bod 4</span><span class="tl-chip ko">KO −20 %</span></div></div>
-<ul class="tl-say"><li>„Aké <b>riziká</b> chcete mať poistené?“</li><li>Skontroluj <b>údaje o klientovi</b> a <b>o nehnuteľnosti/domácnosti</b>.</li><li>Over <b>poistnú sumu</b> a pri nehnuteľnosti aj <b>účel využitia</b>.</li></ul>
-<p class="tl-warn">🚫 Nepreskakuj poistnú sumu, účel ani cenotvorné údaje.</p></div></li>
-<li class="tl-step" data-s="pripoistenie „k poisteniu viem ponúknuť aj pripoistenia, prejdem vám ich.“ pripoistenia korektne prezentuj. neskonči bez ponuky pripoistenia.">
-<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Pripoistenie"><span>6</span></label>
-<div class="tl-card"><div class="tl-h"><h3>Pripoistenie</h3><div class="tl-chips"><span class="tl-chip">bod 5</span><span class="tl-chip ko">KO −20 %</span><span class="tl-chip chk">⚠ overiť</span></div></div>
-<ul class="tl-say"><li>„K poisteniu viem ponúknuť aj <b>pripoistenia</b>, prejdem vám ich.“</li><li>Pripoistenia <b>korektne prezentuj</b>.</li></ul>
-<p class="tl-warn">🚫 Neskonči bez ponuky pripoistenia.</p></div></li>
+<li class="tl-step" data-s="potreby, riziká a pripoistenia skontroluj údaje o klientovi a o nehnuteľnosti/domácnosti. over poistnú sumu a pri nehnuteľnosti aj účel využitia. prejdi s klientom riziká a pripoistenia: každé vysvetli a odprezentuj. nepreskakuj údaje, poistnú sumu ani riziká a pripoistenia.">
+<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Potreby, riziká a pripoistenia"><span>4</span></label>
+<div class="tl-card"><div class="tl-h"><h3>Potreby, riziká a pripoistenia</h3><div class="tl-chips"><span class="tl-chip">bod 4 + 5</span><span class="tl-chip ko">KO −20 %</span><span class="tl-chip chk">⚠ overiť</span></div></div>
+<ul class="tl-say"><li>Skontroluj <b>údaje o klientovi</b> a <b>o nehnuteľnosti/domácnosti</b>.</li><li>Over <b>poistnú sumu</b> a pri nehnuteľnosti aj <b>účel využitia</b>.</li><li>Prejdi s klientom <b>riziká a pripoistenia</b>: každé <b>vysvetli a odprezentuj</b>.</li></ul>
+<p class="tl-warn">🚫 Nepreskakuj údaje, poistnú sumu ani riziká a pripoistenia.</p></div></li>
 <li class="tl-step" data-s="prezentácia produktu povedz päť vecí: poisťovňa, obsah, limity, spoluúčasť, cena. „ponúkam poistenie v … za … €, kryje …, spoluúčasť …“ hovor stručne a prehľadne. nezatajuj lacnejší produkt, keď sa klient pýta na nižšiu cenu.">
-<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Prezentácia produktu"><span>7</span></label>
+<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Prezentácia produktu"><span>5</span></label>
 <div class="tl-card"><div class="tl-h"><h3>Prezentácia produktu</h3><div class="tl-chips"><span class="tl-chip">bod 6</span><span class="tl-chip ko">KO −20 %</span></div></div>
 <ul class="tl-say"><li>Povedz päť vecí: <b>poisťovňa, obsah, limity, spoluúčasť, cena</b>.</li><li>„Ponúkam poistenie v … za … €, kryje …, spoluúčasť …“</li><li>Hovor <b>stručne a prehľadne</b>.</li></ul>
 <p class="tl-warn">🚫 Nezatajuj lacnejší produkt, keď sa klient pýta na nižšiu cenu.</p></div></li>
 <li class="tl-step" data-s="ťah na bránku „ponuka je pripravená, môžeme ju uzavrieť hneď.“ pri negácii argumentuj ešte pred odoslaním ponúk. ak stále nie: odlož max. na druhý deň a zapíš do kalendára. neposielaj ponuku e-mailom bez snahy o predaj.">
-<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Ťah na bránku"><span>8</span></label>
+<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Ťah na bránku"><span>6</span></label>
 <div class="tl-card"><div class="tl-h"><h3>Ťah na bránku</h3><div class="tl-chips"><span class="tl-chip">bod 7</span><span class="tl-chip ko">KO −30 %</span><span class="tl-chip chk">⚠ overiť</span></div></div>
 <ul class="tl-say"><li>„Ponuka je pripravená, môžeme ju <b>uzavrieť hneď</b>.“</li><li>Pri negácii argumentuj <b>ešte pred odoslaním ponúk</b>.</li><li>Ak stále nie: odlož <b>max. na druhý deň</b> a zapíš do kalendára.</li></ul>
 <p class="tl-warn">🚫 Neposielaj ponuku e-mailom bez snahy o predaj.</p></div></li>
 <li class="tl-step" data-s="pred exportom a záver „zmluvu, podmienky, záznam z rokovania a platobné údaje vám pošleme e-mailom.“ (poštou na žiadosť) dorieš výpoveď pôvodného poistenia: 6 týždňov pred výročím / 14 dní od dojednania online / do 2 mesiacov na pobočke. „pred úhradou si skontrolujte všetky údaje na zmluve.“ nezabudni na výpoveď a kontrolu údajov pred úhradou.">
-<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Pred exportom a záver"><span>9</span></label>
+<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Pred exportom a záver"><span>7</span></label>
 <div class="tl-card"><div class="tl-h"><h3>Pred exportom a záver</h3><div class="tl-chips"><span class="tl-chip">bod 10</span></div></div>
 <ul class="tl-say"><li>„<b>Zmluvu, podmienky, záznam z rokovania a platobné údaje</b> vám pošleme e-mailom.“ (poštou na žiadosť)</li><li>Dorieš <b>výpoveď pôvodného poistenia</b>: <b>6 týždňov pred výročím</b> / <b>14 dní od dojednania online</b> / <b>do 2 mesiacov na pobočke</b>.</li><li>„Pred úhradou si <b>skontrolujte všetky údaje</b> na zmluve.“</li></ul>
 <p class="tl-warn">🚫 Nezabudni na výpoveď a kontrolu údajov pred úhradou.</p></div></li>
-<li class="tl-step" data-s="platba „poistné treba uhradiť obratom, najneskôr do 5 dní. kedy a ako budete platiť?“ odporúčaj kartu (nehrozí chyba v účte, čiastke, symbole). ak nie do 5 dní: dopytaj sa na dátum. povedz o súťaži: úhrada do 2 dní, ideálne kartou. neponúkaj hneď platbu k počiatku. nezabudni na súťaž. pri počiatku v deň exportu je platba obratom nutná. zloženky nezasielame.">
-<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Platba"><span>10</span></label>
+<li class="tl-step" data-s="platba „poistné odporúčame uhradiť do 5 dní od dojednania. kedy a ako budete platiť?“ každá poisťovňa má inú splatnosť (pozri splatnosti). päť dní je len naše odporúčanie. ak nie do 5 dní: dopytaj sa na dátum. neponúkaj hneď odloženie platby k počiatku. pri počiatku v deň exportu je platba obratom nutná. zloženky nezasielame.">
+<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Platba"><span>8</span></label>
 <div class="tl-card"><div class="tl-h"><h3>Platba</h3><div class="tl-chips"><span class="tl-chip">bod 11</span><span class="tl-chip ko">KO −20 %</span></div></div>
-<ul class="tl-say"><li>„Poistné treba uhradiť <b>obratom, najneskôr do 5 dní</b>. <b>Kedy a ako</b> budete platiť?“</li><li>Odporúčaj <b>kartu</b> (nehrozí chyba v účte, čiastke, symbole).</li><li>Ak nie do 5 dní: dopytaj sa na <b>dátum</b>.</li><li>Povedz o <b>súťaži</b>: <b>úhrada do 2 dní</b>, ideálne kartou.</li></ul>
-<p class="tl-warn">🚫 Neponúkaj hneď platbu k počiatku. Nezabudni na súťaž.</p><p class="tl-tip">Pri počiatku v deň exportu je platba obratom nutná. Zloženky nezasielame.</p></div></li>
-<li class="tl-step" data-s="maximalizácia „máte ešte ďalšiu nehnuteľnosť, ktorú by sme poistili?“ ak áno, prepočet, alebo aspoň výročie na poptávku. „riešite aj plyn alebo elektrinu?“ (cross-sell na energie) pri negácii argumentuj. nezabudni na ďalšiu nehnuteľnosť a energie.">
-<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Maximalizácia"><span>11</span></label>
+<ul class="tl-say"><li>„Poistné odporúčame uhradiť <b>do 5 dní od dojednania</b>. <b>Kedy a ako</b> budete platiť?“</li><li>Každá poisťovňa má <b>inú splatnosť</b> (pozri <a class="tl-link" onclick="switchTab('splatnosti')">Splatnosti</a>). Päť dní je len naše odporúčanie.</li><li>Ak nie do 5 dní: dopytaj sa na <b>dátum</b>.</li></ul>
+<p class="tl-warn">🚫 Neponúkaj hneď odloženie platby k počiatku.</p><p class="tl-tip">Pri počiatku v deň exportu je platba obratom nutná. Zloženky nezasielame.</p></div></li>
+<li class="tl-step" data-s="maximalizácia „máte ešte ďalšiu nehnuteľnosť, ktorú by sme poistili?“ ak áno, prepočet, alebo aspoň výročie na poptávku. pri negácii argumentuj. nezabudni sa opýtať na ďalšiu nehnuteľnosť.">
+<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Maximalizácia"><span>9</span></label>
 <div class="tl-card"><div class="tl-h"><h3>Maximalizácia</h3><div class="tl-chips"><span class="tl-chip">bod 12</span><span class="tl-chip ko">KO −20 %</span></div></div>
-<ul class="tl-say"><li>„Máte ešte <b>ďalšiu nehnuteľnosť</b>, ktorú by sme poistili?“ Ak áno, prepočet, alebo aspoň výročie na poptávku.</li><li>„Riešite aj <b>plyn alebo elektrinu</b>?“ (cross-sell na energie)</li><li>Pri negácii <b>argumentuj</b>.</li></ul>
-<p class="tl-warn">🚫 Nezabudni na ďalšiu nehnuteľnosť a energie.</p></div></li>
-<li class="tl-step" data-s="poznámka a kalendár zapíš: stav ps, výročie, súčasné poistenie, domácnosť/nehnuteľnosť, x-sell na energie, čo klient rieši. ak neuzavrel: odlož ho 2–3 mesiace pred výročím. nevynechaj nič z poznámky a nenaplánuj kalendár inam. ps = poistná zmluva.">
-<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Poznámka a kalendár"><span>12</span></label>
+<ul class="tl-say"><li>„Máte ešte <b>ďalšiu nehnuteľnosť</b>, ktorú by sme poistili?“ Ak áno, prepočet, alebo aspoň výročie na poptávku.</li><li>Pri negácii <b>argumentuj</b>.</li></ul>
+<p class="tl-warn">🚫 Nezabudni sa opýtať na ďalšiu nehnuteľnosť.</p></div></li>
+<li class="tl-step" data-s="poznámka a kalendár zapíš: stav ps, výročie, súčasné poistenie, domácnosť/nehnuteľnosť, čo klient rieši. ak klient neuzavrel: odlož ho vždy 3 mesiace pred výročím. nevynechaj nič z poznámky. odlož presne 3 mesiace pred výročím. ps = poistná zmluva.">
+<label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Poznámka a kalendár"><span>10</span></label>
 <div class="tl-card"><div class="tl-h"><h3>Poznámka a kalendár</h3><div class="tl-chips"><span class="tl-chip">bod 8</span><span class="tl-chip ko">KO −10 %</span></div></div>
-<ul class="tl-say"><li>Zapíš: <b>stav PS, výročie, súčasné poistenie, domácnosť/nehnuteľnosť, x-sell na energie, čo klient rieši</b>.</li><li>Ak neuzavrel: odlož ho <b>2–3 mesiace pred výročím</b>.</li></ul>
-<p class="tl-warn">🚫 Nevynechaj nič z poznámky a nenaplánuj kalendár inam.</p><p class="tl-tip">PS = poistná zmluva.</p></div></li>
+<ul class="tl-say"><li>Zapíš: <b>stav PS, výročie, súčasné poistenie, domácnosť/nehnuteľnosť, čo klient rieši</b>.</li><li>Ak klient neuzavrel: odlož ho <b>vždy 3 mesiace pred výročím</b>.</li></ul>
+<p class="tl-warn">🚫 Nevynechaj nič z poznámky. Odlož presne 3 mesiace pred výročím.</p><p class="tl-tip">PS = poistná zmluva.</p></div></li>
       </ol>
       <p class="tl-end" data-s="celý hovor prístup ke klientovi korektne vulgarizmy pomluva návrh zmluvy vinkulácia">🤝 <b>Celý hovor:</b> jednaj korektne a na úrovni. Bez vulgarizmov, pomlúvania konkurencie a skákania do reči. Návrh zmluvy je OK iba pri vinkulácii.</p>
     </div>
