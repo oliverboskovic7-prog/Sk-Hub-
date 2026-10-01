@@ -225,7 +225,7 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
 <button type="button" id="side-vinkulacie" onclick="switchTab('vinkulacie')"><span class="si">🏦</span>Vinkulácie</button>
 <button type="button" id="side-kalkulacka" onclick="switchTab('kalkulacka')"><span class="si">🧮</span>Kalkulačka podpoistenia</button>
 <button type="button" id="side-hovor" onclick="switchTab('hovor')"><span class="si">🎯</span>Skript hovoru</button>
-<button type="button" id="side-sablony" onclick="switchTab('sablony')"><span class="si">✉️</span>Šablóny</button>
+<button type="button" id="side-sablony" onclick="switchTab('sablony')"><span class="si">✉️️</span>Šablóny</button>
 <button type="button" id="side-statusy" onclick="switchTab('statusy')"><span class="si">🔄</span>Statusy</button>
 <button type="button" id="side-majetok" onclick="switchTab('majetok')"><span class="si">🏠</span>Majetok</button>
 </aside>
@@ -278,14 +278,14 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
       </div>
 
       <div class="spg">
-        <div class="sp zac" data-s="splatnosť allianz"><b>Allianz</b><span class="chip">5 dní</span><span class="bs">od začiatku poistenia</span><small>do 5 kalendárnych dní od dátumu začiatku poistenia</small></div>
-        <div class="sp zac" data-s="splatnosť colonnade"><b>Colonnade</b><span class="chip">15 dní</span><span class="bs">od začiatku poistenia</span><small>do 15 kalendárnych dní od dátumu začiatku poistenia</small></div>
-        <div class="sp uz" data-s="splatnosť generali"><b>Generali</b><span class="chip">30 dní</span><span class="bs">od uzatvorenia poistenia</span><small>do 30 dní odo dňa uzatvorenia poistenia</small></div>
-        <div class="sp zac" data-s="splatnosť komunálna"><b>Komunálna</b><span class="chip">10 dní</span><span class="bs">od začiatku poistenia</span><small>v lehote desiatich kalendárnych dní odo dňa začiatku poistenia</small></div>
         <div class="sp uz" data-s="splatnosť kooperativa"><b>Kooperativa</b><span class="chip">15 dní</span><span class="bs">od uzatvorenia poistenia</span><small>do 15 kalendárnych dní odo dňa uzatvorenia poistenia</small></div>
+        <div class="sp uz" data-s="splatnosť generali"><b>Generali</b><span class="chip">30 dní</span><span class="bs">od uzatvorenia poistenia</span><small>do 30 dní odo dňa uzatvorenia poistenia</small></div>
+        <div class="sp zac" data-s="splatnosť allianz"><b>Allianz</b><span class="chip">5 dní</span><span class="bs">od začiatku poistenia</span><small>do 5 kalendárnych dní od dátumu začiatku poistenia</small></div>
+        <div class="sp zac" data-s="splatnosť uniqa"><b>UNIQA</b><span class="chip">15 dní</span><span class="bs">od začiatku poistenia</span><small>v lehote 15 kalendárnych dní odo dňa začiatku poistenia</small></div>
+        <div class="sp zac" data-s="splatnosť colonnade"><b>Colonnade</b><span class="chip">15 dní</span><span class="bs">od začiatku poistenia</span><small>do 15 kalendárnych dní od dátumu začiatku poistenia</small></div>
+        <div class="sp zac" data-s="splatnosť komunálna"><b>Komunálna</b><span class="chip">10 dní</span><span class="bs">od začiatku poistenia</span><small>v lehote desiatich kalendárnych dní odo dňa začiatku poistenia</small></div>
         <div class="sp zac" data-s="splatnosť premium"><b>Premium</b><span class="chip">15 dní</span><span class="bs">od začiatku poistenia</span><small>do 15 kalendárnych dní od dátumu začiatku poistenia</small></div>
         <div class="sp zac" data-s="splatnosť union"><b>Union</b><span class="chip">15 dní</span><span class="bs">od začiatku poistenia</span><small>do 15 kalendárnych dní od dátumu začiatku poistenia</small></div>
-        <div class="sp zac" data-s="splatnosť uniqa"><b>UNIQA</b><span class="chip">15 dní</span><span class="bs">od začiatku poistenia</span><small>v lehote 15 kalendárnych dní odo dňa začiatku poistenia</small></div>
         <div class="sp uz" data-s="splatnosť wüstenrot"><b>Wüstenrot</b><span class="chip">15 dní</span><span class="bs">od uzatvorenia poistenia</span><small>do 15 kalendárnych dní odo dňa uzatvorenia poistenia</small></div>
       </div>
     </div>
@@ -712,11 +712,16 @@ function switchTab(tabId) {
     var ann=d, rolled=false, guard=0;
     while(ann<t && guard++<500){ann=addMonths(ann,12);rolled=true;}
     var post=addMonths(ann,-3), dead=addDays(ann,-42), h='';
+    
+    // Kontrola, či sa výpoveď ešte stíha (dnes je pred alebo v deň deadlinu)
+    var canCancel = dead >= t;
+    var tileStyle = canCancel ? 'background: var(--okbg);' : 'background: var(--warnbg);';
+
     if(rolled)h+='<p class="dc-hint">Zadaný dátum už prebehol, počítam k najbližšiemu výročiu.</p>';
     h+='<p class="dc-hint">Najbližšie výročie: <b>'+fmt(ann)+'</b> ('+rel(ann,t)+')</p>';
     h+='<div class="dc-tiles">'
-      +'<div class="dc-tile"><small>Odlož klienta na (3 mesiace pred výročím)</small><b>'+fmt(post)+'</b><span>'+rel(post,t)+'</span></div>'
-      +'<div class="dc-tile"><small>Výpoveď doručiť najneskôr (6 týždňov pred výročím)</small><b>'+fmt(dead)+'</b><span>'+rel(dead,t)+'</span></div></div>';
+      +'<div class="dc-tile"><small>Poznačiť 3 mesiace pred výročím</small><b>'+fmt(post)+'</b><span>'+rel(post,t)+'</span></div>'
+      +'<div class="dc-tile" style="'+tileStyle+'"><small>Výpoveď doručiť najneskôr (6 týždňov pred výročím)</small><b>'+fmt(dead)+'</b><span>'+rel(dead,t)+'</span></div></div>';
     if(dead<t)h+='<p class="dc-warn">⚠️ Termín na výpoveď k tomuto výročiu už uplynul.</p>';
     if(post<t)h+='<p class="dc-warn">⚠️ Dátum odloženia už prešiel.</p>';
     anOut.innerHTML=h;
