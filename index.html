@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#d3277f">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SK Hub Klik</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +39,7 @@ nav a.active{background:var(--pink);color:#fff}
 .heroband::before{content:"";position:absolute;right:-120px;top:-150px;width:480px;height:480px;border-radius:50%;background:rgba(255,255,255,.1)}
 .heroband::after{content:"";position:absolute;right:140px;bottom:-210px;width:340px;height:340px;border-radius:50%;background:rgba(255,255,255,.07)}
 .hero{position:relative;z-index:1;padding:48px 20px 56px}
-.hero h1{color:#fff;font-size:clamp(28px,5vw,46px);font-weight:800;letter-spacing:-.035em;max-width:18ch;margin:0 0 10px}
+.hero h1{color:#fff;font-size:clamp(28px,5vw,46px);font-weight:800;letter-spacing:-.035em;line-height:1.12;max-width:20ch;text-wrap:balance;margin:0 0 12px}
 .hero .lead{color:rgba(255,255,255,.9);max-width:50ch;font-size:17px;margin:0 0 20px}
 .hero .search{background:#fff;color:#25252b;border:0;padding:16px 22px;border-radius:999px;box-shadow:0 14px 34px rgba(60,0,35,.28);width:100%;max-width:560px;font:inherit;font-size:16px}
 .hero .search::placeholder{color:#6b6b76}
@@ -182,6 +186,7 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
   main,footer{margin-left:220px}
   nav{display:none}
   .bar .btn{margin-left:auto}
+  header .wrap.bar{max-width:none;margin:0;padding:0 24px}
 }
 .sp .due{margin-top:auto;padding-top:8px;border-top:1px dashed var(--line);font-size:13px;color:var(--muted)}
 .sp .due b{display:block;font-size:15px;color:var(--pink);font-weight:700}
@@ -195,9 +200,14 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
 .tpl-act .tpl-copy{background:transparent;color:var(--pink);border:1px solid var(--pink)}
 .tpl-act .tpl-copy:hover{background:var(--pink-soft);filter:none}
 @media(max-width:640px){.tpl-h{flex-wrap:wrap}.tpl-act{justify-content:flex-start}}
+
+/* Aktualizácia aplikácie */
+.upd{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:12px;background:var(--ink);color:var(--bg);padding:10px 14px 10px 18px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.3);font-size:14px;font-weight:600}
+.upd button{font:inherit;font-weight:700;border:0;border-radius:999px;padding:7px 14px;background:var(--pink);color:#fff;cursor:pointer}
 </style>
 </head>
 <body>
+<div id="upd" class="upd hide" role="status"><span>Je dostupná nová verzia hubu.</span><button type="button" id="upd-btn">Obnoviť</button></div>
 <header>
   <div class="wrap bar">
     <div class="logo" onclick="switchTab('odkazy')">SK Hub <span>Klik</span></div>
@@ -444,10 +454,10 @@ h1,h2,.logo,.chip{font-family:Sora,Inter,system-ui,sans-serif}
 <div class="tl-card"><div class="tl-h"><h3>Ťah na bránku</h3><div class="tl-chips"><span class="tl-chip">bod 7</span><span class="tl-chip chk">⚠ overiť</span></div></div>
 <ul class="tl-say"><li>„Ponuka je pripravená, môžeme ju <b>uzavrieť hneď</b>.“</li><li>Pri negácii argumentuj <b>ešte pred odoslaním ponúk</b>.</li><li>Ak stále nie: odlož <b>max. na druhý deň</b> a zapíš do kalendára.</li></ul>
 <p class="tl-warn">🚫 Neposielaj ponuku e-mailom bez snahy o predaj.</p></div></li>
-<li class="tl-step" data-s="pred exportom a záver „zmluvu, podmienky, záznam z rokovania a platobné údaje vám pošleme e-mailom.“ (poštou na žiadosť) dorieš výpoveď pôvodného poistenia: 6 týždňov pred výročím / 14 dní od dojednania online / do 2 mesiacov na pobočke. „pred úhradou si skontrolujte všetky údaje na zmluve.“ nezabudni na výpoveď a kontrolu údajov pred úhradou.">
+<li class="tl-step" data-s="pred exportom a záver „zmluvu, podmienky, záznam z rokovania a platobné údaje vám pošleme e-mailom.“ (poštou na žiadosť) dorieš výpoveď pôvodného poistenia: 6 týždňov pred výročím / do 2 mesiacov od dojednania. „pred úhradou si skontrolujte všetky údaje na zmluve.“ nezabudni na výpoveď a kontrolu údajov pred úhradou.">
 <label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Pred exportom a záver"><span>7</span></label>
 <div class="tl-card"><div class="tl-h"><h3>Pred exportom a záver</h3><div class="tl-chips"><span class="tl-chip">bod 10</span></div></div>
-<ul class="tl-say"><li>„<b>Zmluvu, podmienky, záznam z rokovania a platobné údaje</b> vám pošleme e-mailom.“ (poštou na žiadosť)</li><li>Dorieš <b>výpoveď pôvodného poistenia</b>: <b>6 týždňov pred výročím</b> / <b>14 dní od dojednania online</b> / <b>do 2 mesiacov na pobočke</b>.</li><li>„Pred úhradou si <b>skontrolujte všetky údaje</b> na zmluve.“</li></ul>
+<ul class="tl-say"><li>„<b>Zmluvu, podmienky, záznam z rokovania a platobné údaje</b> vám pošleme e-mailom.“ (poštou na žiadosť)</li><li>Dorieš <b>výpoveď pôvodného poistenia</b>: <b>6 týždňov pred výročím</b> / <b>do 2 mesiacov od dojednania</b>.</li><li>„Pred úhradou si <b>skontrolujte všetky údaje</b> na zmluve.“</li></ul>
 <p class="tl-warn">🚫 Nezabudni na výpoveď a kontrolu údajov pred úhradou.</p></div></li>
 <li class="tl-step" data-s="platba „poistné odporúčame uhradiť do 5 dní od dojednania. kedy a ako budete platiť?“ každá poisťovňa má inú splatnosť (pozri splatnosti). päť dní je len naše odporúčanie. ak nie do 5 dní: dopytaj sa na dátum. neponúkaj hneď odloženie platby k počiatku. pri počiatku v deň exportu je platba obratom nutná. zloženky nezasielame.">
 <label class="tl-n" title="Hotovo"><input type="checkbox" class="tl-box" aria-label="Hotovo: Platba"><span>8</span></label>
@@ -780,6 +790,26 @@ function switchTab(tabId) {
     var w=t.querySelector('.tpl-web');
     if(w)w.href='https://outlook.office.com/mail/deeplink/compose?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
   });
+})();
+</script>
+<script>
+// Aplikácia (PWA): offline režim a hlásenie novej verzie
+(function(){
+  if(!('serviceWorker' in navigator)||location.protocol.indexOf('http')!==0)return;
+  navigator.serviceWorker.register('sw.js').catch(function(){});
+  var banner=document.getElementById('upd'),ub=document.getElementById('upd-btn'),known=null;
+  function sig(){return fetch(location.pathname,{method:'HEAD',cache:'no-cache'}).then(function(r){return (r.headers.get('etag')||'')+'|'+(r.headers.get('last-modified')||'')+'|'+(r.headers.get('content-length')||'');});}
+  function check(){
+    if(!navigator.onLine)return;
+    sig().then(function(v){
+      if(known===null){known=v;return;}
+      if(v!==known&&banner)banner.classList.remove('hide');
+    }).catch(function(){});
+  }
+  check();
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)check();});
+  window.addEventListener('focus',check);
+  if(ub)ub.addEventListener('click',function(){location.reload();});
 })();
 </script>
 </body>
